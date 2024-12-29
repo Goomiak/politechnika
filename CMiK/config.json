@@ -38,6 +38,21 @@
             {"type": "math", "content": "$E(t) = E_0 e^{i(\\omega t + \\phi)}$"}
           ]
         }
+      ],
+      "summary": [
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja koherentna sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "image", "content": "coherent1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "W detekcji koherentnej odbierany sygnał jest mieszany z..."},
+            {"type": "math", "content": "$E(t) = E_0 e^{i(\\omega t + \\phi)}$"}
+          ]
+        }
       ]
     }
   }

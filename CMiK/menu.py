@@ -19,11 +19,15 @@ def create_menu_window():
         slides = config["slides"]["coherent_detection"]
         show_window_sequence(slides, "Coherent Detection")
 
+    def on_summary():
+        slides = config["slides"]["summary"]
+        show_window_sequence(slides, "Summary")
+
     # Nagłówki i opisy
     title_label = tk.Label(
         menu_window,
         text=("Kliknij ikonę i wybierz zagadnienie, które chcesz trenować: "
-              "Detekcja Bezpośrednia / Detekcja Koherentna / Podsumowanie"),
+              "Detekcja Bezpośrednia / Detekcja Koherentna / Podsumowanie."),
         font=("Arial", 16), wraplength=1000, justify="center"
     )
     title_label.pack(pady=20)
@@ -43,6 +47,9 @@ def create_menu_window():
     icon2 = Image.open("2-png.png").resize((300, 300), Image.Resampling.LANCZOS)
     icon2_tk = ImageTk.PhotoImage(icon2)
 
+    icon3 = Image.open("3-png.png").resize((300, 300), Image.Resampling.LANCZOS)
+    icon3_tk = ImageTk.PhotoImage(icon3)
+
     # Ramka dla przycisków
     button_frame = tk.Frame(menu_window)
     button_frame.pack(pady=20)
@@ -58,6 +65,12 @@ def create_menu_window():
     btn_coherent.image = icon2_tk  # Zachowanie referencji do obrazu
     btn_coherent.bind("<Button-1>", lambda e: on_coherent_detection())
     btn_coherent.pack(side="left", padx=20)
+
+    # Ikona "Podsumowanie"
+    btn_summary = tk.Label(button_frame, image=icon3_tk, cursor="hand2")
+    btn_summary.image = icon3_tk  # Zachowanie referencji do obrazu
+    btn_summary.bind("<Button-1>", lambda e: on_summary())
+    btn_summary.pack(side="left", padx=20)
 
     # Przycisk "Close" dla okna menu
     close_button = tk.Button(menu_window, text="Zamknij", font=("Arial", 16), command=menu_window.destroy)
