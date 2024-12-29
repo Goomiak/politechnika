@@ -1,0 +1,44 @@
+{
+    "slides": {
+      "direct_detection": [
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "image", "content": "direct1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "W detekcji bezpośredniej detektor (np. fotodioda)..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "image", "content": "direct4.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "text", "content": "Powyższy wzór pokazuje zależność mocy od natężenia prądu."}
+          ]
+        }
+      ],
+      "coherent_detection": [
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja koherentna sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "image", "content": "coherent1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "W detekcji koherentnej odbierany sygnał jest mieszany z..."},
+            {"type": "math", "content": "$E(t) = E_0 e^{i(\\omega t + \\phi)}$"}
+          ]
+        }
+      ]
+    }
+  }
+  
