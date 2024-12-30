@@ -89,6 +89,9 @@ def show_window_sequence(slides, title):
                 print("[DEBUG] Moving to next slide")
                 slide_window.destroy()
                 create_slide_window(index + 1)
+            else:
+                print("[DEBUG] Last slide reached. Closing.")
+                slide_window.destroy()
 
         def previous_slide():
             if index > 0:
@@ -100,8 +103,7 @@ def show_window_sequence(slides, title):
         back_button.pack(side=tk.LEFT, padx=20, pady=10)
         back_button.config(state=tk.NORMAL if index > 0 else tk.DISABLED)
 
-        next_button = tk.Button(nav_frame, text="Dalej", command=next_slide, bg="white")
+        next_button = tk.Button(nav_frame, text="Zakończ" if index == len(slides) - 1 else "Dalej", command=next_slide, bg="white")
         next_button.pack(side=tk.RIGHT, padx=20, pady=10)
-        next_button.config(text="Zakończ" if index == len(slides) - 1 else "Dalej")
 
     create_slide_window(0)

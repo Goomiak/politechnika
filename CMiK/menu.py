@@ -1,6 +1,9 @@
 import tkinter as tk
+from tkinter import messagebox
 from PIL import Image, ImageTk
 from slides import show_window_sequence, load_config
+import subprocess
+from test import start_test_window
 
 def create_menu_window():
     menu_window = tk.Tk()
@@ -10,18 +13,38 @@ def create_menu_window():
     # Wczytaj konfigurację
     config = load_config("config.json")
 
+    # Śledzenie stanu obejrzanych slajdów
+    viewed_slides = {"direct_detection": False, "coherent_detection": False, "summary": False}
+
     # Funkcje do obsługi kliknięć na ikony
     def on_direct_detection():
         slides = config["slides"]["direct_detection"]
         show_window_sequence(slides, "Direct Detection")
+        viewed_slides["direct_detection"] = True
+        update_test_button_state()
 
     def on_coherent_detection():
         slides = config["slides"]["coherent_detection"]
         show_window_sequence(slides, "Coherent Detection")
+        viewed_slides["coherent_detection"] = True
+        update_test_button_state()
 
     def on_summary():
         slides = config["slides"]["summary"]
         show_window_sequence(slides, "Summary")
+        viewed_slides["summary"] = True
+        update_test_button_state()
+
+    def update_test_button_state():
+        # Jeśli wszystkie moduły zostały obejrzane, aktywuj przycisk testu
+        if all(viewed_slides.values()):
+            test_button.config(state="normal")
+
+    def start_test():
+        try:
+            start_test_window()
+        except Exception as e:
+            messagebox.showerror("Błąd", f"Nie udało się uruchomić testu: {e}")
 
     # Nagłówki i opisy
     title_label = tk.Label(
@@ -71,6 +94,24 @@ def create_menu_window():
     btn_summary.image = icon3_tk  # Zachowanie referencji do obrazu
     btn_summary.bind("<Button-1>", lambda e: on_summary())
     btn_summary.pack(side="left", padx=20)
+
+    info_label = tk.Label(
+        menu_window,
+        text=("Przycisk stanie się aktywny po obejrzeniu wszystkich modułów."
+              " ."),
+        font=("Arial", 16), wraplength=1000, justify="center"
+    )
+    info_label.pack(pady=20)
+
+    # Przycisk "Test wiedzy"
+    test_button = tk.Button(
+        menu_window,
+        text="Test wiedzy",
+        font=("Arial", 16),
+        state="disabled",
+        command=start_test
+    )
+    test_button.pack(pady=20)
 
     # Przycisk "Close" dla okna menu
     close_button = tk.Button(menu_window, text="Zamknij", font=("Arial", 16), command=menu_window.destroy)
