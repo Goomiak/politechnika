@@ -4,7 +4,20 @@ import tkinter as tk
 def start_test_window():
     test_window = tk.Toplevel(bg="white")
     test_window.title("Test wiedzy")
-    test_window.geometry("800x600")
+
+    # Wymiary okna
+    window_width = 800
+    window_height = 600
+
+    screen_width = test_window.winfo_screenwidth()
+    screen_height = test_window.winfo_screenheight()
+
+    position_x = (screen_width // 2) - (window_width // 2)
+    position_y = (screen_height // 2) - (window_height // 2)
+
+    # Ustawienie geometrii okna
+    test_window.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
+
 
     with open("test.json", "r", encoding="utf-8") as f:
         test_data = json.load(f)
