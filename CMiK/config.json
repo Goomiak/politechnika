@@ -3,6 +3,31 @@
       "direct_detection": [
         {
           "elements": [
+            {
+              "type": "text",
+              "content": "Detekcja bezpośrednia to metoda, w której sygnał optyczny jest przekształcany bezpośrednio na sygnał elektryczny przez detektor (np. fotodiodę). Podstawą jest pomiar mocy optycznej światła."
+            },
+            {
+              "type": "math",
+              "content": "$P = \\eta \\cdot \\frac{h \\nu}{q} \\cdot I$"
+            },
+            {
+              "type": "text",
+              "content": "Gdzie:\\n- $P$: moc optyczna (W),\\n- $\\eta$: wydajność kwantowa,\\n- $h$: stała Plancka,\\n- $\\nu$: częstotliwość światła,\\n- $q$: ładunek elementarny,\\n- $I$: natężenie prądu generowanego w detektorze."
+            }
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "image", "content": "direct1.png"}
+          ]
+        },
+        {
+          "elements": [
             {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
             {"type": "math", "content": "$P = I^2 R$"},
             {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
