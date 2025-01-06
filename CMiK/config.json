@@ -14,6 +14,25 @@
             {
               "type": "text",
               "content": "Gdzie:\\n- $P$: moc optyczna (W),\\n- $\\eta$: wydajność kwantowa,\\n- $h$: stała Plancka,\\n- $\\nu$: częstotliwość światła,\\n- $q$: ładunek elementarny,\\n- $I$: natężenie prądu generowanego w detektorze."
+            },
+            {
+              "type": "simulation",
+              "content": {
+                "name": "Symulacja detekcji bezpośredniej",
+                "parameters": {
+                  "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
+                  "frequency": { "min": 1.0, "max": 50.0, "step": 0.5, "default": 10.0 }
+                },
+                "inputs": {
+                  "offset": { "default": "0" }
+                },
+                "figures": [
+                  {
+                    "size": [8, 4],
+                    "code": "t = np.linspace(0, 1, 1000); y = amplitude.get() * np.sin(2 * np.pi * frequency.get() * t + float(offset.get())); ax.plot(t, y)"
+                  }
+                ]
+              }
             }
           ]
         },

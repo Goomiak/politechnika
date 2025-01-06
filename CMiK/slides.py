@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from io import BytesIO
+import numpy as np
 
 # Funkcja do wczytywania konfiguracji z pliku JSON
 def load_config(config_path="config.json"):
@@ -28,6 +29,81 @@ def generate_math_image(math_expression):
     plt.close()
 
     return Image.open(buffer)
+
+# Funkcja do obsługi symulacji
+def create_simulation_window(simulation):
+    sim_window = tk.Toplevel(bg="white")
+    sim_window.title(simulation["name"])
+    sim_window.geometry("1000x800")
+
+    # Lista parametrów z konfiguracji
+    params = simulation.get("parameters", {})
+    param_vars = {key: tk.DoubleVar(value=val.get("default", 0)) for key, val in params.items()}
+
+    # Dane wejściowe z konfiguracji
+    inputs = simulation.get("inputs", {})
+    input_vars = {key: tk.StringVar(value=val.get("default", "")) for key, val in inputs.items()}
+
+    # Tworzenie wykresów
+    figures = []
+    for fig_conf in simulation.get("figures", []):
+        fig, ax = plt.subplots(figsize=fig_conf.get("size", (6, 4)))
+        figures.append((fig, ax))
+
+    # Funkcja aktualizująca symulację
+    def update_simulation(*args):
+        for fig, ax, fig_conf in zip([f[0] for f in figures], [f[1] for f in figures], simulation.get("figures", [])):
+            ax.clear()
+            exec(fig_conf.get("code", ""), {
+                **param_vars,
+                **input_vars,
+                "np": np,
+                "plt": plt,
+                "ax": ax
+            })
+        for canvas in canvases:
+            canvas.draw()
+
+    # Tworzenie panelu sterowania parametrami
+    control_frame = tk.Frame(sim_window, bg="white")
+    control_frame.pack(fill=tk.X, pady=10)
+
+    for param, config in params.items():
+        frame = tk.Frame(control_frame, bg="white")
+        frame.pack(fill=tk.X, pady=5)
+
+        label = tk.Label(frame, text=f"{param.capitalize()}: ", bg="white", font=("Arial", 12))
+        label.pack(side=tk.LEFT, padx=10)
+
+        scale = tk.Scale(
+            frame, from_=config["min"], to=config["max"], resolution=config["step"],
+            variable=param_vars[param], orient=tk.HORIZONTAL, bg="white", length=400
+        )
+        scale.pack(side=tk.LEFT, padx=10)
+
+        param_vars[param].trace_add("write", update_simulation)
+
+    for inp, config in inputs.items():
+        frame = tk.Frame(control_frame, bg="white")
+        frame.pack(fill=tk.X, pady=5)
+
+        label = tk.Label(frame, text=f"{inp.capitalize()}: ", bg="white", font=("Arial", 12))
+        label.pack(side=tk.LEFT, padx=10)
+
+        entry = tk.Entry(frame, textvariable=input_vars[inp], font=("Arial", 12), width=20)
+        entry.pack(side=tk.LEFT, padx=10)
+
+        input_vars[inp].trace_add("write", update_simulation)
+
+    # Dodanie wykresów
+    canvases = []
+    for fig, _ in figures:
+        canvas = FigureCanvasTkAgg(fig, master=sim_window)
+        canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        canvases.append(canvas)
+
+    # Inicjalizacja wykresów
+    update_simulation()
 
 # Funkcja do wyświetlania sekwencji slajdów
 def show_window_sequence(slides, title):
@@ -83,7 +159,16 @@ def show_window_sequence(slides, title):
                 math_label.image = math_tk  # Zachowaj referencję do obrazu
                 math_label.pack(pady=10)
 
-        # Dodanie nawigacji
+            elif element["type"] == "simulation":
+                button = tk.Button(
+                    content_frame,
+                    text=f"Uruchom symulację - {element['content']['name']}",
+                    command=lambda sim=element["content"]: create_simulation_window(sim),
+                    bg="white"
+                )
+                button.pack(pady=10)
+
+        # Nawigacja między slajdami
         def next_slide():
             if index < len(slides) - 1:
                 print("[DEBUG] Moving to next slide")
