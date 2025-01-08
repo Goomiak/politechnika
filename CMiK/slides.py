@@ -6,7 +6,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from io import BytesIO
 import numpy as np
 
-
 # Funkcja do wczytywania konfiguracji z pliku JSON
 def load_config(config_path="config.json"):
     try:
@@ -122,21 +121,6 @@ def create_simulation_window(simulation):
 
     update_simulation()
 
-    # # Dodanie przycisku "Zamknij"
-    # close_button_frame = tk.Frame(sim_window, bg="white")
-    # close_button_frame.pack(side=tk.BOTTOM, pady=10)
-
-    # close_button = tk.Button(
-    #     close_button_frame,
-    #     text="Zamknij",
-    #     font=("Arial", 12),
-    #     command=sim_window.destroy,
-    #     bg="white",
-    #     padx=10,
-    #     pady=5
-    # )
-    # close_button.pack()
-
 # Funkcja do wyświetlania sekwencji slajdów
 def show_window_sequence(slides, title):
     if not slides:
@@ -202,6 +186,12 @@ def show_window_sequence(slides, title):
                     bg="white"
                 )
                 button.pack(pady=10)
+
+        # Aktualizacja stanu przycisku "Wstecz"
+        if current_index["index"] == 0:
+            back_button.config(state=tk.DISABLED)
+        else:
+            back_button.config(state=tk.NORMAL)
 
     def next_slide():
         """Przechodzi do następnego slajdu"""
