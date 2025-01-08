@@ -6,6 +6,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from io import BytesIO
 import numpy as np
 
+
 # Funkcja do wczytywania konfiguracji z pliku JSON
 def load_config(config_path="config.json"):
     try:
@@ -34,23 +35,33 @@ def generate_math_image(math_expression):
 def create_simulation_window(simulation):
     sim_window = tk.Toplevel(bg="white")
     sim_window.title(simulation["name"])
-    sim_window.geometry("1000x800")
 
-    # Lista parametrów z konfiguracji
+    # Wymiary okna
+    window_width = 800
+    window_height = 600
+
+    # Pobranie rozmiaru ekranu
+    screen_width = sim_window.winfo_screenwidth()
+    screen_height = sim_window.winfo_screenheight()
+
+    # Wyliczenie pozycji okna na środku ekranu
+    position_x = (screen_width // 2) - (window_width // 2)
+    position_y = (screen_height // 2) - (window_height // 2)
+
+    # Ustawienie wymiarów i pozycji okna
+    sim_window.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
+
+    # Tworzenie zawartości okna
     params = simulation.get("parameters", {})
     param_vars = {key: tk.DoubleVar(value=val.get("default", 0)) for key, val in params.items()}
-
-    # Dane wejściowe z konfiguracji
     inputs = simulation.get("inputs", {})
     input_vars = {key: tk.StringVar(value=val.get("default", "")) for key, val in inputs.items()}
 
-    # Tworzenie wykresów
     figures = []
     for fig_conf in simulation.get("figures", []):
         fig, ax = plt.subplots(figsize=fig_conf.get("size", (6, 4)))
         figures.append((fig, ax))
 
-    # Funkcja aktualizująca symulację
     def update_simulation(*args):
         for fig, ax, fig_conf in zip([f[0] for f in figures], [f[1] for f in figures], simulation.get("figures", [])):
             ax.clear()
@@ -64,13 +75,17 @@ def create_simulation_window(simulation):
         for canvas in canvases:
             canvas.draw()
 
-    # Tworzenie panelu sterowania parametrami
-    control_frame = tk.Frame(sim_window, bg="white")
-    control_frame.pack(fill=tk.X, pady=10)
+    # Ramka na całość (dla wyśrodkowania panelu sterowania)
+    main_frame = tk.Frame(sim_window, bg="white")
+    main_frame.pack(expand=True, fill=tk.BOTH)
+
+    # Panel sterowania parametrami
+    control_frame = tk.Frame(main_frame, bg="white")
+    control_frame.pack(side=tk.TOP, pady=10)
 
     for param, config in params.items():
         frame = tk.Frame(control_frame, bg="white")
-        frame.pack(fill=tk.X, pady=5)
+        frame.pack(pady=5)
 
         label = tk.Label(frame, text=f"{param.capitalize()}: ", bg="white", font=("Arial", 12))
         label.pack(side=tk.LEFT, padx=10)
@@ -85,7 +100,7 @@ def create_simulation_window(simulation):
 
     for inp, config in inputs.items():
         frame = tk.Frame(control_frame, bg="white")
-        frame.pack(fill=tk.X, pady=5)
+        frame.pack(pady=5)
 
         label = tk.Label(frame, text=f"{inp.capitalize()}: ", bg="white", font=("Arial", 12))
         label.pack(side=tk.LEFT, padx=10)
@@ -95,15 +110,32 @@ def create_simulation_window(simulation):
 
         input_vars[inp].trace_add("write", update_simulation)
 
-    # Dodanie wykresów
+    # Wykresy
+    canvas_frame = tk.Frame(main_frame, bg="white")
+    canvas_frame.pack(expand=True, fill=tk.BOTH)
+
     canvases = []
     for fig, _ in figures:
-        canvas = FigureCanvasTkAgg(fig, master=sim_window)
+        canvas = FigureCanvasTkAgg(fig, master=canvas_frame)
         canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         canvases.append(canvas)
 
-    # Inicjalizacja wykresów
     update_simulation()
+
+    # # Dodanie przycisku "Zamknij"
+    # close_button_frame = tk.Frame(sim_window, bg="white")
+    # close_button_frame.pack(side=tk.BOTTOM, pady=10)
+
+    # close_button = tk.Button(
+    #     close_button_frame,
+    #     text="Zamknij",
+    #     font=("Arial", 12),
+    #     command=sim_window.destroy,
+    #     bg="white",
+    #     padx=10,
+    #     pady=5
+    # )
+    # close_button.pack()
 
 # Funkcja do wyświetlania sekwencji slajdów
 def show_window_sequence(slides, title):
@@ -111,23 +143,26 @@ def show_window_sequence(slides, title):
         print("[ERROR] No slides to display")
         return
 
-    def create_slide_window(index):
-        print(f"[DEBUG] Showing slide {index + 1}/{len(slides)}")
+    root = tk.Toplevel(bg="white")
+    root.attributes('-fullscreen', True)
+    root.title(title)
 
-        slide_window = tk.Toplevel(bg="white")
-        slide_window.attributes('-fullscreen', True)
-        slide_window.title(title)
+    # Ramki dla treści i nawigacji
+    content_frame = tk.Frame(root, bg="white")
+    content_frame.pack(expand=True, fill=tk.BOTH)
 
-        # Podział na ramki treści i nawigacji
-        content_frame = tk.Frame(slide_window, bg="white")
-        content_frame.pack(expand=True, fill=tk.BOTH)
+    nav_frame = tk.Frame(root, bg="white")
+    nav_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
 
-        nav_frame = tk.Frame(slide_window, bg="white")
-        nav_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+    current_index = {"index": 0}  # Użycie słownika, aby umożliwić mutowalność
 
-        slide = slides[index]
+    def update_slide():
+        """Aktualizuje zawartość okna dla bieżącego slajdu"""
+        for widget in content_frame.winfo_children():
+            widget.destroy()
 
-        # Wyświetlanie zawartości slajdu
+        slide = slides[current_index["index"]]
+
         for element in slide.get("elements", []):
             if element["type"] == "text":
                 text_label = tk.Label(
@@ -168,27 +203,26 @@ def show_window_sequence(slides, title):
                 )
                 button.pack(pady=10)
 
-        # Nawigacja między slajdami
-        def next_slide():
-            if index < len(slides) - 1:
-                print("[DEBUG] Moving to next slide")
-                slide_window.destroy()
-                create_slide_window(index + 1)
-            else:
-                print("[DEBUG] Last slide reached. Closing.")
-                slide_window.destroy()
+    def next_slide():
+        """Przechodzi do następnego slajdu"""
+        if current_index["index"] < len(slides) - 1:
+            current_index["index"] += 1
+            update_slide()
+        else:
+            root.destroy()
 
-        def previous_slide():
-            if index > 0:
-                print("[DEBUG] Moving to previous slide")
-                slide_window.destroy()
-                create_slide_window(index - 1)
+    def previous_slide():
+        """Przechodzi do poprzedniego slajdu"""
+        if current_index["index"] > 0:
+            current_index["index"] -= 1
+            update_slide()
 
-        back_button = tk.Button(nav_frame, text="Wstecz", command=previous_slide, bg="white")
-        back_button.pack(side=tk.LEFT, padx=20, pady=10)
-        back_button.config(state=tk.NORMAL if index > 0 else tk.DISABLED)
+    # Przyciski nawigacyjne
+    back_button = tk.Button(nav_frame, text="Wstecz", command=previous_slide, bg="white")
+    back_button.pack(side=tk.LEFT, padx=20, pady=10)
 
-        next_button = tk.Button(nav_frame, text="Zakończ" if index == len(slides) - 1 else "Dalej", command=next_slide, bg="white")
-        next_button.pack(side=tk.RIGHT, padx=20, pady=10)
+    next_button = tk.Button(nav_frame, text="Dalej", command=next_slide, bg="white")
+    next_button.pack(side=tk.RIGHT, padx=20, pady=10)
 
-    create_slide_window(0)
+    # Inicjalizacja pierwszego slajdu
+    update_slide()

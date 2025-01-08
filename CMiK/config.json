@@ -33,7 +33,40 @@
                   }
                 ]
               }
+            },
+            {
+              "type": "simulation",
+              "content": {
+                  "name": "Odbiór sygnału optycznego z detektorem fotonowym",
+                  "parameters": {
+                      "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
+                      "noise_level": { "min": 0.0, "max": 1.0, "step": 0.1, "default": 0.1 }
+                  },
+                  "inputs": {},
+                  "figures": [
+                      {
+                          "size": [8, 4],
+                          "code": "t = np.linspace(0, 1, 1000); signal = amplitude.get() * np.sin(2 * np.pi * 10 * t); noise = np.random.normal(0, noise_level.get(), size=t.shape); detected_signal = np.abs(signal + noise); ax.plot(t, signal, label='Input Signal'); ax.plot(t, detected_signal, label='Detected Intensity'); ax.legend()"
+                      }
+                  ]
+              }
+           },
+           {
+            "type": "simulation",
+            "content": {
+                "name": "Demodulacja sygnału AM",
+                "parameters": {
+                    "modulation_index": { "min": 0.1, "max": 1.0, "step": 0.1, "default": 0.5 }
+                },
+                "inputs": {},
+                "figures": [
+                    {
+                        "size": [8, 4],
+                        "code": "t = np.linspace(0, 1, 1000); carrier = np.cos(2 * np.pi * 10 * t); mod_signal = 1 + modulation_index.get() * np.sin(2 * np.pi * 2 * t); am_signal = mod_signal * carrier; detected = np.abs(am_signal); ax.plot(t, am_signal, label='AM Signal'); ax.plot(t, detected, label='Envelope Detected'); ax.legend()"
+                    }
+                ]
             }
+         }
           ]
         },
         {
@@ -79,7 +112,23 @@
         {
           "elements": [
             {"type": "text", "content": "W detekcji koherentnej odbierany sygnał jest mieszany z..."},
-            {"type": "math", "content": "$E(t) = E_0 e^{i(\\omega t + \\phi)}$"}
+            {"type": "math", "content": "$E(t) = E_0 e^{i(\\omega t + \\phi)}$"},
+            {
+              "type": "simulation",
+              "content": {
+                  "name": "Demodulacja sygnału FM",
+                  "parameters": {
+                      "modulation_index": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 }
+                  },
+                  "inputs": {},
+                  "figures": [
+                      {
+                          "size": [8, 4],
+                          "code": "t = np.linspace(0, 1, 1000); signal = np.sin(2 * np.pi * 5 * t + modulation_index.get() * np.sin(2 * np.pi * 1 * t)); demodulated = np.gradient(np.unwrap(np.angle(np.exp(1j * signal)))); ax.plot(t, signal, label='FM Signal'); ax.plot(t, demodulated, label='Demodulated Signal'); ax.legend()"
+                      }
+                  ]
+              }
+          }
           ]
         }
       ],
@@ -88,7 +137,23 @@
           "elements": [
             {"type": "text", "content": "Detekcja koherentna sygnałów optycznych polega na..."},
             {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "image", "content": "coherent1.png"}
+            {"type": "image", "content": "coherent1.png"},
+            {
+              "type": "simulation",
+              "content": {
+                  "name": "Porównanie detekcji",
+                  "parameters": {
+                      "snr": { "min": 0, "max": 20, "step": 1, "default": 10 }
+                  },
+                  "inputs": {},
+                  "figures": [
+                      {
+                          "size": [8, 4],
+                          "code": "t = np.linspace(0, 1, 1000); signal = np.sin(2 * np.pi * 5 * t); noise = np.random.normal(0, 10**(-snr.get()/20), size=t.shape); direct = np.abs(signal + noise); coherent = signal + noise; ax.plot(t, direct, label='Direct Detection'); ax.plot(t, coherent, label='Coherent Detection'); ax.legend()"
+                      }
+                  ]
+              }
+            }
           ]
         },
         {
