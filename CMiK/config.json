@@ -5,16 +5,55 @@
           "elements": [
             {
               "type": "text",
-              "content": "Detekcja bezpośrednia to metoda, w której sygnał optyczny jest przekształcany bezpośrednio na sygnał elektryczny przez detektor (np. fotodiodę). Podstawą jest pomiar mocy optycznej światła."
-            },
-            {
-              "type": "math",
-              "content": "$P = \\eta \\cdot \\frac{h \\nu}{q} \\cdot I$"
+              "content": "Detekcja Bezpośrednia – detekcja polegająca wyłącznie na pomiarze mocy optycznej sygnału, bez uwzględniania informacji o fazie lub częstotliwości nośnej. "
             },
             {
               "type": "text",
-              "content": "Gdzie:\\n- $P$: moc optyczna (W),\\n- $\\eta$: wydajność kwantowa,\\n- $h$: stała Plancka,\\n- $\\nu$: częstotliwość światła,\\n- $q$: ładunek elementarny,\\n- $I$: natężenie prądu generowanego w detektorze."
+              "content": "Sygnał optyczny E(t) trafia na fotodetektor (np. fotodiodę), która generuje prąd proporcjonalny do mocy optycznej P(t). Fotodetektor przekształca moc optyczną na prąd elektryczny na podstawie poniższych wzorów. "
             },
+            {
+              "type": "text",
+              "content": "Moc optyczna:"
+            },
+            {
+              "type": "math",
+              "content": "$P(t) = |E(t)|^2$"
+            },
+            {
+              "type": "text",
+              "content": "Prąd fotodetektora:"
+            },
+            {
+              "type": "math",
+              "content": "$I(t) = R \\cdot P(t)$"
+            },
+            {
+              "type": "text",
+              "content": "gdzie R - responsywność fotodetektora"
+            },
+            {
+              "type": "text",
+              "content": "W sygnale elektrycznym mogą występować szybkie oscylacje związane z nośną, dlatego też w celu filtracji tych oscylacji stosuje się obwód RC. W ten sposób pozostaje użyteczna informacja o mocy sygnału."
+            }
+            
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "W przypadku detekcji szerokopasmowej dochodzi do tzw. samomieszania. W przypadku sygnału dwuwstęgowego – detektor zmierzy całkowitą moc optyczną sygnału, co prowadzi do sumowania wstęg górnej i dolnej, przez co wypadkowy sygnał elektryczny przedstawi się wzorem:"},
+            {"type": "math", "content": "$I(t) \\propto \\left| E_{\\text{USB}}(t) + E_{\\text{LSB}}(t) \\right|^2$"},
+            {"type": "math", "content": "$gdzie: E_{\\text{USB}}(t) - \\text{pole elektryczne górnej wstęgi}$"},
+            {"type": "text", "content": "Przy niskim próbkowaniu – wstęgi mogą nachodzić na siebie, co powoduje interferencje i zniekształcenie użytecznego sygnału. Detektor musi mieć pasmo wystarczające do uchwycenia obu wstęg, co zwiększa wymagania stawiane układowi odbiorczemu."},
+            {"type": "text", "content": "Detekcja bezpośrednia nie odtwarza informacji o fazie ani częstotliwości sygnału optycznego, co uniemożliwia stosowanie zaawansowanych metod modulacji. Ograniczenia te wynikają z szumów termicznych, szumów prądowych na fotodiodzie oraz szumów kwantowych (związanych z fluktuacją liczby fotonów). Przy szerokopasmowych sygnałach (np. dwuwstęgowych) nakładanie się pasm prowadzi do zjawiska aliasingu i trudności w dekodowaniu informacji."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "math", "content": "$P = I^2 R$"},
+            {"type": "image", "content": "direct1.png"},
             {
               "type": "simulation",
               "content": {
@@ -78,22 +117,7 @@
             {"type": "image", "content": "direct1.png"}
           ]
         },
-        {
-          "elements": [
-            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "image", "content": "direct1.png"}
-          ]
-        },
-        {
-          "elements": [
-            {"type": "text", "content": "W detekcji bezpośredniej detektor (np. fotodioda)..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "image", "content": "direct4.png"}
-          ]
-        },
+      
         {
           "elements": [
             {"type": "math", "content": "$P = I^2 R$"},
