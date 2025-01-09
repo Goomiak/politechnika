@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from io import BytesIO
 import numpy as np
+import subprocess
 
 # Funkcja do wczytywania konfiguracji z pliku JSON
 def load_config(config_path="config.json"):
@@ -30,96 +31,17 @@ def generate_math_image(math_expression):
 
     return Image.open(buffer)
 
-# Funkcja do obsługi symulacji
+# Funkcja do obsługi symulacji (z użyciem subprocess)
 def create_simulation_window(simulation):
-    sim_window = tk.Toplevel(bg="white")
-    sim_window.title(simulation["name"])
+    try:
+        script_path = simulation["script_path"]
+        if not script_path:
+            raise ValueError("Brak ścieżki do pliku symulacji w konfiguracji.")
 
-    # Wymiary okna
-    window_width = 800
-    window_height = 600
-
-    # Pobranie rozmiaru ekranu
-    screen_width = sim_window.winfo_screenwidth()
-    screen_height = sim_window.winfo_screenheight()
-
-    # Wyliczenie pozycji okna na środku ekranu
-    position_x = (screen_width // 2) - (window_width // 2)
-    position_y = (screen_height // 2) - (window_height // 2)
-
-    # Ustawienie wymiarów i pozycji okna
-    sim_window.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
-
-    # Tworzenie zawartości okna
-    params = simulation.get("parameters", {})
-    param_vars = {key: tk.DoubleVar(value=val.get("default", 0)) for key, val in params.items()}
-    inputs = simulation.get("inputs", {})
-    input_vars = {key: tk.StringVar(value=val.get("default", "")) for key, val in inputs.items()}
-
-    figures = []
-    for fig_conf in simulation.get("figures", []):
-        fig, ax = plt.subplots(figsize=fig_conf.get("size", (6, 4)))
-        figures.append((fig, ax))
-
-    def update_simulation(*args):
-        for fig, ax, fig_conf in zip([f[0] for f in figures], [f[1] for f in figures], simulation.get("figures", [])):
-            ax.clear()
-            exec(fig_conf.get("code", ""), {
-                **param_vars,
-                **input_vars,
-                "np": np,
-                "plt": plt,
-                "ax": ax
-            })
-        for canvas in canvases:
-            canvas.draw()
-
-    # Ramka na całość (dla wyśrodkowania panelu sterowania)
-    main_frame = tk.Frame(sim_window, bg="white")
-    main_frame.pack(expand=True, fill=tk.BOTH)
-
-    # Panel sterowania parametrami
-    control_frame = tk.Frame(main_frame, bg="white")
-    control_frame.pack(side=tk.TOP, pady=10)
-
-    for param, config in params.items():
-        frame = tk.Frame(control_frame, bg="white")
-        frame.pack(pady=5)
-
-        label = tk.Label(frame, text=f"{param.capitalize()}: ", bg="white", font=("Arial", 12))
-        label.pack(side=tk.LEFT, padx=10)
-
-        scale = tk.Scale(
-            frame, from_=config["min"], to=config["max"], resolution=config["step"],
-            variable=param_vars[param], orient=tk.HORIZONTAL, bg="white", length=400
-        )
-        scale.pack(side=tk.LEFT, padx=10)
-
-        param_vars[param].trace_add("write", update_simulation)
-
-    for inp, config in inputs.items():
-        frame = tk.Frame(control_frame, bg="white")
-        frame.pack(pady=5)
-
-        label = tk.Label(frame, text=f"{inp.capitalize()}: ", bg="white", font=("Arial", 12))
-        label.pack(side=tk.LEFT, padx=10)
-
-        entry = tk.Entry(frame, textvariable=input_vars[inp], font=("Arial", 12), width=20)
-        entry.pack(side=tk.LEFT, padx=10)
-
-        input_vars[inp].trace_add("write", update_simulation)
-
-    # Wykresy
-    canvas_frame = tk.Frame(main_frame, bg="white")
-    canvas_frame.pack(expand=True, fill=tk.BOTH)
-
-    canvases = []
-    for fig, _ in figures:
-        canvas = FigureCanvasTkAgg(fig, master=canvas_frame)
-        canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
-        canvases.append(canvas)
-
-    update_simulation()
+        subprocess.run(["python", script_path], check=True)
+    except Exception as e:
+        print(f"[ERROR] Nie udało się uruchomić symulacji: {e}")
+        tk.messagebox.showerror("Błąd", f"Nie udało się uruchomić symulacji: {e}")
 
 # Funkcja do wyświetlania sekwencji slajdów
 def show_window_sequence(slides, title):
@@ -181,7 +103,6 @@ def show_window_sequence(slides, title):
                 image_path = element["content"]
                 try:
                     img = Image.open(image_path)
-                   # img = img.resize((800, 300), Image.Resampling.LANCZOS)
                     img_tk = ImageTk.PhotoImage(img)
                     image_label = tk.Label(content_frame, image=img_tk, bg="white")
                     image_label.image = img_tk  # Zachowaj referencję do obrazu
@@ -197,9 +118,10 @@ def show_window_sequence(slides, title):
                 math_label.pack(pady=10)
 
             elif element["type"] == "simulation":
+                label = element["content"].get("label", "Uruchom symulację")
                 button = tk.Button(
                     content_frame,
-                    text=f"Uruchom symulację - {element['content']['name']}",
+                    text=label,
                     command=lambda sim=element["content"]: create_simulation_window(sim),
                     bg="white"
                 )

@@ -86,119 +86,69 @@
         },
         {
           "elements": [
-            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
-            {"type": "highlighted_text", "bold": true, "text_color": "blue", "background_color": "yellow",
-             "content": "Fotodioda (PIN lub APD) – odbiera sygnał optyczny i przekształca go bezpośrednio na sygnał elektryczny. ." 
-            },
-           {
-              "type": "highlighted_text",
-              "content": "Inny przykład wyróżnionego tekstu bez pogrubienia.",
-              "bold": false,
-              "text_color": "green",
-              "background_color": "lightgray"
-            },
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "image", "content": "direct1.png"},
-            {"type": "simulation", "content": {
-                "name": "Symulacja detekcji bezpośredniej",
-                "parameters": {
-                  "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
-                  "frequency": { "min": 1.0, "max": 50.0, "step": 0.5, "default": 10.0 }
-                },
-                "inputs": {
-                  "offset": { "default": "0" },
-                  "offset2": { "default": "0" }
-                },
-                "figures": [
-                  {
-                    "size": [8, 4],
-                    "code": "t = np.linspace(0, 1, 1000); y = amplitude.get() * np.sin(2 * np.pi * frequency.get() * t + float(offset.get())); ax.plot(t, y)"
-                  }
-                ]
-              }
-            },
             {
               "type": "simulation",
               "content": {
-                  "name": "Odbiór sygnału optycznego z detektorem fotonowym",
-                  "parameters": {
-                      "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
-                      "noise_level": { "min": 0.0, "max": 1.0, "step": 0.1, "default": 0.1 }
-                  },
-                  "inputs": {},
-                  "figures": [
-                      {
-                          "size": [8, 4],
-                          "code": "t = np.linspace(0, 1, 1000); signal = amplitude.get() * np.sin(2 * np.pi * 10 * t); noise = np.random.normal(0, noise_level.get(), size=t.shape); detected_signal = np.abs(signal + noise); ax.plot(t, signal, label='Input Signal'); ax.plot(t, detected_signal, label='Detected Intensity'); ax.legend()"
-                      }
-                  ]
+                  "name": "Detekcja bezpośrednia",
+                  "parameters": {},
+                  "script_path": "sim3.py",
+                  "label": "Uruchom symulację detekcji bezpośredniej"
               }
-           },
-           {
-            "type": "simulation",
-            "content": {
-                "name": "Demodulacja sygnału AM",
-                "parameters": {
-                    "modulation_index": { "min": 0.1, "max": 1.0, "step": 0.1, "default": 0.5 }
-                },
-                "inputs": {},
-                "figures": [
-                    {
-                        "size": [8, 4],
-                        "code": "t = np.linspace(0, 1, 1000); carrier = np.cos(2 * np.pi * 10 * t); mod_signal = 1 + modulation_index.get() * np.sin(2 * np.pi * 2 * t); am_signal = mod_signal * carrier; detected = np.abs(am_signal); ax.plot(t, am_signal, label='AM Signal'); ax.plot(t, detected, label='Envelope Detected'); ax.legend()"
-                    }
-                ]
-            }
-         }
-          ]
-        },
-        {
-          "elements": [
-            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "image", "content": "direct1.png"}
-          ]
-        },
-      
-        {
-          "elements": [
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "text", "content": "Powyższy wzór pokazuje zależność mocy od natężenia prądu."}
+            },
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Co można zaobserwować w symulacji?" 
+            },
+            {"type": "image", "content": "direct4.png"},
+
+            {"type": "text", "content": "Moc optyczna P(t): \n -jest zawsze dodatnia, ponieważ jest to kwadrat modułu  E(t), \n -pokazuje, jak modulacja sygnału wpływa na moc optyczną dostarczaną do fotodetektora."},
+            {"type": "image", "content": "direct5.png"},
+
+            {"type": "text", "content": "Prąd fotodetektora I(t): \n -odzwierciedla moc optyczną w postaci sygnału elektrycznego, \n -wykres prądu zawiera szybkie oscylacje związane z nośną sygnału optycznego, \n -prąd fotodetektora po filtracji ma gładszy przebieg, ponieważ szybkie oscylacje zostały usunięte."}
+
           ]
         }
+        
       ],
       "coherent_detection": [
         {
           "elements": [
-            {"type": "text", "content": "Detekcja koherentna sygnałów optycznych polega na..."},
-            {"type": "math", "content": "$P = I^2 R$"},
-            {"type": "image", "content": "coherent1.png"}
+            {"type": "highlighted_text", "bold": false, "text_color": "white", "background_color": "navy",
+            "content": "Detekcja Koherentna – detekcja polegająca na zastosowaniu odniesienia w postaci lokalnego oscylatora. Pozwala odczytać zarówno amplitudę, jak i fazę sygnału optycznego. " 
+            },
+            {"type": "text", "content": "Lokalny Oscylator (LO) stanowi wiązkę lasera o znanej fazie i częstotliwości. Proces detekcji polega na mieszaniu sygnału optycznego z wiązką LO i skierowaniu ich na fotodetektor (lub zestaw fotodetektorów), gdzie zachodzi interferencja. "},
+            {"type": "text", "content": "W przypadku pojedynczego fotodetektora – wynikowy sygnał ma składniki proporcjonalne do różnicy częstotliwości i fazy między sygnałem a LO. Fotodetektor przekształca wynikowy sygnał optyczny na elektryczny. Powstały sygnał jest wzmacniany i filtrowany w celu usunięcia szumów. Finalnie, by odzyskać oryginalny sygnał dokonujemy demodulacji czasowej lub częstotliwościowej. Przy detekcji szerokopasmowej można skutecznie odzyskać oryginalne sygnały, a ograniczeniem będzie jedynie responsywność fotodetektora."},
+            {"type": "text", "content": "W przypadku zestawu fotodetektorów – wykorzystuje się sprzęgacz, z którego jedno wyjście jest proporcjonalne do sumy sygnału optycznego i sygnału LO, a drugie do ich różnicy, co umożliwia łatwy sposób wyznaczenia wartości sygnału optycznego, poprzez wprowadzenie każdego z tych sygnałów na osobny fotodetektor i zastosowanie prostej sumacji."},
+            {"type": "image", "content": "coh1.png"}
+
           ]
         },
         {
           "elements": [
-            {"type": "text", "content": "W detekcji koherentnej odbierany sygnał jest mieszany z..."},
-            {"type": "math", "content": "$E(t) = E_0 e^{i(\\omega t + \\phi)}$"},
-            {
-              "type": "simulation",
-              "content": {
-                  "name": "Demodulacja sygnału FM",
-                  "parameters": {
-                      "modulation_index": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 }
-                  },
-                  "inputs": {},
-                  "figures": [
-                      {
-                          "size": [8, 4],
-                          "code": "t = np.linspace(0, 1, 1000); signal = np.sin(2 * np.pi * 5 * t + modulation_index.get() * np.sin(2 * np.pi * 1 * t)); demodulated = np.gradient(np.unwrap(np.angle(np.exp(1j * signal)))); ax.plot(t, signal, label='FM Signal'); ax.plot(t, demodulated, label='Demodulated Signal'); ax.legend()"
-                      }
-                  ]
-              }
-          }
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja koherentna jest znacznie bardziej czuła niż bezpośrednia i może wykrywać sygnały o bardzo niskim poziomie mocy. Odzyskiwanie informacji fazowej umożliwia stosowanie zaawansowanych technik modulacji  (QPSK, QAM), co zwiększa przepustowość i zasięg. Dzięki mieszaniu z LO, detekcja koherentna jest odporna na szum, zwłaszcza w systemach zdominowanych przez szum fazowy. Detekcja koherentna pozwala na precyzyjne rozróżnienie blisko leżących sygnałów optycznych."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Konieczność stosowania LO oraz precyzyjnych metod stabilizacji fazy i częstotliwości znacząco zwiększa złożoność i koszt układu. Największe koszta generują lasery wysokiej klasy, fotodetektory wieloelementowe i zaawansowane układy DSP. Konieczność synchronizacji fazy i częstotliwości między sygnałami wymaga zaawansowanego sterowania i stabilizacji. Szumy fazowe LO i sygnału oraz polaryzacja wiązki mogą wpływać na jakość detekcji."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja koherentna ma szereg zastosowań w telekomunikacji optycznej – w systemach dalekiego zasięgu o wysokiej przepustowości rzędu 100Gbps i więcej. Służy również przy analizie substancji z wykorzystaniem sygnałów koherentnych, pomiarom metrologicznym w systemach LIDAR oraz koherentnym radarom optycznym dla zastosowań wojskowych i autonomicznych pojazdów."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja Homodynowa – częstotliwość LO jest taka sama jak częstotliwość sygnału. Prąd wyjściowy zawiera komponent stały oraz komponent związany z różnicą fazy ΔΦ."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja Heterodynowa – częstotliwość LO różni się od częstotliwości sygnału, co tworzy sygnał o różnicowej częstotliwości (IF – Intermediate Frequency). To właśnie ta detekcja w zasadzie jest podstawą detekcji subkoherentnej."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja subkoherentna – detekcja koherentna, która mimo zblizonych częstotliwościowo sygnałów – nie gwarantuje dokładnej kontroli fazy. Dzięki temu można dokonywać detekcji w systemach, gdzie precyzyjna kontrola częstotliwości oscylatora jest trudna do utrzymania. Z uwagi na niższą czułość i rozdzielczość fazową – detekcja subkoherentna zyskuje łatwiejszą implementację i stawia niższe wymagania sprzętowe."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Przykładowe układy detekcji koherentnej"},
+            {"type": "image", "content": "coh2.png"},
+            {"type": "text", "content": "Poza elementami omówionymi w przypadku detekcji bezpośredniej, detekcja koherentna (i subkoherentna) korzysta z trzech dodatkowych elementów: \n -Lokalny Oscylator – stabilny laser, którego częstotliwość i faza są odniesieniem (referencją) do sygnału, \n -sprzęgacz Optyczny – układ łączący sygnał optyczny z lokalnym oscylatorem, umożliwiając interferencję, \n -DSP – układ demodulujący sygnał koherentny, analizujący fazę oraz korygujący błędy."}
+
+         
           ]
         }
       ],

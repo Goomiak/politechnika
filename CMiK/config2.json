@@ -24,6 +24,92 @@
             },
             {
                 "elements": [
+                  {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+                  {"type": "highlighted_text", "bold": true, "text_color": "blue", "background_color": "yellow",
+                   "content": "Fotodioda (PIN lub APD) – odbiera sygnał optyczny i przekształca go bezpośrednio na sygnał elektryczny. ." 
+                  },
+                 {
+                    "type": "highlighted_text",
+                    "content": "Inny przykład wyróżnionego tekstu bez pogrubienia.",
+                    "bold": false,
+                    "text_color": "green",
+                    "background_color": "lightgray"
+                  },
+                  {"type": "math", "content": "$P = I^2 R$"},
+                  {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+                  {"type": "math", "content": "$P = I^2 R$"},
+                  {"type": "image", "content": "direct1.png"},
+                  {"type": "simulation", "content": {
+                      "name": "Symulacja detekcji bezpośredniej",
+                      "parameters": {
+                        "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
+                        "frequency": { "min": 1.0, "max": 50.0, "step": 0.5, "default": 10.0 }
+                      },
+                      "inputs": {
+                        "offset": { "default": "0" },
+                        "offset2": { "default": "0" }
+                      },
+                      "figures": [
+                        {
+                          "size": [8, 4],
+                          "code": "t = np.linspace(0, 1, 1000); y = amplitude.get() * np.sin(2 * np.pi * frequency.get() * t + float(offset.get())); ax.plot(t, y)"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "simulation",
+                    "content": {
+                        "name": "Odbiór sygnału optycznego z detektorem fotonowym",
+                        "parameters": {
+                            "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
+                            "noise_level": { "min": 0.0, "max": 1.0, "step": 0.1, "default": 0.1 }
+                        },
+                        "inputs": {},
+                        "figures": [
+                            {
+                                "size": [8, 4],
+                                "code": "t = np.linspace(0, 1, 1000); signal = amplitude.get() * np.sin(2 * np.pi * 10 * t); noise = np.random.normal(0, noise_level.get(), size=t.shape); detected_signal = np.abs(signal + noise); ax.plot(t, signal, label='Input Signal'); ax.plot(t, detected_signal, label='Detected Intensity'); ax.legend()"
+                            }
+                        ]
+                    }
+                 },
+                 {
+                  "type": "simulation",
+                  "content": {
+                      "name": "Demodulacja sygnału AM",
+                      "parameters": {
+                          "modulation_index": { "min": 0.1, "max": 1.0, "step": 0.1, "default": 0.5 }
+                      },
+                      "inputs": {},
+                      "figures": [
+                          {
+                              "size": [8, 4],
+                              "code": "t = np.linspace(0, 1, 1000); carrier = np.cos(2 * np.pi * 10 * t); mod_signal = 1 + modulation_index.get() * np.sin(2 * np.pi * 2 * t); am_signal = mod_signal * carrier; detected = np.abs(am_signal); ax.plot(t, am_signal, label='AM Signal'); ax.plot(t, detected, label='Envelope Detected'); ax.legend()"
+                          }
+                      ]
+                  }
+               }
+                ]
+              },
+              {
+                "elements": [
+                  {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+                  {"type": "math", "content": "$P = I^2 R$"},
+                  {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+                  {"type": "math", "content": "$P = I^2 R$"},
+                  {"type": "image", "content": "direct1.png"}
+                ]
+              },
+            
+              {
+                "elements": [
+                  {"type": "math", "content": "$P = I^2 R$"},
+                  {"type": "text", "content": "Powyższy wzór pokazuje zależność mocy od natężenia prądu."}
+                ]
+              }
+            {
+                "elements": [
                     {
                         "type": "simulation",
                         "content": {
