@@ -159,11 +159,29 @@ def show_window_sequence(slides, title):
                 )
                 text_label.pack(pady=10)
 
+            elif element["type"] == "highlighted_text":
+                bold = "bold" if element.get("bold", False) else "normal"
+                text_color = element.get("text_color", "black")
+                background_color = element.get("background_color", "lightgray")
+
+                highlight_label = tk.Label(
+                    content_frame,
+                    text=element["content"],
+                    font=("Helvetica", 16, bold),
+                    wraplength=1000,
+                    justify="left",
+                    fg=text_color,
+                    bg=background_color,
+                    padx=10,
+                    pady=10
+                )
+                highlight_label.pack(pady=10)
+
             elif element["type"] == "image":
                 image_path = element["content"]
                 try:
                     img = Image.open(image_path)
-                    img = img.resize((600, 400), Image.Resampling.LANCZOS)
+                   # img = img.resize((800, 300), Image.Resampling.LANCZOS)
                     img_tk = ImageTk.PhotoImage(img)
                     image_label = tk.Label(content_frame, image=img_tk, bg="white")
                     image_label.image = img_tk  # Zachowaj referencję do obrazu

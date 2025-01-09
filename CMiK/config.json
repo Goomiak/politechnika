@@ -3,67 +3,113 @@
       "direct_detection": [
         {
           "elements": [
-            {
-              "type": "text",
-              "content": "Detekcja Bezpośrednia – detekcja polegająca wyłącznie na pomiarze mocy optycznej sygnału, bez uwzględniania informacji o fazie lub częstotliwości nośnej. "
-            },
-            {
-              "type": "text",
-              "content": "Sygnał optyczny E(t) trafia na fotodetektor (np. fotodiodę), która generuje prąd proporcjonalny do mocy optycznej P(t). Fotodetektor przekształca moc optyczną na prąd elektryczny na podstawie poniższych wzorów. "
-            },
-            {
-              "type": "text",
-              "content": "Moc optyczna:"
-            },
-            {
-              "type": "math",
-              "content": "$P(t) = |E(t)|^2$"
-            },
-            {
-              "type": "text",
-              "content": "Prąd fotodetektora:"
-            },
-            {
-              "type": "math",
-              "content": "$I(t) = R \\cdot P(t)$"
-            },
-            {
-              "type": "text",
-              "content": "gdzie R - responsywność fotodetektora"
-            },
-            {
-              "type": "text",
-              "content": "W sygnale elektrycznym mogą występować szybkie oscylacje związane z nośną, dlatego też w celu filtracji tych oscylacji stosuje się obwód RC. W ten sposób pozostaje użyteczna informacja o mocy sygnału."
-            }
-            
+            {"type": "text", "content": "Detekcja Bezpośrednia – detekcja polegająca wyłącznie na pomiarze mocy optycznej sygnału, bez uwzględniania informacji o fazie lub częstotliwości nośnej. "},
+            {"type": "text", "content": "Sygnał optyczny E(t) trafia na fotodetektor (np. fotodiodę), która generuje prąd proporcjonalny do mocy optycznej P(t). Fotodetektor przekształca moc optyczną na prąd elektryczny na podstawie poniższych wzorów. "},
+            {"type": "text", "content": "Moc optyczna:"},
+            {"type": "math", "content": "$P(t) = |E(t)|^2$"},
+            {"type": "text", "content": "Prąd fotodetektora:"},
+            {"type": "math", "content": "$I(t) = R \\cdot P(t)$"},
+            {"type": "text", "content": "gdzie R - responsywność fotodetektora"},
+            {"type": "text", "content": "W sygnale elektrycznym mogą występować szybkie oscylacje związane z nośną, dlatego też w celu filtracji tych oscylacji stosuje się obwód RC. W ten sposób pozostaje użyteczna informacja o mocy sygnału."}   
           ]
         },
         {
           "elements": [
+            {"type": "text", "content": " "},
             {"type": "text", "content": "W przypadku detekcji szerokopasmowej dochodzi do tzw. samomieszania. W przypadku sygnału dwuwstęgowego – detektor zmierzy całkowitą moc optyczną sygnału, co prowadzi do sumowania wstęg górnej i dolnej, przez co wypadkowy sygnał elektryczny przedstawi się wzorem:"},
             {"type": "math", "content": "$I(t) \\propto \\left| E_{\\text{USB}}(t) + E_{\\text{LSB}}(t) \\right|^2$"},
-            {"type": "math", "content": "$gdzie: E_{\\text{USB}}(t) - \\text{pole elektryczne górnej wstęgi}$"},
+            {"type": "text", "content": "gdzie: USB - Upper Side Band, LSB - Lower Side Band"},
+            {"type": "text", "content": " "},
             {"type": "text", "content": "Przy niskim próbkowaniu – wstęgi mogą nachodzić na siebie, co powoduje interferencje i zniekształcenie użytecznego sygnału. Detektor musi mieć pasmo wystarczające do uchwycenia obu wstęg, co zwiększa wymagania stawiane układowi odbiorczemu."},
             {"type": "text", "content": "Detekcja bezpośrednia nie odtwarza informacji o fazie ani częstotliwości sygnału optycznego, co uniemożliwia stosowanie zaawansowanych metod modulacji. Ograniczenia te wynikają z szumów termicznych, szumów prądowych na fotodiodzie oraz szumów kwantowych (związanych z fluktuacją liczby fotonów). Przy szerokopasmowych sygnałach (np. dwuwstęgowych) nakładanie się pasm prowadzi do zjawiska aliasingu i trudności w dekodowaniu informacji."}
           ]
         },
         {
           "elements": [
+            {"type": "text", "content": "Detekcja bezpośrednia wymaga stosunkowo prostego układu pojedynczego fotodetektora i podstawowego układu odbiorczego, co sprawia, że jest to stosunkowo tanie rozwiązanie – z uwagi na brak konieczności stosowania lokalnego oscylatora i złożonych metod przetwarzania sygnałów. Detekcja ma natomiast świetne warunki dla sygnałów z modulacją intensywności IM/DD (Intensity Modulation / Direct Detection)."},
+            {"type": "text", "content": "Detekcję bezpośrednią można stosować w sieciach światłowodowych krótkiego zasięgu tj. optyczne LAN, czy dostępowe PON. Można również ją stosować przy systemach komunikacji o niskiej przepustowości, gdzie niezawodność jest wysoka, a modulacja fazowa lub kwadraturowa nie jest wymagana. Detekcja bezpośrednia nadaje się również przy konstrukcji czujników optycznych przemysłowych i biomedycznych."},
+            {"type": "text", "content": "Przykładowy schemat układu detekcji bezpośredniej:"},
+            {"type": "image", "content": "direct1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Proces doboru elementów układu powinien zawierać analizę: \n   - zakresu spektrum detekcji\n   - wymaganej szybkości reakcji\n   - czułości sygnału\n   - poziomu dopuszczalnych szumów\n   - kosztów i warunków pracy (np. temperatura)"},
+            {"type": "highlighted_text", "bold": false, "text_color": "white", "background_color": "navy",
+            "content": "Fotodioda (PIN lub APD) – odbiera sygnał optyczny i przekształca go bezpośrednio na sygnał elektryczny." 
+            },
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Fotodioda PIN (Positive-Intrinsic-Negative):" 
+            },
+            {"type": "text", "content": "Konwertuje sygnał optyczny na prąd elektryczny. Składa się z warstwy P (zubożony półprzewodnik typu P), warstwy I (o wysokiej rezystywności) oraz warstwy N (półprzewodnik typu N). Obecność warstwy I jest kluczowa dla procesu absorbcji światła. Fotodiody PIN gwarantują dużą szybkość odpowiedzi, dzięki zastosowaniu cienkiej warstwy I oraz umiarkowaną czułość."},
+            {"type": "text", "content": "Światło pada na warstwę I fotodiody, gdzie generowane są pary elektron-dziura w procesie absorbcji fotonów. Zewnętrzne pole elektryczne przyłożone do fotodiody powoduje rozdzielenie elektronów i dziur oraz ich transport do warstw P i N. Uzyskany w ten sposób przepływ elektronów generuje prąd fotonowy proporcjonalny do mocy optycznej."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": " "},
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Fotodioda APD (Avalanche PhotoDiode):" 
+            },
+            {"type": "text", "content": "Działa podobnie do diody PIN, ale dodatkowo wykorzystuje efekt lawinowego zwielokrotnienia prądu. Składa się z warstwy aktywnej (odpowiedzialnej za absorbcję fotonów) oraz obszaru lawinowego (gdzie następuje wzmocnienie prądu fotonowego). Fotodioda APD gwarantuje wyższą czułość niż fotodioda PIN, ale zarazem większy szum wynikający z efektu lawinowego. Jest stosowana m.in. w komunikacji dalekiego zasięgu."},
+            {"type": "text", "content": "Światło pada na warstwę aktywną, generując pary elektron-dziura. Przykładanie wysokie napięcie powoduje przyspieszanie elektronów do energii wystarczającej do wystąpienia zderzeń, co generuje kolejne pary elektron-dziura (efekt lawinowy). W ten sposób powstaje wewnętrzne wzmocnienie prądu wyjściowego, zwykle w zakresie 10 – 1000 krotności względem prądu otrzymywanego w przypadku fotodiody PIN."},
+            {"type": "text", "content": "Istnieją również inne rodzaje diod, które można zastosować do układów detekcji bezpośredniej, tj. Fotodioda Schottky’ego, która gwarantuje niską pojemność złącza i szybką odpowiedź, jednocześnie służąc za prostownik sygnału. Stosuje się je przy detekcji fal subterahercowych i mikrofal; Fotodioda MSM, która wykorzystuje szybką detekcję sygnałów dla pasma rzędu 100GHz, a także fotodiody zintegrowane z falowodami, fotodiody germanowe, fotodiody InGaAs,  fotodiody SiC, fotodiody bolometryczne, a także będące w fazie rozwoju fotodiody QD."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": " "},
+            {"type": "highlighted_text", "bold": false, "text_color": "white", "background_color": "navy",
+            "content": "Wzmacniacz Transimpedancyjny (TIA) – przetwarza prąd fotodetektora na napięcie. Jest to specyficzny wzmacniacz operacyjny w układzie odwracającym - z rezystorem w pętli sprzężenia zwrotnego, często obarczony dodatkowo pojemnością dla stabilizacji. " 
+            },
+            {"type": "text", "content": "Prąd generowany przez fotodiodę trafia na wejście odwracające wzmacniacza operacyjnego, który przepływa przez rezystor na pętli sprzężenia zwrotnego, odkładając na zaciskach rezystora napięcie. Wynikowe napięcie wyjściowe jest proporcjonalne do prądu wejściowego:"},
+            {"type": "math", "content": "$U = -I \\cdot R$"},
+            {"type": "text", "content": "Napięcie na wejściu odwracającym jest utrzymywane na poziomie bliskim 0, co minimalizuje szumy i zniekształcenia. Układ ten gwarantuje wysoką czułość, gdyż prąd konwertowany jest na łatwiejsze do przetworzenia napięcie. Odpowiedź wzmacniacza zależy od wartości R i parametrów własnych wzmacniacza operacyjnego. Dodanie kondensatora równolegle do rezystora redukuje szumy i oscylacje. Chociaż wzmacniacz TIA jest standardowym rozwiązaniem – można zastosować substytuty w postaci wzmacniaczy napięciowych z rezystorem obciążenia, wzmacniaczy napięciowych z wtórnikiem emiterowym, wzmacniaczy logarytmicznych (LogAmp), wzmacniaczy z integratorem prądowym, wzmacniaczy z układem RC, wzmacniaczy różnicowych i/lub wzmacniaczy z wysoką impedancją wejściową."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": " "},
+            {"type": "highlighted_text", "bold": false, "text_color": "white", "background_color": "navy",
+            "content": "Filtr dolnoprzepustowy (LPF) rezystorowo-kondensatorowy (RC) – służy filtracji szumów wynikających z oscylacji fali nośnej. " 
+            },
+            {"type": "text", "content": "Filtr RC jest najprostszym i najczęściej stosowanym układem filtrującym, bazującym tylko na dwóch dopasowanych elementach. Dolnoprzepustowy filtr RC prezentuje się następującym schematem:"},
+            {"type": "image", "content": "direct2.png"},
+            {"type": "text", "content": "Rezystor R oraz kondensator C są dopasowane do częstotliwości odcięcia filtra, powyżej której filtr zacznie tłumić. Odbywa się to na podstawie poniższego wzoru:"},
+            {"type": "math", "content": "$f = \\frac{1}{2 \\pi R C}$"}
+
+          ]
+        },
+        {
+          "elements": [
             {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
+            {"type": "highlighted_text", "bold": true, "text_color": "blue", "background_color": "yellow",
+             "content": "Fotodioda (PIN lub APD) – odbiera sygnał optyczny i przekształca go bezpośrednio na sygnał elektryczny. ." 
+            },
+           {
+              "type": "highlighted_text",
+              "content": "Inny przykład wyróżnionego tekstu bez pogrubienia.",
+              "bold": false,
+              "text_color": "green",
+              "background_color": "lightgray"
+            },
             {"type": "math", "content": "$P = I^2 R$"},
             {"type": "text", "content": "Detekcja bezpośrednia sygnałów optycznych polega na..."},
             {"type": "math", "content": "$P = I^2 R$"},
             {"type": "image", "content": "direct1.png"},
-            {
-              "type": "simulation",
-              "content": {
+            {"type": "simulation", "content": {
                 "name": "Symulacja detekcji bezpośredniej",
                 "parameters": {
                   "amplitude": { "min": 0.1, "max": 10.0, "step": 0.1, "default": 1.0 },
                   "frequency": { "min": 1.0, "max": 50.0, "step": 0.5, "default": 10.0 }
                 },
                 "inputs": {
-                  "offset": { "default": "0" }
+                  "offset": { "default": "0" },
+                  "offset2": { "default": "0" }
                 },
                 "figures": [
                   {
