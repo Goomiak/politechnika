@@ -45,7 +45,7 @@ image_wtie.pack(pady=30)
 
 title_label = tk.Label(
     start_window, 
-    text="Aplikacja dydaktyczna: zasady detekcji bezpośredniej i koherentnej",
+    text="Aplikacja dydaktyczna: Zasady detekcji bezpośredniej i koherentnej",
     font=("Arial", 16), wraplength=1000, justify="center"
 )
 title_label.pack(pady=20)

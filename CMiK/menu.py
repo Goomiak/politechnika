@@ -73,16 +73,14 @@ def create_menu_window():
     # Nagłówki i opisy
     title_label = tk.Label(
         menu_window,
-        text=("Kliknij ikonę i wybierz zagadnienie, które chcesz trenować: "
-              "Detekcja Bezpośrednia / Detekcja Koherentna / Podsumowanie."),
+        text=("Kliknij ikonę i wybierz moduł, który chcesz trenować."),
         font=("Arial", 16), wraplength=1000, justify="center"
     )
     title_label.pack(pady=20)
 
     info_label = tk.Label(
         menu_window,
-        text=("Każdy z modułów zawiera wstęp teoretyczny, animacje, "
-              "model matematyczny oraz symulację interaktywną."),
+        text=("Moduły zawierają opracowanie teoretyczne, modele matematyczne oraz interaktywne symulacje."),
         font=("Arial", 16), wraplength=1000, justify="center"
     )
     info_label.pack(pady=20)
