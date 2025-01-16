@@ -4,11 +4,35 @@ from PIL import Image, ImageTk
 from slides import show_window_sequence, load_config
 import subprocess
 from test import start_test_window
+import math
+
+def calculate_screen_diagonal(width, height):
+    """Oblicza przekątną ekranu w calach."""
+    diagonal = math.sqrt(width ** 2 + height ** 2)
+    return diagonal / 96  # Zakładamy 96 DPI (pikseli na cal)
+
+def configure_window(window, title="Menu"):
+    """Konfiguruje okno w zależności od wielkości ekranu."""
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+
+    # Oblicz przekątną ekranu w calach
+    diagonal_inches = calculate_screen_diagonal(screen_width, screen_height)
+
+    if diagonal_inches <= 19:  # Dla ekranów 19 cali i mniejszych pełny ekran
+        window.attributes('-fullscreen', True)
+    else:  # Dla większych ekranów ustaw rozmiar okna na środku
+        window_width = 1300
+        window_height = 800
+        position_x = (screen_width // 2) - (window_width // 2)
+        position_y = (screen_height // 2) - (window_height // 2)
+        window.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
+
+    window.title(title)
 
 def create_menu_window():
     menu_window = tk.Tk()
-    menu_window.attributes('-fullscreen', True)  # Pełny ekran
-    menu_window.title("Choose Detection Method")
+    configure_window(menu_window)
 
     # Wczytaj konfigurację
     config = load_config("config.json")
@@ -97,8 +121,7 @@ def create_menu_window():
 
     info_label = tk.Label(
         menu_window,
-        text=("Przycisk stanie się aktywny po obejrzeniu wszystkich modułów."
-              " ."),
+        text=("Przycisk stanie się aktywny po obejrzeniu wszystkich modułów."),
         font=("Arial", 16), wraplength=1000, justify="center"
     )
     info_label.pack(pady=20)

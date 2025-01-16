@@ -1,6 +1,7 @@
 import json
 import tkinter as tk
 from datetime import datetime
+import random  # Importujemy moduł random
 
 def start_test_window():
     # Funkcja do zapisywania wyników do pliku
@@ -75,8 +76,8 @@ def start_test_window():
     test_window.title("Test wiedzy")
 
     # Wymiary okna
-    window_width = 800
-    window_height = 600
+    window_width = 1000
+    window_height = 800
 
     screen_width = test_window.winfo_screenwidth()
     screen_height = test_window.winfo_screenheight()
@@ -86,10 +87,13 @@ def start_test_window():
 
     test_window.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
 
-    with open("test.json", "r", encoding="utf-8") as f:
+    # Wczytanie pytań z pliku JSON
+    with open("json/test.json", "r", encoding="utf-8") as f:
         test_data = json.load(f)
 
-    questions = test_data["questions"]
+    # Losowanie 10 unikalnych pytań
+    all_questions = test_data["questions"]
+    questions = random.sample(all_questions, 10)  # Wybieramy 10 losowych pytań
 
     score = {"correct": 0, "total": len(questions)}
     question_index = 0
