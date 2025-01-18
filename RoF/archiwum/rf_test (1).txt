@@ -1,0 +1,269 @@
+1) Prawo całkowitego wewnętrznego odbicia w światłowodach dotyczy kąta:
+a) dysocjacji
+b) akceptacji <-
+c) interferencji
+d) preferencji
+
+2) Apertura numeryczna dla światłowodu jednomodowego o współczynniku załamania w rdzeniu 1.45213 i współczynniku załamania płaszcza 1.44692 wynosi:
+a) 0.00521
+b) 0.01510
+c) 0.07218
+d) 0.12289 <-
+
+3) Zjawisko polegające na zmianie prostoliniowego biegu fal po przejściu przez przeszkodę lub szczelinę to:
+a) dyfrakcja <-
+b) modulacja
+c) interferencja
+d) polaryzacja
+
+4) Zjawisko polegające na nakładaniu się fal, co w wyniku daje wypadkową falę to:
+a) dyfrakcja
+b) modulacja
+c) interferencja <-
+d) polaryzacja
+
+5) Zjawisko polegające na zmianie amplitudy, częstotliwości lub fazy fali nośnej, by umożliwić transmisję informacji to:
+a) dyfrakcja
+b) modulacja <-
+c) interferencja
+d) polaryzacja
+
+6) Zjawisko polegające na zmianie relacji między kierunkiem oscylacji, a kierunkiem propagacji fali to:
+a) dyfrakcja
+b) modulacja
+c) interferencja
+d) polaryzacja <-
+
+7) Najpowszechniejszym rodzajem liniowego rozproszenia w światłowodach jest rozproszenie:
+a) Rayleighego <-
+b) Mie
+c) Brillouina
+d) Ramana
+
+8) Rozproszenie liniowe spowodowane przez cząsteczki wielkości podobnej do długości fali to rozproszenie:
+a) Rayleighego
+b) Mie <-
+c) Brillouina
+d) Ramana
+
+9) Zjawisko wykorzystywane do testowania światłowodów z pomocą reflektometru optycznego to rozproszenie:
+a) Rayleighego <-
+b) Mie
+c) Brillouina
+d) Ramana
+
+10) Rozproszenie wynikające z niedoskonałości powstałych na etapie produkcji światłowodu to rozproszenie:
+a) Rayleighego
+b) Mie <-
+c) Brillouina
+d) Ramana
+
+11) Rozproszenie polegające na przekształceniu fotonu padającego w foton o niższej energii oraz fonon to rozproszenie:
+a) Rayleighego
+b) Mie
+c) Brillouina <-
+d) Ramana
+
+12) Przesunięcie częstotliwości Brillouina dla wiązki padającej (fp) oraz odbitej (fo), dla częstotliwości emitowanych fononów (ff) opisywane jest wzorami:
+a) fp < fo , fp + fo = ff
+b) fp > fo , fp + fo = ff
+c) fp < fo , fo - fp = ff
+d) fp > fo , fp - fo = ff <-
+
+13) Rozproszenie objawiające się wzmocnieniem optycznym jednej wiązki kosztem drugiej to rozproszenie:
+a) Rayleighego
+b) Mie
+c) Brillouina
+d) Ramana <-
+
+14) Fala 1310nm o mocy 1mW oraz 1550nm o mocy 1mW propagują przez ośrodek aktywny Ramana. Który zestaw wartości mocy tych fal po przejściu przez ośrodek jest teoretycznie zgodny ze zjawiskiem rozproszenia Ramana?
+a) 1310nm: 0.5mW, 1550nm: 0.5mW
+b) 1310nm: 0.5mW, 1550nm: 1.5mW <-
+c) 1310nm: 1.5mW, 1550nm: 0.5mW
+d) 1310nm: 1.5mW, 1550nm: 1.5mW
+
+15) Interferencją konstruktywną nazywamy:
+a) zmianę toru biegu fal przy przejściu przez przeszkodę
+b) zniekształcenie impulsu, dzielące go na dwa mniejsze impulsy
+c) powstanie nowej fali w wyniku nałożenia się dwóch innych fal <-
+d) zmianę właściwości optycznych materiału w zależności od przyłożonego pola elektrycznego
+
+16) Interferencją destruktywną nazywamy:
+a) powstanie wypadkowej fali w wyniku nakładania się fal zgodnych w fazie 
+b) powstanie wypadkowej fali w wyniku nakładania się fal o różnych, ale nie przeciwnych fazach
+c) powstanie wypadkowej fali w wyniku nakładania się fal o różnych, przeciwnych fazach
+d) wygaszenie obydwu fal w wyniku nakładania się fal o różnych, przeciwnych fazach <-
+
+17) Zjawiskiem elektrooptycznym, które polega na zmianie aktywności optycznej to:
+a) Efekt Franza-Keldysha
+b) Elektrożyracja <-
+c) Efekt Pockelsa
+d) Efekt Refrakcji Elektronów
+
+18) Zjawiskiem elektrooptycznym, które polega na zmianie stałych absorbcji w masywnych półprzewodnikach to:
+a) Ograniczony Kwantowo Efekt Starka
+b) Efekt Kerra
+c) Efekt Franza-Keldysha <-
+d) Efekt Refrakcji Elektronów
+
+19) Zjawiskiem elektrooptycznym, które polega na zmianie współczynnika załamania światła z proporcjonalnością liniową jest:
+a) Efekt Pockelsa <-
+b) Efekt Kerra
+c) Efekt Franza-Keldysha
+d) Efekt elektrochemiczny
+
+20) Zjawiskiem zmiany absorbcji w półprzewodnikowych studniach kwantowych jest:
+a) Efekt elektrochemiczny
+b) Elektrożyracja
+c) Efekt Kerra
+d) Efekt Starka
+
+21) Zjawiskiem zmiany przenikalności elektrycznej wraz z oświetleniem materiału elektronami o dużej energii nazywamy:
+a) Efekt elektrochemiczny
+b) Efekt Refrakcji Elektronów <-
+c) Elektrożyrację
+d) Elektroabsorbcję
+
+22) Zjawiskiem elektrooptycznym, które polega na zmianie współczynnika załamania światła z proporcjonalnością kwadratową jest:
+a) Efekt Pockelsa
+b) Efekt Kerra <-
+c) Efekt Franza-Keldysha
+d) Efekt elektrochemiczny
+
+23) Efekt elektrochemiczny polega na:
+a) ogólnej zmianie stałych absorbcji materiału
+b) zmianie aktywności optycznej materiału
+c) tworzeniu pasma absorbcyjnego na pewnej długości fali
+d) zmianie przenikalności elektrycznej pod wpływem światła
+
+24) Mikrofale to fale elektromagnetyczne z zakresu:
+a) 300Hz - 300kHz
+b) 300kHz - 300MHz
+c) 300MHz - 300GHz
+d) 300GHz - 300THz
+
+25) Zakres długości fal światła widzialnego mieści się między:
+a) 380nm - 750nm <-
+b) 485nm - 590nm
+c) 560nm - 830nm
+d) 310nm - 650nm
+
+26) Zakres częstotliwości światła widzialnego mieści się między:
+a) 480THz - 510THz
+b) 300THz - 820THz
+c) 400THz - 790THz
+d) 530THz - 670THz
+
+27) Krótkie fale radiowe przypadają na rząd częstotliwości:
+a) 1Hz - 1kHz
+b) 100kHz - 100MHz
+c) 1kHz - 1THz
+d) 100MHz - 100GHz
+
+28) Jakie zjawisko przedstawia poniższy wykres?
+a) modulacji AM o głębokości 50%
+b) modulacji AM o głębokości 100%
+c) modulacji AM o głębokości 150% <-
+d) modulacji FM
+
+29) Jakie zjawisko przedstawia poniższy wykres?
+a) modulacji AM o głębokości 50%
+b) modulacji AM o głębokości 100%
+c) modulacji AM o głębokości 150%
+d) modulacji FM <-
+
+30) Jakie zjawisko przedstawia poniższy wykres?
+a) modulacji AM o głębokości 50%
+b) modulacji AM o głębokości 100% <-
+c) modulacji AM o głębokości 150% 
+d) modulacji FM
+
+31) Ile wynosi głębokość modulacji przedstawionej na wykresie?
+a)
+b)
+c)
+d)
+
+32) Sygnał nośny N(t)=2cos(100pit) został zmodulowany amplitudowo sygnałem M(t)=4cos(300pit). Jakie jest pasmo częstotliwości dla sygnału zmodulowanego?
+a) 100Hz
+b) 200Hz
+c) 300Hz <-
+d) 600Hz
+
+33) Sygnał nośny ma moc 4mW. Ile wynosi moc sygnału zmodulowanego dla głębokości modulacji 0.8?
+a) 5.28mW <-
+b) 7.2mW
+c) 3.03mW
+d) 3.2mW
+
+34) Sygnał nośny N(t)=2cos(100pit) został zmodulowany częstotliwościowo sygnałem M(t)=4cos(300pit). Ile wynosi współczynnik modulacji dla czułości modulatora równej 5GHz/V?
+a) 6.7 x 10^7
+b) 3.33 x 10^7
+c) 4 x 10^8
+d) 1.33 x 10^8 <-
+
+35) Sygnał nośny N(t)=2cos(100pit) został zmodulowany fazowo sygnałem M(t)=4cos(300pit). Ile wynosi współczynnik modulacji dla czułości modulatora równej 1rad/V?
+a) 1rad
+b) 2rad
+c) 4rad <-
+d) 8rad
+
+36) Ile symboli modulacji N-QAM można otrzymać przy 8 bitach?
+a) 3
+b) 8
+c) 16
+d) 256 <-
+
+37) Na ilu bitach realizowane są symbole modulacji 16-QAM?
+a) 4 <-
+b) 16
+c) 32
+d) 256
+
+38) W modulacji QAM symbol jest jednoznacznie identyfikowany na podstawie:
+a) wyłącznie amplitudy
+b) częstotliwości i fazy
+c) amplitudy i fazy <-
+d) amplitudy i częstotliwości
+
+39) W modulacji QAM każdy symbol kodowany jest z pomocą kodowania:
+a) nb/mb
+b) Graya <-
+c) HDB-3
+d) AMI-1
+
+40) Modulator Mach-Zendera jest modulatorem:
+a) akustooptycznym
+b) elektro-absorbcyjnym
+c) elektrooptycznym <-
+d) polaryzacyjnym
+
+41) Jaki modulator przedstawiono na obrazku?
+a) Mach-Zendera <-
+b) AOM
+c) modulator diodowy
+d) modulator polaryzacyjny
+
+42) Jaki modulator przedstawiono na obrazku?
+a) Mach-Zendera
+b) AOM <-
+c) modulator diodowy
+d) modulator polaryzacyjny
+
+43) Jaki modulator przedstawiono na obrazku?
+a) Mach-Zendera
+b) AOM
+c) modulator diodowy <-
+d) modulator polaryzacyjny
+
+44) Jaki modulator przedstawiono na obrazku?
+a) Mach-Zendera
+b) AOM
+c) modulator diodowy
+d) modulator polaryzacyjny <-
+
+45) Modulator przedstawiony na obrazku funkcjonuje na zasadzie zmianie parametrów poprzez:
+a) oświetlanie matrycy pikseli <-
+b) regulację prądu zasilania
+c) dyfrakcję światła pod wpływem ultradźwięków
+d) transmisji dwóch wiązek światła przez interferometr
