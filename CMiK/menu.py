@@ -35,7 +35,7 @@ def create_menu_window():
     configure_window(menu_window)
 
     # Wczytaj konfigurację
-    config = load_config("config.json")
+    config = load_config("json/config.json")
 
     # Śledzenie stanu obejrzanych slajdów
     viewed_slides = {"direct_detection": False, "coherent_detection": False, "summary": False}
@@ -86,13 +86,13 @@ def create_menu_window():
     info_label.pack(pady=20)
 
     # Wczytywanie obrazów
-    icon1 = Image.open("1-png.png").resize((300, 300), Image.Resampling.LANCZOS)
+    icon1 = Image.open("img/1-png.png").resize((300, 300), Image.Resampling.LANCZOS)
     icon1_tk = ImageTk.PhotoImage(icon1)
 
-    icon2 = Image.open("2-png.png").resize((300, 300), Image.Resampling.LANCZOS)
+    icon2 = Image.open("img/2-png.png").resize((300, 300), Image.Resampling.LANCZOS)
     icon2_tk = ImageTk.PhotoImage(icon2)
 
-    icon3 = Image.open("3-png.png").resize((300, 300), Image.Resampling.LANCZOS)
+    icon3 = Image.open("img/3-png.png").resize((300, 300), Image.Resampling.LANCZOS)
     icon3_tk = ImageTk.PhotoImage(icon3)
 
     # Ramka dla przycisków

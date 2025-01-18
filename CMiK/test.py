@@ -123,12 +123,13 @@ def start_test_window():
         bg="white"
     ).pack(pady=10)
 
-    tk.Entry(
+    entry = tk.Entry(
         test_window,
         textvariable=student_name,
         font=("Helvetica", 14),
         width=30
-    ).pack(pady=10)
+    )
+    entry.pack(pady=10)
 
     tk.Button(
         test_window,
@@ -136,3 +137,6 @@ def start_test_window():
         font=("Helvetica", 14),
         command=start_test
     ).pack(pady=20)
+
+    # Bindowanie klawisza Enter do funkcji start_test
+    test_window.bind("<Return>", lambda event: start_test())

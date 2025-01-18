@@ -33,7 +33,7 @@ def configure_window(window, title):
     window.title(title)
 
 # Funkcja do wczytywania konfiguracji z pliku JSON
-def load_config(config_path="config.json"):
+def load_config(config_path="json/config.json"):
     try:
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
