@@ -1,334 +1,454 @@
 {
     "questions": [
         {
-            "question": "Detekcja bezpośrednia:",
+            "question": "Prawo całkowitego wewnętrznego odbicia w światłowodach dotyczy kąta:",
             "options": {
-                "a": "wykrywa jedynie fazę",
-                "b": "wykrywa jedynie amplitudę",
-                "c": "wykrywa jedynie częstotliwość",
-                "d": "wykrywa amplitudę, częstotliwość i fazę"
+                "a": "dysocjacji",
+                "b": "akceptacji <-",
+                "c": "interferencji",
+                "d": "preferencji"
             },
-            "answer": "b",
-            "topic": "direct_detection"
+            "answer": "b"
         },
         {
-            "question": "Parametrem określającym miarę konwersji mocy sygnału optycznego na natężenie prądu przez fotodiodę jest:",
+            "question": "Apertura numeryczna dla światłowodu jednomodowego o współczynniku załamania w rdzeniu 1.45213 i współczynniku załamania płaszcza 1.44692 wynosi:",
             "options": {
-                "a": "Szybkość Modulacji",
-                "b": "Zakres Dynamiki",
-                "c": "Przepustowość",
-                "d": "Czułość"
+                "a": "0.00521",
+                "b": "0.01510",
+                "c": "0.07218",
+                "d": "0.12289 <-"
             },
-            "answer": "d",
-            "topic": "optical_conversion"
+            "answer": "d"
         },
         {
-            "question": "W przypadku detekcji bezpośredniej szerokopasmowej dla sygnału dwuwstęgowego warunkiem koniecznym jest:",
+            "question": "Zjawisko polegające na zmianie prostoliniowego biegu fal po przejściu przez przeszkodę lub szczelinę to:",
             "options": {
-                "a": "Zwiększenie Pasma",
-                "b": "Filtracja oraz Regeneracja jednej ze wstęg",
-                "c": "Detekcja każdej wstęgi z osobna",
-                "d": "Detekcja ta jest niemożliwa do osiągnięcia"
+                "a": "dyfrakcja <-",
+                "b": "modulacja",
+                "c": "interferencja",
+                "d": "polaryzacja"
             },
-            "answer": "a",
-            "topic": "broadband_detection"
+            "answer": "a"
         },
         {
-            "question": "Detekcję bezpośrednią można stosować w:",
+            "question": "Zjawisko polegające na nakładaniu się fal, co w wyniku daje wypadkową falę to:",
             "options": {
-                "a": "Systemach LIDAR",
-                "b": "Sieciach PON",
-                "c": "Sieciach DWDM",
-                "d": "Komunikacji Satelitarnej"
+                "a": "dyfrakcja",
+                "b": "modulacja",
+                "c": "interferencja <-",
+                "d": "polaryzacja"
             },
-            "answer": "b",
-            "topic": "direct_detection_usage"
+            "answer": "c"
         },
         {
-            "question": "Fotodioda APD wykorzystuje zjawisko:",
+            "question": "Zjawisko polegające na zmianie amplitudy, częstotliwości lub fazy fali nośnej, by umożliwić transmisję informacji to:",
             "options": {
-                "a": "przebicia Zenera",
-                "b": "przebicia lawinowego",
-                "c": "rozproszenia Brillouina",
-                "d": "dyspersji chromatycznej"
+                "a": "dyfrakcja",
+                "b": "modulacja <-",
+                "c": "interferencja",
+                "d": "polaryzacja"
             },
-            "answer": "b",
-            "topic": "APD_phenomenon"
+            "answer": "b"
         },
         {
-            "question": "Za absorbcję światła w fotodiodach PIN odpowiada:",
+            "question": "Zjawisko polegające na zmianie relacji między kierunkiem oscylacji, a kierunkiem propagacji fali to:",
             "options": {
-                "a": "Warstwa P",
-                "b": "Warstwa I",
-                "c": "Warstwa N",
-                "d": "Warstwa Q"
+                "a": "dyfrakcja",
+                "b": "modulacja",
+                "c": "interferencja",
+                "d": "polaryzacja <-"
             },
-            "answer": "b",
-            "topic": "PIN_absorption_layer"
+            "answer": "d"
         },
         {
-            "question": "Fotodioda Schottky'ego:",
+            "question": "Najpowszechniejszym rodzajem liniowego rozproszenia w światłowodach jest rozproszenie:",
             "options": {
-                "a": "służy za prostownik sygnału",
-                "b": "gwarantuje dużą pojemność złącza",
-                "c": "stosowana jest przy detekcji fal 100MHz",
-                "d": "charakteryzuje się niewielką szybkością odpowiedzi"
+                "a": "Rayleighego <-",
+                "b": "Mie",
+                "c": "Brillouina",
+                "d": "Ramana"
             },
-            "answer": "a",
-            "topic": "Schottky_diode"
+            "answer": "a"
         },
         {
-            "question": "Wskaż nieprawdziwą informację dotyczącą wzmacniacza transimpedancyjnego:",
+            "question": "Rozproszenie liniowe spowodowane przez cząsteczki wielkości podobnej do długości fali to rozproszenie:",
             "options": {
-                "a": "zawiera wzmacniacz w układzie nieodwracającym",
-                "b": "wymaga stosowania kondensatora stabilizacyjnego",
-                "c": "posiada rezystor w pętli sprzężenia zwrotnego",
-                "d": "przetwarza napięcie na prąd o przeciwnym znaku"
+                "a": "Rayleighego",
+                "b": "Mie <-",
+                "c": "Brillouina",
+                "d": "Ramana"
             },
-            "answer": "d",
-            "topic": "transimpedance_amplifier"
+            "answer": "b"
         },
         {
-            "question": "Dla detekcji bezpośredniej najlepszym rozwiązaniem będzie filtracja dolnoprzepustowa z pomocą:",
+            "question": "Zjawisko wykorzystywane do testowania światłowodów z pomocą reflektometru optycznego to rozproszenie:",
             "options": {
-                "a": "aktywnego filtra RC",
-                "b": "cyfrowego filtru DSP",
-                "c": "pasywnego filtra RC",
-                "d": "eliptycznego filtra Cauera"
+                "a": "Rayleighego <-",
+                "b": "Mie",
+                "c": "Brillouina",
+                "d": "Ramana"
             },
-            "answer": "c",
-            "topic": "lowpass_filtering"
+            "answer": "a"
         },
         {
-            "question": "Którą z poniższych pojemności może mieć kondensator w filtrze RC o rezystancji R=1mΩ, by przepuszczał transmisję w III oknie transmisyjnym, ale nie w II oknie transmisyjnym?",
+            "question": "Rozproszenie wynikające z niedoskonałości powstałych na etapie produkcji światłowodu to rozproszenie:",
             "options": {
-                "a": "1pF",
-                "b": "0.75pF",
-                "c": "0.5pF",
-                "d": "0.1pF"
+                "a": "Rayleighego",
+                "b": "Mie <-",
+                "c": "Brillouina",
+                "d": "Ramana"
             },
-            "answer": "b",
-            "topic": "transmission_filtering"
+            "answer": "b"
         },
         {
-            "question": "Detekcja koherentna:",
+            "question": "Rozproszenie polegające na przekształceniu fotonu padającego w foton o niższej energii oraz fonon to rozproszenie:",
             "options": {
-                "a": "wykrywa jedynie fazę",
-                "b": "wykrywa jedynie amplitudę",
-                "c": "wykrywa jedynie częstotliwość",
-                "d": "wykrywa amplitudę, częstotliwość i fazę"
+                "a": "Rayleighego",
+                "b": "Mie",
+                "c": "Brillouina <-",
+                "d": "Ramana"
             },
-            "answer": "d",
-            "topic": "coherent_detection"
+            "answer": "c"
         },
         {
-            "question": "Dany jest sygnał nośny o amplitudzie A, częstotliwości f oraz sygnał z LO o amplitudzie B, częstotliwości F, w układzie z detekcją homodynową. Prawdą jest, że:",
+            "question": "Przesunięcie częstotliwości Brillouina dla wiązki padającej (fp) oraz odbitej (fo), dla częstotliwości emitowanych fononów (ff) opisywane jest wzorami:",
             "options": {
-                "a": "A=B, f=F",
-                "b": "A≠B, f=F",
-                "c": "A=B, f≠F",
-                "d": "A≠B, f≠F"
+                "a": "fp < fo , fp + fo = ff",
+                "b": "fp > fo , fp + fo = ff",
+                "c": "fp < fo , fo - fp = ff",
+                "d": "fp > fo , fp - fo = ff <-"
             },
-            "answer": "b",
-            "topic": "homodyne_detection"
+            "answer": "d"
         },
         {
-            "question": "Ograniczeniem koherentnej detekcji szerokopasmowej jest:",
+            "question": "Rozproszenie objawiające się wzmocnieniem optycznym jednej wiązki kosztem drugiej to rozproszenie:",
             "options": {
-                "a": "szerokość pasma",
-                "b": "responsywność fotodetektora",
-                "c": "poziom szumów fazowych",
-                "d": "długość fali"
+                "a": "Rayleighego",
+                "b": "Mie",
+                "c": "Brillouina",
+                "d": "Ramana <-"
             },
-            "answer": "b",
-            "topic": "coherent_detection_limits"
+            "answer": "d"
         },
         {
-            "question": "W przypadku detekcji koherentnej zrównoważonej suma sygnałów na wyjściach fotodetektorów jest równa:",
+            "question": "Fala 1310nm o mocy 1mW oraz 1550nm o mocy 1mW propagują przez ośrodek aktywny Ramana. Który zestaw wartości mocy tych fal po przejściu przez ośrodek jest teoretycznie zgodny ze zjawiskiem rozproszenia Ramana?",
             "options": {
-                "a": "sumie sygnałów nośnego i LO",
-                "b": "różnicy sygnałów nośnego i LO",
-                "c": "sygnałowi LO",
-                "d": "sygnałowi nośnemu"
+                "a": "1310nm: 0.5mW, 1550nm: 0.5mW",
+                "b": "1310nm: 0.5mW, 1550nm: 1.5mW <-",
+                "c": "1310nm: 1.5mW, 1550nm: 0.5mW",
+                "d": "1310nm: 1.5mW, 1550nm: 1.5mW"
             },
-            "answer": "d",
-            "topic": "balanced_detection"
+            "answer": "b"
         },
         {
-            "question": "Do zastosowań detekcji koherentnej należą:",
+            "question": "Interferencją konstruktywną nazywamy:",
             "options": {
-                "a": "systemy FTTx",
-                "b": "sieci LAN",
-                "c": "systemy LIDAR",
-                "d": "systemy LiFi"
+                "a": "zmianę toru biegu fal przy przejściu przez przeszkodę",
+                "b": "zniekształcenie impulsu, dzielące go na dwa mniejsze impulsy",
+                "c": "powstanie nowej fali w wyniku nałożenia się dwóch innych fal <-",
+                "d": "zmianę właściwości optycznych materiału w zależności od przyłożonego pola elektrycznego"
             },
-            "answer": "c",
-            "topic": "coherent_detection_applications"
+            "answer": "c"
         },
         {
-            "question": "Detekcja subkoherentna może zostać zrealizowana na podstawie:",
+            "question": "Interferencją destruktywną nazywamy:",
             "options": {
-                "a": "detekcji heterodynowej",
-                "b": "detekcji homodynowej",
-                "c": "detekcji heterodynowej i homodynowej",
-                "d": "detekcji bezpośredniej"
+                "a": "powstanie wypadkowej fali w wyniku nakładania się fal zgodnych w fazie",
+                "b": "powstanie wypadkowej fali w wyniku nakładania się fal o różnych, ale nie przeciwnych fazach",
+                "c": "powstanie wypadkowej fali w wyniku nakładania się fal o różnych, przeciwnych fazach",
+                "d": "wygaszenie obydwu fal w wyniku nakładania się fal o różnych, przeciwnych fazach <-"
             },
-            "answer": "a",
-            "topic": "subcoherent_detection"
+            "answer": "d"
         },
         {
-            "question": "Wyłącznie dla detekcji homodynowej można zastosować laser:",
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie aktywności optycznej to:",
             "options": {
-                "a": "FP",
-                "b": "VCSEL",
-                "c": "DFB",
-                "d": "ECL"
+                "a": "Efekt Franza-Keldysha",
+                "b": "Elektrożyracja <-",
+                "c": "Efekt Pockelsa",
+                "d": "Efekt Refrakcji Elektronów"
             },
-            "answer": "d",
-            "topic": "homodyne_laser"
+            "answer": "b"
         },
         {
-            "question": "Laserem typu powierzchniowego jest:",
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie stałych absorbcji w masywnych półprzewodnikach to:",
             "options": {
-                "a": "FP",
-                "b": "VCSEL",
-                "c": "DFB",
-                "d": "ECL"
+                "a": "Ograniczony Kwantowo Efekt Starka",
+                "b": "Efekt Kerra",
+                "c": "Efekt Franza-Keldysha <-",
+                "d": "Efekt Refrakcji Elektronów"
             },
-            "answer": "b",
-            "topic": "surface_laser"
+            "answer": "c"
         },
         {
-            "question": "Fałszywym stwierdzeniem o laserze Fabry-Perota jest:",
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie współczynnika załamania światła z proporcjonalnością liniową jest:",
             "options": {
-                "a": "obsługuje fale 1310nm i 1550nm",
-                "b": "może posłużyć do detekcji subkoherentnej",
-                "c": "obsłuży transmisję w zasięgu 10km",
-                "d": "posiada pionową strukturę wnęki"
+                "a": "Efekt Pockelsa <-",
+                "b": "Efekt Kerra",
+                "c": "Efekt Franza-Keldysha",
+                "d": "Efekt elektrochemiczny"
             },
-            "answer": "d",
-            "topic": "Fabry_Perot"
+            "answer": "a"
         },
         {
-            "question": "Który laser jest ograniczony do długości fali 850nm?",
+            "question": "Zjawiskiem zmiany absorbcji w półprzewodnikowych studniach kwantowych jest:",
             "options": {
-                "a": "FP",
-                "b": "VCSEL",
-                "c": "DFB",
-                "d": "ECL"
+                "a": "Efekt elektrochemiczny",
+                "b": "Elektrożyracja",
+                "c": "Efekt Kerra",
+                "d": "Efekt Starka"
             },
-            "answer": "b",
-            "topic": "laser_850nm"
+            "answer": "d"
         },
         {
-            "question": "Podstawowym elementem, którego lasera jest siatka Bragga?",
+            "question": "Zjawiskiem zmiany przenikalności elektrycznej wraz z oświetleniem materiału elektronami o dużej energii nazywamy:",
             "options": {
-                "a": "FP",
-                "b": "VCSEL",
-                "c": "DFB",
-                "d": "ECL"
+                "a": "Efekt elektrochemiczny",
+                "b": "Efekt Refrakcji Elektronów <-",
+                "c": "Elektrożyrację",
+                "d": "Elektroabsorbcję"
             },
-            "answer": "c",
-            "topic": "Bragg_laser"
+            "answer": "b"
         },
         {
-            "question": "Która informacja na temat rozdzielaczy FBT jest nieprawdziwa?",
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie współczynnika załamania światła z proporcjonalnością kwadratową jest:",
             "options": {
-                "a": "zapewnia wyłącznie równomierny podział wiązek światła",
-                "b": "bazuje na technologii stapiania światłowodów",
-                "c": "działa w zoptymalizowanym wąskim zakresie długości fal",
-                "d": "stosuje się go w systemach o niewielkim zasięgu"
+                "a": "Efekt Pockelsa",
+                "b": "Efekt Kerra <-",
+                "c": "Efekt Franza-Keldysha",
+                "d": "Efekt elektrochemiczny"
             },
-            "answer": "a",
-            "topic": "FBT_splitter"
+            "answer": "b"
         },
         {
-            "question": "Do głównych funkcjonalności DSP w układzie detekcji koherentnej nie należy:",
+            "question": "Efekt elektrochemiczny polega na:",
             "options": {
-                "a": "kompensacja niedoskonałości światłowodów",
-                "b": "korekcja błędów",
-                "c": "wzmacnianie prądu fotodetektora",
-                "d": "przetwarzanie analogowo-cyfrowe"
+                "a": "ogólnej zmianie stałych absorbcji materiału",
+                "b": "zmianie aktywności optycznej materiału",
+                "c": "tworzeniu pasma absorbcyjnego na pewnej długości fali",
+                "d": "zmianie przenikalności elektrycznej pod wpływem światła"
             },
-            "answer": "c",
-            "topic": "DSP_functionality"
+            "answer": "d"
         },
         {
-            "question": "Która detekcja korzysta z modulacji OFDM?",
+            "question": "Mikrofale to fale elektromagnetyczne z zakresu:",
             "options": {
-                "a": "bezpośrednia",
-                "b": "koherentna",
-                "c": "subkoherentna",
-                "d": "wszystkie"
+                "a": "300Hz - 300kHz",
+                "b": "300kHz - 300MHz",
+                "c": "300MHz - 300GHz",
+                "d": "300GHz - 300THz"
             },
-            "answer": "b",
-            "topic": "OFDM_modulation"
+            "answer": "c"
         },
         {
-            "question": "Która detekcja korzysta z modulacji OOK:",
+            "question": "Zakres długości fal światła widzialnego mieści się między:",
             "options": {
-                "a": "bezpośrednia",
-                "b": "koherentna",
-                "c": "subkoherentna",
-                "d": "żadna z powyższych"
+                "a": "380nm - 750nm <-",
+                "b": "485nm - 590nm",
+                "c": "560nm - 830nm",
+                "d": "310nm - 650nm"
             },
-            "answer": "a",
-            "topic": "OOK_modulation"
+            "answer": "a"
         },
         {
-            "question": "Dla którego rodzaju detekcji nieistotna jest stabilność źródła?",
+            "question": "Zakres częstotliwości światła widzialnego mieści się między:",
             "options": {
-                "a": "bezpośredniej",
-                "b": "koherentnej",
-                "c": "subkoherentnej",
-                "d": "dla wszystkich"
+                "a": "480THz - 510THz",
+                "b": "300THz - 820THz",
+                "c": "400THz - 790THz",
+                "d": "530THz - 670THz"
             },
-            "answer": "a",
-            "topic": "source_stability"
+            "answer": "c"
         },
         {
-            "question": "Która detekcja wykorzystuje wzmacniacze LNA?",
+            "question": "Krótkie fale radiowe przypadają na rząd częstotliwości:",
             "options": {
-                "a": "bezpośrednia",
-                "b": "koherentna",
-                "c": "subkoherentna",
-                "d": "wszystkie"
+                "a": "1Hz - 1kHz",
+                "b": "100kHz - 100MHz",
+                "c": "1kHz - 1THz",
+                "d": "100MHz - 100GHz"
             },
-            "answer": "b",
-            "topic": "LNA_usage"
+            "answer": "b"
         },
         {
-            "question": "Które zdanie najlepiej porównuje detekcję koherentną i subkoherentną:",
+            "question": "Jakie zjawisko przedstawia poniższy wykres?",
             "options": {
-                "a": "detekcja subkoherentna oferuje tę samą jakość, co koherentna, ale większym kosztem",
-                "b": "detekcja subkoherentna oferuje gorszą jakość względem koherentnej, ale niższym kosztem",
-                "c": "detekcja subkoherentna oferuje tę samą jakość, co koherentna, ale niższym kosztem",
-                "d": "detekcja subkoherentna oferuje gorszą jakość względem koherentnej, ale wyższym kosztem"
+                "a": "modulacji AM o głębokości 50%",
+                "b": "modulacji AM o głębokości 100%",
+                "c": "modulacji AM o głębokości 150% <-",
+                "d": "modulacji FM"
             },
-            "answer": "b",
-            "topic": "coherent_vs_subcoherent"
+            "answer": "c"
         },
         {
-            "question": "Najbardziej energooszczędnym rozwiązaniem jest:",
+            "question": "Jakie zjawisko przedstawia poniższy wykres?",
             "options": {
-                "a": "detekcja bezpośrednia",
-                "b": "detekcja subkoherentna",
-                "c": "detekcja koherentna",
-                "d": "wszystkie są tak samo energooszczędne"
+                "a": "modulacji AM o głębokości 50%",
+                "b": "modulacji AM o głębokości 100%",
+                "c": "modulacji AM o głębokości 150%",
+                "d": "modulacji FM <-"
             },
-            "answer": "a",
-            "topic": "energy_efficiency"
+            "answer": "d"
         },
         {
-            "question": "Najwyższą bazową odpornością na szumy i zakłócenia charakteryzuje się detekcja:",
+            "question": "Jakie zjawisko przedstawia poniższy wykres?",
             "options": {
-                "a": "bezpośrednia",
-                "b": "koherentna",
-                "c": "subkoherentna",
-                "d": "wszystkie mają podobną odporność na szumy i zakłócenia"
+                "a": "modulacji AM o głębokości 50%",
+                "b": "modulacji AM o głębokości 100% <-",
+                "c": "modulacji AM o głębokości 150%",
+                "d": "modulacji FM"
             },
-            "answer": "a",
-            "topic": "noise_resistance"
+            "answer": "b"
+        },
+        {
+            "question": "Ile wynosi głębokość modulacji przedstawionej na wykresie?",
+            "options": {
+                "a": "",
+                "b": "",
+                "c": "",
+                "d": ""
+            },
+            "answer": "a"
+        },
+        {
+            "question": "Sygnał nośny N(t)=2cos(100pit) został zmodulowany amplitudowo sygnałem M(t)=4cos(300pit). Jakie jest pasmo częstotliwości dla sygnału zmodulowanego?",
+            "options": {
+                "a": "100Hz",
+                "b": "200Hz",
+                "c": "300Hz <-",
+                "d": "600Hz"
+            },
+            "answer": "c"
+        },
+        {
+            "question": "Sygnał nośny ma moc 4mW. Ile wynosi moc sygnału zmodulowanego dla głębokości modulacji 0.8?",
+            "options": {
+                "a": "5.28mW <-",
+                "b": "7.2mW",
+                "c": "3.03mW",
+                "d": "3.2mW"
+            },
+            "answer": "a"
+        },
+        {
+            "question": "Sygnał nośny N(t)=2cos(100pit) został zmodulowany częstotliwościowo sygnałem M(t)=4cos(300pit). Ile wynosi współczynnik modulacji dla czułości modulatora równej 5GHz/V?",
+            "options": {
+                "a": "6.7 x 10^7",
+                "b": "3.33 x 10^7",
+                "c": "4 x 10^8",
+                "d": "1.33 x 10^8 <-"
+            },
+            "answer": "d"
+        },
+        {
+            "question": "Sygnał nośny N(t)=2cos(100pit) został zmodulowany fazowo sygnałem M(t)=4cos(300pit). Ile wynosi współczynnik modulacji dla czułości modulatora równej 1rad/V?",
+            "options": {
+                "a": "1rad",
+                "b": "2rad",
+                "c": "4rad <-",
+                "d": "8rad"
+            },
+            "answer": "c"
+        },
+        {
+            "question": "Ile symboli modulacji N-QAM można otrzymać przy 8 bitach?",
+            "options": {
+                "a": "3",
+                "b": "8",
+                "c": "16",
+                "d": "256 <-"
+            },
+            "answer": "d"
+        },
+        {
+            "question": "Na ilu bitach realizowane są symbole modulacji 16-QAM?",
+            "options": {
+                "a": "4 <-",
+                "b": "16",
+                "c": "32",
+                "d": "256"
+            },
+            "answer": "a"
+        },
+        {
+            "question": "W modulacji QAM symbol jest jednoznacznie identyfikowany na podstawie:",
+            "options": {
+                "a": "wyłącznie amplitudy",
+                "b": "częstotliwości i fazy",
+                "c": "amplitudy i fazy <-",
+                "d": "amplitudy i częstotliwości"
+            },
+            "answer": "c"
+        },
+        {
+            "question": "W modulacji QAM każdy symbol kodowany jest z pomocą kodowania:",
+            "options": {
+                "a": "nb/mb",
+                "b": "Graya <-",
+                "c": "HDB-3",
+                "d": "AMI-1"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "Modulator Mach-Zendera jest modulatorem:",
+            "options": {
+                "a": "akustooptycznym",
+                "b": "elektro-absorbcyjnym",
+                "c": "elektrooptycznym <-",
+                "d": "polaryzacyjnym"
+            },
+            "answer": "c"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "a": "Mach-Zendera <-",
+                "b": "AOM",
+                "c": "modulator diodowy",
+                "d": "modulator polaryzacyjny"
+            },
+            "answer": "a"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "a": "Mach-Zendera",
+                "b": "AOM <-",
+                "c": "modulator diodowy",
+                "d": "modulator polaryzacyjny"
+            },
+            "answer": "b"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "a": "Mach-Zendera",
+                "b": "AOM",
+                "c": "modulator diodowy <-",
+                "d": "modulator polaryzacyjny"
+            },
+            "answer": "c"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "a": "Mach-Zendera",
+                "b": "AOM",
+                "c": "modulator diodowy",
+                "d": "modulator polaryzacyjny <-"
+            },
+            "answer": "d"
+        },
+        {
+            "question": "Modulator przedstawiony na obrazku funkcjonuje na zasadzie zmianie parametrów poprzez:",
+            "options": {
+                "a": "oświetlanie matrycy pikseli <-",
+                "b": "regulację prądu zasilania",
+                "c": "dyfrakcję światła pod wpływem ultradźwięków",
+                "d": "transmisji dwóch wiązek światła przez interferometr"
+            },
+            "answer": "a"
         }
     ]
 }
