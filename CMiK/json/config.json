@@ -91,7 +91,7 @@
               "content": {
                   "name": "Detekcja bezpośrednia",
                   "parameters": {},
-                  "script_path": "sim/sim6.py",
+                  "script_path": "sim/sim3.py",
                   "label": "Uruchom symulację detekcji bezpośredniej"
               }
             },
