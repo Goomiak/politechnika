@@ -224,7 +224,7 @@
               "content": {
                   "name": "Detekcja koherentna",
                   "parameters": {},
-                  "script_path": "coh3.py",
+                  "script_path": "sim/coh3.py",
                   "label": "Uruchom symulację detekcji koherentnej"
               }
             },
