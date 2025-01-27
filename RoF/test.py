@@ -76,8 +76,8 @@ def start_test_window():
     test_window.title("Test wiedzy")
 
     # Wymiary okna
-    window_width = 1000
-    window_height = 800
+    window_width = 800
+    window_height = 600
 
     screen_width = test_window.winfo_screenwidth()
     screen_height = test_window.winfo_screenheight()

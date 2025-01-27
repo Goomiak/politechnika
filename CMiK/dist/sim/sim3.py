@@ -48,7 +48,7 @@ I_t_filtered = lowpass_filter(I_t, cutoff_freq, fs)
 
 # Tworzenie wykresów
 fig, axs = plt.subplots(3, 1, figsize=(10, 8))
-plt.subplots_adjust(bottom=0.25, hspace=0.5)  # Zwiększono odstęp między wykresami
+plt.subplots_adjust(bottom=0.25, hspace=1)  # Zwiększono odstęp między wykresami
 
 # Wykres E(t)
 axs[0].set_title('Sygnał optyczny E(t)')

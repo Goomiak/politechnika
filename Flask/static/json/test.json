@@ -1,0 +1,334 @@
+{
+    "questions": [
+        {
+            "question": "Detekcja bezpośrednia:",
+            "options": {
+                "a": "wykrywa jedynie fazę",
+                "b": "wykrywa jedynie amplitudę",
+                "c": "wykrywa jedynie częstotliwość",
+                "d": "wykrywa amplitudę, częstotliwość i fazę"
+            },
+            "answer": "b",
+            "topic": "direct_detection"
+        },
+        {
+            "question": "Parametrem określającym miarę konwersji mocy sygnału optycznego na natężenie prądu przez fotodiodę jest:",
+            "options": {
+                "a": "Szybkość Modulacji",
+                "b": "Zakres Dynamiki",
+                "c": "Przepustowość",
+                "d": "Czułość"
+            },
+            "answer": "d",
+            "topic": "optical_conversion"
+        },
+        {
+            "question": "W przypadku detekcji bezpośredniej szerokopasmowej dla sygnału dwuwstęgowego warunkiem koniecznym jest:",
+            "options": {
+                "a": "Zwiększenie Pasma",
+                "b": "Filtracja oraz Regeneracja jednej ze wstęg",
+                "c": "Detekcja każdej wstęgi z osobna",
+                "d": "Detekcja ta jest niemożliwa do osiągnięcia"
+            },
+            "answer": "a",
+            "topic": "broadband_detection"
+        },
+        {
+            "question": "Detekcję bezpośrednią można stosować w:",
+            "options": {
+                "a": "Systemach LIDAR",
+                "b": "Sieciach PON",
+                "c": "Sieciach DWDM",
+                "d": "Komunikacji Satelitarnej"
+            },
+            "answer": "b",
+            "topic": "direct_detection_usage"
+        },
+        {
+            "question": "Fotodioda APD wykorzystuje zjawisko:",
+            "options": {
+                "a": "przebicia Zenera",
+                "b": "przebicia lawinowego",
+                "c": "rozproszenia Brillouina",
+                "d": "dyspersji chromatycznej"
+            },
+            "answer": "b",
+            "topic": "APD_phenomenon"
+        },
+        {
+            "question": "Za absorbcję światła w fotodiodach PIN odpowiada:",
+            "options": {
+                "a": "Warstwa P",
+                "b": "Warstwa I",
+                "c": "Warstwa N",
+                "d": "Warstwa Q"
+            },
+            "answer": "b",
+            "topic": "PIN_absorption_layer"
+        },
+        {
+            "question": "Fotodioda Schottky'ego:",
+            "options": {
+                "a": "służy za prostownik sygnału",
+                "b": "gwarantuje dużą pojemność złącza",
+                "c": "stosowana jest przy detekcji fal 100MHz",
+                "d": "charakteryzuje się niewielką szybkością odpowiedzi"
+            },
+            "answer": "a",
+            "topic": "Schottky_diode"
+        },
+        {
+            "question": "Wskaż nieprawdziwą informację dotyczącą wzmacniacza transimpedancyjnego:",
+            "options": {
+                "a": "zawiera wzmacniacz w układzie nieodwracającym",
+                "b": "wymaga stosowania kondensatora stabilizacyjnego",
+                "c": "posiada rezystor w pętli sprzężenia zwrotnego",
+                "d": "przetwarza napięcie na prąd o przeciwnym znaku"
+            },
+            "answer": "d",
+            "topic": "transimpedance_amplifier"
+        },
+        {
+            "question": "Dla detekcji bezpośredniej najlepszym rozwiązaniem będzie filtracja dolnoprzepustowa z pomocą:",
+            "options": {
+                "a": "aktywnego filtra RC",
+                "b": "cyfrowego filtru DSP",
+                "c": "pasywnego filtra RC",
+                "d": "eliptycznego filtra Cauera"
+            },
+            "answer": "c",
+            "topic": "lowpass_filtering"
+        },
+        {
+            "question": "Którą z poniższych pojemności może mieć kondensator w filtrze RC o rezystancji R=1mΩ, by przepuszczał transmisję w III oknie transmisyjnym, ale nie w II oknie transmisyjnym?",
+            "options": {
+                "a": "1pF",
+                "b": "0.75pF",
+                "c": "0.5pF",
+                "d": "0.1pF"
+            },
+            "answer": "b",
+            "topic": "transmission_filtering"
+        },
+        {
+            "question": "Detekcja koherentna:",
+            "options": {
+                "a": "wykrywa jedynie fazę",
+                "b": "wykrywa jedynie amplitudę",
+                "c": "wykrywa jedynie częstotliwość",
+                "d": "wykrywa amplitudę, częstotliwość i fazę"
+            },
+            "answer": "d",
+            "topic": "coherent_detection"
+        },
+        {
+            "question": "Dany jest sygnał nośny o amplitudzie A, częstotliwości f oraz sygnał z LO o amplitudzie B, częstotliwości F, w układzie z detekcją homodynową. Prawdą jest, że:",
+            "options": {
+                "a": "A=B, f=F",
+                "b": "A≠B, f=F",
+                "c": "A=B, f≠F",
+                "d": "A≠B, f≠F"
+            },
+            "answer": "b",
+            "topic": "homodyne_detection"
+        },
+        {
+            "question": "Ograniczeniem koherentnej detekcji szerokopasmowej jest:",
+            "options": {
+                "a": "szerokość pasma",
+                "b": "responsywność fotodetektora",
+                "c": "poziom szumów fazowych",
+                "d": "długość fali"
+            },
+            "answer": "b",
+            "topic": "coherent_detection_limits"
+        },
+        {
+            "question": "W przypadku detekcji koherentnej zrównoważonej suma sygnałów na wyjściach fotodetektorów jest równa:",
+            "options": {
+                "a": "sumie sygnałów nośnego i LO",
+                "b": "różnicy sygnałów nośnego i LO",
+                "c": "sygnałowi LO",
+                "d": "sygnałowi nośnemu"
+            },
+            "answer": "d",
+            "topic": "balanced_detection"
+        },
+        {
+            "question": "Do zastosowań detekcji koherentnej należą:",
+            "options": {
+                "a": "systemy FTTx",
+                "b": "sieci LAN",
+                "c": "systemy LIDAR",
+                "d": "systemy LiFi"
+            },
+            "answer": "c",
+            "topic": "coherent_detection_applications"
+        },
+        {
+            "question": "Detekcja subkoherentna może zostać zrealizowana na podstawie:",
+            "options": {
+                "a": "detekcji heterodynowej",
+                "b": "detekcji homodynowej",
+                "c": "detekcji heterodynowej i homodynowej",
+                "d": "detekcji bezpośredniej"
+            },
+            "answer": "a",
+            "topic": "subcoherent_detection"
+        },
+        {
+            "question": "Wyłącznie dla detekcji homodynowej można zastosować laser:",
+            "options": {
+                "a": "FP",
+                "b": "VCSEL",
+                "c": "DFB",
+                "d": "ECL"
+            },
+            "answer": "d",
+            "topic": "homodyne_laser"
+        },
+        {
+            "question": "Laserem typu powierzchniowego jest:",
+            "options": {
+                "a": "FP",
+                "b": "VCSEL",
+                "c": "DFB",
+                "d": "ECL"
+            },
+            "answer": "b",
+            "topic": "surface_laser"
+        },
+        {
+            "question": "Fałszywym stwierdzeniem o laserze Fabry-Perota jest:",
+            "options": {
+                "a": "obsługuje fale 1310nm i 1550nm",
+                "b": "może posłużyć do detekcji subkoherentnej",
+                "c": "obsłuży transmisję w zasięgu 10km",
+                "d": "posiada pionową strukturę wnęki"
+            },
+            "answer": "d",
+            "topic": "Fabry_Perot"
+        },
+        {
+            "question": "Który laser jest ograniczony do długości fali 850nm?",
+            "options": {
+                "a": "FP",
+                "b": "VCSEL",
+                "c": "DFB",
+                "d": "ECL"
+            },
+            "answer": "b",
+            "topic": "laser_850nm"
+        },
+        {
+            "question": "Podstawowym elementem, którego lasera jest siatka Bragga?",
+            "options": {
+                "a": "FP",
+                "b": "VCSEL",
+                "c": "DFB",
+                "d": "ECL"
+            },
+            "answer": "c",
+            "topic": "Bragg_laser"
+        },
+        {
+            "question": "Która informacja na temat rozdzielaczy FBT jest nieprawdziwa?",
+            "options": {
+                "a": "zapewnia wyłącznie równomierny podział wiązek światła",
+                "b": "bazuje na technologii stapiania światłowodów",
+                "c": "działa w zoptymalizowanym wąskim zakresie długości fal",
+                "d": "stosuje się go w systemach o niewielkim zasięgu"
+            },
+            "answer": "a",
+            "topic": "FBT_splitter"
+        },
+        {
+            "question": "Do głównych funkcjonalności DSP w układzie detekcji koherentnej nie należy:",
+            "options": {
+                "a": "kompensacja niedoskonałości światłowodów",
+                "b": "korekcja błędów",
+                "c": "wzmacnianie prądu fotodetektora",
+                "d": "przetwarzanie analogowo-cyfrowe"
+            },
+            "answer": "c",
+            "topic": "DSP_functionality"
+        },
+        {
+            "question": "Która detekcja korzysta z modulacji OFDM?",
+            "options": {
+                "a": "bezpośrednia",
+                "b": "koherentna",
+                "c": "subkoherentna",
+                "d": "wszystkie"
+            },
+            "answer": "b",
+            "topic": "OFDM_modulation"
+        },
+        {
+            "question": "Która detekcja korzysta z modulacji OOK:",
+            "options": {
+                "a": "bezpośrednia",
+                "b": "koherentna",
+                "c": "subkoherentna",
+                "d": "żadna z powyższych"
+            },
+            "answer": "a",
+            "topic": "OOK_modulation"
+        },
+        {
+            "question": "Dla którego rodzaju detekcji nieistotna jest stabilność źródła?",
+            "options": {
+                "a": "bezpośredniej",
+                "b": "koherentnej",
+                "c": "subkoherentnej",
+                "d": "dla wszystkich"
+            },
+            "answer": "a",
+            "topic": "source_stability"
+        },
+        {
+            "question": "Która detekcja wykorzystuje wzmacniacze LNA?",
+            "options": {
+                "a": "bezpośrednia",
+                "b": "koherentna",
+                "c": "subkoherentna",
+                "d": "wszystkie"
+            },
+            "answer": "b",
+            "topic": "LNA_usage"
+        },
+        {
+            "question": "Które zdanie najlepiej porównuje detekcję koherentną i subkoherentną:",
+            "options": {
+                "a": "detekcja subkoherentna oferuje tę samą jakość, co koherentna, ale większym kosztem",
+                "b": "detekcja subkoherentna oferuje gorszą jakość względem koherentnej, ale niższym kosztem",
+                "c": "detekcja subkoherentna oferuje tę samą jakość, co koherentna, ale niższym kosztem",
+                "d": "detekcja subkoherentna oferuje gorszą jakość względem koherentnej, ale wyższym kosztem"
+            },
+            "answer": "b",
+            "topic": "coherent_vs_subcoherent"
+        },
+        {
+            "question": "Najbardziej energooszczędnym rozwiązaniem jest:",
+            "options": {
+                "a": "detekcja bezpośrednia",
+                "b": "detekcja subkoherentna",
+                "c": "detekcja koherentna",
+                "d": "wszystkie są tak samo energooszczędne"
+            },
+            "answer": "a",
+            "topic": "energy_efficiency"
+        },
+        {
+            "question": "Najwyższą bazową odpornością na szumy i zakłócenia charakteryzuje się detekcja:",
+            "options": {
+                "a": "bezpośrednia",
+                "b": "koherentna",
+                "c": "subkoherentna",
+                "d": "wszystkie mają podobną odporność na szumy i zakłócenia"
+            },
+            "answer": "a",
+            "topic": "noise_resistance"
+        }
+    ]
+}
