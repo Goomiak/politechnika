@@ -10,9 +10,10 @@ class ModuleDialog(QDialog):
     def __init__(self, slides, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Moduł")
-        self.setGeometry(100, 100, 800, 600)
+        self.resize(900, 600)
+        self.center_window()
         
-        self.setStyleSheet("background-color: white;")
+        self.setStyleSheet("background-color: white; color: black;")
         
         self.slides = slides
         self.current_slide = 0
@@ -24,17 +25,18 @@ class ModuleDialog(QDialog):
         self.slide_layout = QVBoxLayout()
         self.slide_container.setLayout(self.slide_layout)
         self.layout.addWidget(self.slide_container)
-        
+
         self.button_layout = QHBoxLayout()
-        self.next_button = QPushButton("Dalej")
-        self.next_button.clicked.connect(self.next_slide)
-        self.next_button.setStyleSheet("background-color: lightgray; border: 1px solid gray; color: black;")
-        self.button_layout.addWidget(self.next_button)
-        
+
         self.prev_button = QPushButton("Wstecz")
         self.prev_button.clicked.connect(self.prev_slide)
         self.prev_button.setStyleSheet("background-color: lightgray; border: 1px solid gray; color: black;")
         self.button_layout.addWidget(self.prev_button)
+        
+        self.next_button = QPushButton("Dalej")
+        self.next_button.clicked.connect(self.next_slide)
+        self.next_button.setStyleSheet("background-color: lightgray; border: 1px solid gray; color: black;")
+        self.button_layout.addWidget(self.next_button)
         
         self.layout.addLayout(self.button_layout)
         self.setLayout(self.layout)
@@ -117,13 +119,30 @@ class ModuleDialog(QDialog):
         self.content_widgets.append(self.canvas)
         
         for slider_name, slider_params in sliders_config.items():
+            slider_container = QWidget()
+            slider_layout = QVBoxLayout()
+            
             slider_label = QLabel(f"{slider_name}: {slider_params['default']:.2f}")
+            slider_label.setStyleSheet("color: black; font-size: 14px;")
+            slider_layout.addWidget(slider_label)
+            
             slider = QSlider(Qt.Horizontal)
             slider.setMinimum(int(slider_params["min"] * 100))
             slider.setMaximum(int(slider_params["max"] * 100))
             slider.setValue(int(slider_params["default"] * 100))
-            slider.valueChanged.connect(lambda value, s_name=slider_name: self.simulation_widget.update_parameter(s_name, value / 100))
-            self.slide_layout.addWidget(slider_label)
-            self.slide_layout.addWidget(slider)
-            self.content_widgets.append(slider_label)
-            self.content_widgets.append(slider)
+            slider.valueChanged.connect(lambda value, s_name=slider_name, lbl=slider_label: self.update_slider(value, s_name, lbl))
+            slider_layout.addWidget(slider)
+            
+            slider_container.setLayout(slider_layout)
+            self.slide_layout.addWidget(slider_container)
+            self.content_widgets.append(slider_container)
+    
+    def update_slider(self, value, slider_name, label):
+        label.setText(f"{slider_name}: {value / 100:.2f}")
+        self.simulation_widget.update_parameter(slider_name, value / 100)
+    
+    def center_window(self):
+        screen_geometry = self.screen().geometry()
+        x = (screen_geometry.width() - self.width()) // 2 
+        y = (screen_geometry.height() - self.height()) // 2 - 50  
+        self.move(x, y)

@@ -9,11 +9,16 @@ class MenuWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         
+        # Ustawienie jasnego tła
+        self.setStyleSheet("background-color: white; color: black; border:none;")
+        self.resize(900, 500)
+        self.center_window()
+        
         layout = QVBoxLayout()
         
         # Logo uczelni
         logo = QLabel()
-        pixmap = QPixmap("wtie.png")
+        pixmap = QPixmap("img/wtie.png")
         logo.setPixmap(pixmap.scaledToWidth(200, Qt.SmoothTransformation))
         logo.setAlignment(Qt.AlignCenter)
         layout.addWidget(logo)
@@ -29,22 +34,25 @@ class MenuWidget(QWidget):
         instruction.setAlignment(Qt.AlignCenter)
         layout.addWidget(instruction)
 
-        # Moduły z ikonami
+        # Moduły z ikonami zamiast przycisków
         module_layout = QHBoxLayout()
         self.direct_detection_button = QPushButton()
-        self.direct_detection_button.setIcon(QIcon("1-png.png"))
-        self.direct_detection_button.setIconSize(QSize(100, 100))
+        self.direct_detection_button.setIcon(QIcon("img/1-png.png"))
+        self.direct_detection_button.setIconSize(QSize(200, 200))
+        self.direct_detection_button.setStyleSheet("border: none;")
         self.direct_detection_button.clicked.connect(lambda: self.open_module("direct_detection"))
 
         self.coherent_detection_button = QPushButton()
-        self.coherent_detection_button.setIcon(QIcon("2-png.png"))
-        self.coherent_detection_button.setIconSize(QSize(100, 100))
+        self.coherent_detection_button.setIcon(QIcon("img/2-png.png"))
+        self.coherent_detection_button.setIconSize(QSize(200, 200))
+        self.coherent_detection_button.setStyleSheet("border: none;")
         self.coherent_detection_button.clicked.connect(lambda: self.open_module("coherent_detection"))
 
         self.summary_button = QPushButton()
-        self.summary_button.setIcon(QIcon("3-png.png"))
-        self.summary_button.setIconSize(QSize(100, 100))
-        self.summary_button.setEnabled(False)  # Disabled until other modules are completed
+        self.summary_button.setIcon(QIcon("img/3-png.png"))
+        self.summary_button.setIconSize(QSize(200, 200))
+        self.summary_button.setStyleSheet("border: none;")
+        #self.summary_button.setEnabled(False)  # Disabled until other modules are completed
         self.summary_button.clicked.connect(lambda: self.open_module("summary"))
 
         module_layout.addWidget(self.direct_detection_button)
@@ -83,6 +91,12 @@ class MenuWidget(QWidget):
     def start_test(self):
         dialog = TestDialog(self)
         dialog.exec()
+    
+    def center_window(self):
+        screen_geometry = self.screen().geometry()
+        x = (screen_geometry.width() - self.width()) // 2
+        y = (screen_geometry.height() - self.height()) // 2
+        self.move(x, y)
     
     def close_app(self):
         self.parent().close()

@@ -18,7 +18,8 @@ class Simulation:
         self.update_signals()
 
         # Tworzenie wykresów Matplotlib
-        self.fig, self.axs = plt.subplots(3, 1, figsize=(6, 5))
+        self.fig, self.axs = plt.subplots(3, 1, figsize=(6, 7), sharex=True)
+        self.fig.subplots_adjust(hspace=0.5)  # Zwiększenie odstępu między wykresami
         self.plot_signals()
 
     def update_parameter(self, param_name, value):
@@ -76,7 +77,10 @@ class Simulation:
         self.line_I_filtered.set_data(self.t, self.I_t_filtered)
 
         self.axs[0].set_xlim(0, self.time_base)
+        self.axs[0].set_ylim(np.min(self.E_t) - 0.5, np.max(self.E_t) + 0.5)
         self.axs[1].set_xlim(0, self.time_base)
+        self.axs[1].set_ylim(np.min(self.P_t), np.max(self.P_t) + 0.5)
         self.axs[2].set_xlim(0, self.time_base)
+        self.axs[2].set_ylim(min(np.min(self.I_t), np.min(self.I_t_filtered)), max(np.max(self.I_t), np.max(self.I_t_filtered)) + 0.5)
 
         self.fig.canvas.draw()
