@@ -1,0 +1,54 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Interaktywny Wykres</title>
+        <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    </head>
+    <body>
+        <h1>Interaktywny Wykres</h1>
+
+        <!-- Suwak do zmiany wartoœci parametru -->
+        <label for="param-slider">Zmieñ parametr:</label>
+        <input type="range" id="param-slider" min="1" max="10" step="0.5" value="1">
+        <span id="param-value">1</span>
+
+        <!-- Kontener na wykres -->
+        <div id="chart"></div>
+
+        <script>
+            const slider = document.getElementById('param-slider');
+            const paramValue = document.getElementById('param-value');
+            const chartDiv = document.getElementById('chart');
+
+            // Funkcja do aktualizacji wykresu
+            async function updateChart(param) {
+                // Pobierz dane z widoku Django
+                const response = await fetch(`/chart-data/?param=${param}`);
+                const data = await response.json();
+
+                // Aktualizuj wykres
+                const trace = {
+                    x: data.x,
+                    y: data.y,
+                    mode: 'lines+markers',
+                    type: 'scatter'
+                };
+
+                Plotly.newPlot(chartDiv, [trace]);
+            }
+
+            // Obs³uga zmiany wartoœci suwaka
+            slider.addEventListener('input', (event) => {
+                const param = event.target.value;
+                paramValue.textContent = param;  // Wyœwietl wartoœæ suwaka
+                updateChart(param);  // Zaktualizuj wykres
+            });
+
+            // Inicjalizacja wykresu
+            updateChart(slider.value);
+        </script>
+    </body>
+    </html>
+
+    

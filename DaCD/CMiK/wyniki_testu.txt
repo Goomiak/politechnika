@@ -1,0 +1,72 @@
+Imię i nazwisko: Kamil Jankowski
+Data i czas: 2025-01-08 19:29:21
+Wynik: 1 z 3
+
+Imię i nazwisko: 123
+Data i czas: 2025-01-08 19:51:44
+Wynik: 1 z 3
+
+Imię i nazwisko: Kamil Jankowski
+Data i czas: 2025-01-08 19:54:19
+Wynik: 0 z 3
+
+Imię i nazwisko: Kamil Jankowski
+Data i czas: 2025-01-08 20:09:07
+Wynik: 1 z 3
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-08 20:09:59
+Wynik: 2 z 4
+
+Imię i nazwisko: Filip Grządziel
+Data i czas: 2025-01-11 14:37:22
+Wynik: 1 z 4
+
+Imię i nazwisko: xfxfxx
+Data i czas: 2025-01-11 15:47:59
+Wynik: 0 z 4
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-14 23:23:31
+Wynik: 15 z 30
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-14 23:31:20
+Wynik: 4 z 10
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-14 23:31:37
+Wynik: 1 z 10
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-14 23:35:49
+Wynik: 4 z 10
+
+Imię i nazwisko: xxxx
+Data i czas: 2025-01-16 20:53:45
+Wynik: 1 z 10
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-16 20:56:46
+Wynik: 4 z 10
+
+Imię i nazwisko: xx
+Data i czas: 2025-01-16 20:56:58
+Wynik: 2 z 10
+
+Imię i nazwisko: zz
+Data i czas: 2025-01-16 20:57:09
+Wynik: 4 z 10
+
+Imię i nazwisko: kamil jank
+Data i czas: 2025-01-18 04:35:52
+Wynik: 3 z 10
+
+Imię i nazwisko: Kamil Jankowski
+Data i czas: 2025-01-18 06:13:36
+Wynik: 2 z 10
+
+Imię i nazwisko: ccc
+Data i czas: 2025-01-27 22:13:48
+Wynik: 4 z 10
+
