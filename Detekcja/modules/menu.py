@@ -11,6 +11,7 @@ class MenuWidget(QWidget):
         
         # Ustawienie jasnego tła
         self.setStyleSheet("background-color: white; color: black; border:none;")
+        
         self.resize(900, 500)
         self.center_window()
         
@@ -19,7 +20,7 @@ class MenuWidget(QWidget):
         # Logo uczelni
         logo = QLabel()
         pixmap = QPixmap("img/wtie.png")
-        logo.setPixmap(pixmap.scaledToWidth(200, Qt.SmoothTransformation))
+        logo.setPixmap(pixmap.scaledToWidth(400, Qt.SmoothTransformation))
         logo.setAlignment(Qt.AlignCenter)
         layout.addWidget(logo)
 
@@ -64,6 +65,8 @@ class MenuWidget(QWidget):
         self.test_button = QPushButton("Test wiedzy")
         self.test_button.setEnabled(False)
         self.test_button.clicked.connect(self.start_test)
+        self.test_button.setStyleSheet("border: 1px solid gray;")
+
         layout.addWidget(self.test_button)
 
         # Przycisk zamknij

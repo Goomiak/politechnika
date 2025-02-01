@@ -2,15 +2,15 @@ import importlib.util
 import os
 import json
 from PySide6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QTextEdit, QSlider, QWidget
-from PySide6.QtGui import QPixmap, QTextOption
-from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap, QTextOption, QMovie
+from PySide6.QtCore import Qt, QTimer
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 
 class ModuleDialog(QDialog):
     def __init__(self, slides, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Moduł")
-        self.resize(900, 600)
+        self.resize(1200, 650)
         self.center_window()
         
         self.setStyleSheet("background-color: white; color: black;")
@@ -25,24 +25,22 @@ class ModuleDialog(QDialog):
         self.slide_layout = QVBoxLayout()
         self.slide_container.setLayout(self.slide_layout)
         self.layout.addWidget(self.slide_container)
-
+        
         self.button_layout = QHBoxLayout()
-
+        
         self.prev_button = QPushButton("Wstecz")
         self.prev_button.clicked.connect(self.prev_slide)
-        self.prev_button.setStyleSheet("background-color: lightgray; border: 1px solid gray; color: black;")
         self.button_layout.addWidget(self.prev_button)
-        
+
         self.next_button = QPushButton("Dalej")
         self.next_button.clicked.connect(self.next_slide)
-        self.next_button.setStyleSheet("background-color: lightgray; border: 1px solid gray; color: black;")
         self.button_layout.addWidget(self.next_button)
-        
+
         self.layout.addLayout(self.button_layout)
         self.setLayout(self.layout)
         
         self.show_slide()
-    
+
     def show_slide(self):
         for widget in self.content_widgets:
             widget.setParent(None)
@@ -80,7 +78,13 @@ class ModuleDialog(QDialog):
             
             elif element["type"] == "simulation":
                 self.run_simulation(element["content"])  
-    
+
+        # Dezaktywacja "Wstecz" na pierwszym slajdzie
+        if not hasattr(self, 'is_loading') or not self.is_loading:
+            self.prev_button.setEnabled(self.current_slide > 0)
+            self.next_button.setEnabled(True)
+        self.apply_button_style()
+
     def next_slide(self):
         if self.current_slide < len(self.slides) - 1:
             self.current_slide += 1
@@ -92,11 +96,36 @@ class ModuleDialog(QDialog):
         if self.current_slide > 0:
             self.current_slide -= 1
             self.show_slide()
-    
+
     def run_simulation(self, simulation_data):
         script_path = simulation_data["script_path"]
         sliders_config = simulation_data.get("sliders", {})
-        
+
+        # Wyłączenie i wyszarzenie obu przycisków przed załadowaniem symulacji
+        self.is_loading = True  # Flaga oznaczająca ładowanie symulacji
+
+        # Dezaktywacja przycisków
+        self.prev_button.setEnabled(False)
+        self.next_button.setEnabled(False)
+        self.apply_button_style()
+
+        # Dodanie ikonki ładowania
+        self.loading_label = QLabel()
+        self.loading_label.setAlignment(Qt.AlignCenter)
+        self.loading_gif = QMovie("img/loading.gif")  # Upewnij się, że masz ten plik w katalogu img/
+        self.loading_label.setMovie(self.loading_gif)
+        self.loading_gif.start()
+        self.slide_layout.addWidget(self.loading_label)
+        self.content_widgets.append(self.loading_label)
+
+        # Opóźnione uruchomienie symulacji (imitacja długiego ładowania)
+        QTimer.singleShot(500, lambda: self.load_simulation(script_path, sliders_config))
+
+    def load_simulation(self, script_path, sliders_config):
+        # Usunięcie ikonki ładowania
+        self.loading_label.setParent(None)
+        self.content_widgets.remove(self.loading_label)
+
         if not os.path.exists(script_path):
             error_label = QLabel(f"Błąd: Plik {script_path} nie istnieje.")
             self.slide_layout.addWidget(error_label)
@@ -136,11 +165,27 @@ class ModuleDialog(QDialog):
             slider_container.setLayout(slider_layout)
             self.slide_layout.addWidget(slider_container)
             self.content_widgets.append(slider_container)
-    
+
+        # Aktywacja przycisków po załadowaniu symulacji
+        self.is_loading = False  # Koniec ładowania
+
+        # Aktywacja przycisków poprawnie dopiero po zakończeniu ładowania
+        self.prev_button.setEnabled(self.current_slide > 0)
+        self.next_button.setEnabled(True)
+        self.apply_button_style()
+
+    def apply_button_style(self):
+        """ Wyszarzenie nieaktywnych przycisków """
+        for button in [self.prev_button, self.next_button]:
+            if button.isEnabled():
+                button.setStyleSheet("background-color: lightgray; color: black; border: 1px solid gray;")
+            else:
+                button.setStyleSheet("background-color: #d3d3d3; color: #888; border: 1px solid gray;")
+
     def update_slider(self, value, slider_name, label):
         label.setText(f"{slider_name}: {value / 100:.2f}")
         self.simulation_widget.update_parameter(slider_name, value / 100)
-    
+
     def center_window(self):
         screen_geometry = self.screen().geometry()
         x = (screen_geometry.width() - self.width()) // 2 

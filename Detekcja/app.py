@@ -9,6 +9,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Zasady Detekcji Bezpośredniej i Koherentnej")
         self.resize(800, 600)  # Zmieniamy setGeometry na resize
         self.center_window()  # Wywołujemy centrowanie okna
+        self.setStyleSheet("background-color: white; color: black; border: none;")
+
         
         self.menu_widget = MenuWidget(self)
         self.setCentralWidget(self.menu_widget)
