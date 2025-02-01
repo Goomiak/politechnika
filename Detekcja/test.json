@@ -25,10 +25,10 @@
         {
             "question": "W przypadku detekcji bezpośredniej szerokopasmowej dla sygnału dwuwstęgowego warunkiem koniecznym jest:",
             "options": {
-                "a": "Zwiększenie Pasma",
-                "b": "Filtracja oraz Regeneracja jednej ze wstęg",
-                "c": "Detekcja każdej wstęgi z osobna",
-                "d": "Detekcja ta jest niemożliwa do osiągnięcia"
+                "A": "Zwiększenie Pasma",
+                "B": "Filtracja oraz Regeneracja jednej ze wstęg",
+                "C": "Detekcja każdej wstęgi z osobna",
+                "D": "Detekcja ta jest niemożliwa do osiągnięcia"
             },
             "answer": "a",
             "topic": "broadband_detection"
@@ -105,7 +105,11 @@
                 "a": "1pF",
                 "b": "0.75pF",
                 "c": "0.5pF",
-                "d": "0.1pF"
+                "d": "0.1pF",
+                "A": "",
+                "B": "",
+                "C": "",
+                "D": ""
             },
             "answer": "b",
             "topic": "transmission_filtering"
@@ -113,12 +117,12 @@
         {
             "question": "Detekcja koherentna:",
             "options": {
-                "a": "wykrywa jedynie fazę",
-                "b": "wykrywa jedynie amplitudę",
-                "c": "wykrywa jedynie częstotliwość",
-                "d": "wykrywa amplitudę, częstotliwość i fazę"
+                "A": "wykrywa jedynie fazę",
+                "B": "wykrywa jedynie amplitudę",
+                "C": "wykrywa jedynie częstotliwość",
+                "D": "wykrywa amplitudę, częstotliwość i fazę"
             },
-            "answer": "d",
+            "answer": "D",
             "topic": "coherent_detection"
         },
         {
@@ -212,12 +216,12 @@
         {
             "question": "Który laser jest ograniczony do długości fali 850nm?",
             "options": {
-                "a": "FP",
-                "b": "VCSEL",
-                "c": "DFB",
-                "d": "ECL"
+                "A": "FP",
+                "B": "VCSEL",
+                "C": "DFB",
+                "D": "ECL"
             },
-            "answer": "b",
+            "answer": "B",
             "topic": "laser_850nm"
         },
         {
@@ -234,10 +238,10 @@
         {
             "question": "Która informacja na temat rozdzielaczy FBT jest nieprawdziwa?",
             "options": {
-                "a": "zapewnia wyłącznie równomierny podział wiązek światła",
-                "b": "bazuje na technologii stapiania światłowodów",
-                "c": "działa w zoptymalizowanym wąskim zakresie długości fal",
-                "d": "stosuje się go w systemach o niewielkim zasięgu"
+                "A": "zapewnia wyłącznie równomierny podział wiązek światła",
+                "B": "bazuje na technologii stapiania światłowodów",
+                "C": "działa w zoptymalizowanym wąskim zakresie długości fal",
+                "D": "stosuje się go w systemach o niewielkim zasięgu"
             },
             "answer": "a",
             "topic": "FBT_splitter"
@@ -311,10 +315,10 @@
         {
             "question": "Najbardziej energooszczędnym rozwiązaniem jest:",
             "options": {
-                "a": "detekcja bezpośrednia",
-                "b": "detekcja subkoherentna",
-                "c": "detekcja koherentna",
-                "d": "wszystkie są tak samo energooszczędne"
+                "A": "detekcja bezpośrednia",
+                "B": "detekcja subkoherentna",
+                "C": "detekcja koherentna",
+                "D": "wszystkie są tak samo energooszczędne"
             },
             "answer": "a",
             "topic": "energy_efficiency"
@@ -322,13 +326,24 @@
         {
             "question": "Najwyższą bazową odpornością na szumy i zakłócenia charakteryzuje się detekcja:",
             "options": {
-                "a": "bezpośrednia",
-                "b": "koherentna",
-                "c": "subkoherentna",
-                "d": "wszystkie mają podobną odporność na szumy i zakłócenia"
+                "A": "bezpośrednia",
+                "B": "koherentna",
+                "C": "subkoherentna",
+                "D": "wszystkie mają podobną odporność na szumy i zakłócenia"
             },
-            "answer": "a",
+            "answer": "A",
             "topic": "noise_resistance"
+        },
+        {
+            "question": "Treść pytania",
+            "options": {
+                "A": "asdsd",
+                "B": "dsdsd",
+                "C": "sdsds",
+                "D": "sdsds"
+            },
+            "answer": "A",
+            "image": ""
         }
     ]
 }

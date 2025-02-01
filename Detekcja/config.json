@@ -215,27 +215,6 @@
             {"type": "image", "content": "img/coh11.png"},
             {"type": "text", "content": "W alternatywie można zastosować powyższy układ na wyjściu wzmacniacza. Omija on dodatkową przemianę częstotliwości. Sygnał z detektora zostaje wzmocniony filtrowany, a następnie poddany kolejnej detekcji. W ten sposób można odzyskać informację zawartę w obwiedni sygnału, co w wielu przypadkach wystarcza."}
                     ]
-        },
-        {
-          "elements": [
-            {
-              "type": "simulation",
-              "content": {
-                  "name": "Detekcja koherentna",
-                  "parameters": {},
-                  "script_path": "sim/coh3.py",
-                  "label": "Uruchom symulację detekcji koherentnej"
-              }
-            },
-            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
-            "content": "Co można zaobserwować w symulacji?" 
-            },
-            {"type": "image", "content": "img/coh3.png"},
-
-            {"type": "image", "content": "img/coh4.png"}
-
-
-          ]
         }
       ],
       "summary": [
