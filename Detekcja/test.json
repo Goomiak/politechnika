@@ -14,12 +14,12 @@
         {
             "question": "Parametrem określającym miarę konwersji mocy sygnału optycznego na natężenie prądu przez fotodiodę jest:",
             "options": {
-                "a": "Szybkość Modulacji",
-                "b": "Zakres Dynamiki",
-                "c": "Przepustowość",
-                "d": "Czułość"
+                "A": "Szybkość Modulacji",
+                "B": "Zakres Dynamiki",
+                "C": "Przepustowość",
+                "D": "Czułość"
             },
-            "answer": "d",
+            "answer": "D",
             "topic": "optical_conversion"
         },
         {
@@ -102,16 +102,12 @@
         {
             "question": "Którą z poniższych pojemności może mieć kondensator w filtrze RC o rezystancji R=1mΩ, by przepuszczał transmisję w III oknie transmisyjnym, ale nie w II oknie transmisyjnym?",
             "options": {
-                "a": "1pF",
-                "b": "0.75pF",
-                "c": "0.5pF",
-                "d": "0.1pF",
-                "A": "",
-                "B": "",
-                "C": "",
-                "D": ""
+                "A": "1 pF",
+                "B": "0.75 pF",
+                "C": "0.5 pF",
+                "D": "0.1 pF"
             },
-            "answer": "b",
+            "answer": "B",
             "topic": "transmission_filtering"
         },
         {

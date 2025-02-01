@@ -53,8 +53,14 @@ class ModuleDialog(QDialog):
                 text_widget = QTextEdit()
                 text_widget.setReadOnly(True)
                 text_widget.setWordWrapMode(QTextOption.WordWrap)
-                text_widget.setStyleSheet("background-color: white; color: black; border: none;")
-                text_widget.setText(element["content"])
+                text_widget.setStyleSheet("background-color: white; color: black; border: none; font-size: 14px;")
+
+                # Sprawdzenie, czy tekst ma być pogrubiony
+                content = element["content"]
+                if "bold" in element and element["bold"]:
+                    content = f"<b>{content}</b>"
+
+                text_widget.setHtml(content)  # Używamy setHtml zamiast setText, aby obsłużyć formatowanie HTML
                 self.slide_layout.addWidget(text_widget)
                 self.content_widgets.append(text_widget)
             
@@ -69,12 +75,17 @@ class ModuleDialog(QDialog):
                     self.content_widgets.append(image_label)
             
             elif element["type"] == "math":
-                math_label = QLabel()
-                math_label.setAlignment(Qt.AlignCenter)
-                math_label.setText(f"<html><body>$$ {element['content']} $$</body></html>")
-                math_label.setTextFormat(Qt.RichText)
-                self.slide_layout.addWidget(math_label)
-                self.content_widgets.append(math_label)
+                import matplotlib.pyplot as plt
+                from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+
+                fig, ax = plt.subplots()
+                ax.text(0.5, 0.5, f"${element['content']}$", fontsize=12, ha='center', va='center')
+                ax.axis("off")
+                
+
+                canvas = FigureCanvas(fig)
+                self.slide_layout.addWidget(canvas)
+                self.content_widgets.append(canvas)
             
             elif element["type"] == "simulation":
                 self.run_simulation(element["content"])  
@@ -119,7 +130,7 @@ class ModuleDialog(QDialog):
         self.content_widgets.append(self.loading_label)
 
         # Opóźnione uruchomienie symulacji (imitacja długiego ładowania)
-        QTimer.singleShot(500, lambda: self.load_simulation(script_path, sliders_config))
+        QTimer.singleShot(1500, lambda: self.load_simulation(script_path, sliders_config))
 
     def load_simulation(self, script_path, sliders_config):
         # Usunięcie ikonki ładowania

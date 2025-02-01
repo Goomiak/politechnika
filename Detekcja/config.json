@@ -3,23 +3,21 @@
       "direct_detection": [
         {
           "elements": [
-            {"type": "text", "content": "Detekcja Bezpośrednia – detekcja polegająca wyłącznie na pomiarze mocy optycznej sygnału, bez uwzględniania informacji o fazie lub częstotliwości nośnej. "},
+            {"type": "text", "content": "Detekcja Bezpośrednia – detekcja polegająca wyłącznie na pomiarze mocy optycznej sygnału, bez uwzględniania informacji o fazie lub częstotliwości nośnej. ", "bold": true},
             {"type": "text", "content": "Sygnał optyczny E(t) trafia na fotodetektor (np. fotodiodę), która generuje prąd proporcjonalny do mocy optycznej P(t). Fotodetektor przekształca moc optyczną na prąd elektryczny na podstawie poniższych wzorów. "},
             {"type": "text", "content": "Moc optyczna:"},
-            {"type": "math", "content": "$P(t) = |E(t)|^2$"},
+            {"type": "math", "content": "P(t) = \\left|E(t)\\right|^2"},
             {"type": "text", "content": "Prąd fotodetektora:"},
-            {"type": "math", "content": "$I(t) = R \\cdot P(t)$"},
+            {"type": "math", "content": "I(t) = R \\cdot P(t)"},
             {"type": "text", "content": "gdzie R - responsywność fotodetektora"},
             {"type": "text", "content": "W sygnale elektrycznym mogą występować szybkie oscylacje związane z nośną, dlatego też w celu filtracji tych oscylacji stosuje się obwód RC. W ten sposób pozostaje użyteczna informacja o mocy sygnału."}   
           ]
         },
         {
           "elements": [
-            {"type": "text", "content": " "},
             {"type": "text", "content": "W przypadku detekcji szerokopasmowej dochodzi do tzw. samomieszania. W przypadku sygnału dwuwstęgowego – detektor zmierzy całkowitą moc optyczną sygnału, co prowadzi do sumowania wstęg górnej i dolnej, przez co wypadkowy sygnał elektryczny przedstawi się wzorem:"},
-            {"type": "math", "content": "$I(t) \\propto \\left| E_{\\text{USB}}(t) + E_{\\text{LSB}}(t) \\right|^2$"},
+            {"type": "math", "content": "I(t) \\propto \\left|E_{USB}(t) + E_{LSB}(t)\\right|^2"},
             {"type": "text", "content": "gdzie: USB - Upper Side Band, LSB - Lower Side Band"},
-            {"type": "text", "content": " "},
             {"type": "text", "content": "Przy niskim próbkowaniu – wstęgi mogą nachodzić na siebie, co powoduje interferencje i zniekształcenie użytecznego sygnału. Detektor musi mieć pasmo wystarczające do uchwycenia obu wstęg, co zwiększa wymagania stawiane układowi odbiorczemu."},
             {"type": "text", "content": "Detekcja bezpośrednia nie odtwarza informacji o fazie ani częstotliwości sygnału optycznego, co uniemożliwia stosowanie zaawansowanych metod modulacji. Ograniczenia te wynikają z szumów termicznych, szumów prądowych na fotodiodzie oraz szumów kwantowych (związanych z fluktuacją liczby fotonów). Przy szerokopasmowych sygnałach (np. dwuwstęgowych) nakładanie się pasm prowadzi do zjawiska aliasingu i trudności w dekodowaniu informacji."}
           ]
@@ -34,7 +32,6 @@
         },
         {
           "elements": [
-            {"type": "text", "content": " "},
             {"type": "text", "content": "Proces doboru elementów układu powinien zawierać analizę: \n   - zakresu spektrum detekcji\n   - wymaganej szybkości reakcji\n   - czułości sygnału\n   - poziomu dopuszczalnych szumów\n   - kosztów i warunków pracy (np. temperatura)"},
             {"type": "highlighted_text", "bold": false, "text_color": "white", "background_color": "navy",
             "content": "Fotodioda (PIN lub APD) – odbiera sygnał optyczny i przekształca go bezpośrednio na sygnał elektryczny." 

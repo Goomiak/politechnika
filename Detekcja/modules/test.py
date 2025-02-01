@@ -1,11 +1,13 @@
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QLabel, QPushButton, QMessageBox, QLineEdit, QListWidget,
-    QInputDialog, QFileDialog, QListWidgetItem
+    QInputDialog, QFileDialog, QListWidgetItem, QRadioButton, QGroupBox, QButtonGroup
 )
+
 from PySide6.QtGui import QBrush, QColor, QFont
 import json
 import random
 import os
+
 
 class TestDialog(QDialog):
     def __init__(self, parent=None):
@@ -23,6 +25,7 @@ class TestDialog(QDialog):
 
         self.layout = QVBoxLayout()
 
+        # Sekcja imienia
         self.name_label = QLabel("Imię i nazwisko:")
         self.layout.addWidget(self.name_label)
 
@@ -33,16 +36,26 @@ class TestDialog(QDialog):
         self.start_button.clicked.connect(self.start_test)
         self.layout.addWidget(self.start_button)
 
+        # Sekcja pytania
         self.question_label = QLabel()
+        self.question_label.setFont(QFont("Arial", 12, QFont.Bold))
         self.layout.addWidget(self.question_label)
 
-        self.option_buttons = []
-        for _ in range(4):
-            button = QPushButton()
-            button.clicked.connect(self.check_answer)
-            self.option_buttons.append(button)
-            self.layout.addWidget(button)
+        # Opcje odpowiedzi
+        self.option_group = QGroupBox("Wybierz odpowiedź:")
+        self.option_layout = QVBoxLayout()
+        self.option_group.setLayout(self.option_layout)
+        self.layout.addWidget(self.option_group)
 
+        self.radio_buttons = []
+        self.button_group = QButtonGroup()
+        for i in range(4):
+            radio = QRadioButton()
+            self.radio_buttons.append(radio)
+            self.button_group.addButton(radio, i)
+            self.option_layout.addWidget(radio)
+
+        # Przycisk Dalej
         self.next_button = QPushButton("Dalej")
         self.next_button.clicked.connect(self.next_question)
         self.layout.addWidget(self.next_button)
@@ -69,25 +82,24 @@ class TestDialog(QDialog):
         question = self.questions[self.current_question]
         self.question_label.setText(question["question"])
         for i, (key, value) in enumerate(question["options"].items()):
-            self.option_buttons[i].setText(f"{key}: {value}")
-            self.option_buttons[i].setEnabled(True)
+            self.radio_buttons[i].setText(f"{key}: {value}")
+            self.radio_buttons[i].setEnabled(True)
+            self.radio_buttons[i].setChecked(False)
 
-    def check_answer(self):
-        sender = self.sender()
-        selected = sender.text()[0]
+    def next_question(self):
+        selected_button = self.button_group.checkedId()
+        if selected_button == -1:
+            QMessageBox.warning(self, "Błąd", "Wybierz odpowiedź przed przejściem dalej!")
+            return
+        
+        selected = list(self.questions[self.current_question]["options"].keys())[selected_button]
         correct = self.questions[self.current_question]["answer"]
         if selected == correct:
             self.score += 1
-        for button in self.option_buttons:
-            button.setEnabled(False)
 
-        self.next_button.setEnabled(True)
-
-    def next_question(self):
         if self.current_question < len(self.questions) - 1:
             self.current_question += 1
             self.show_question()
-            self.next_button.setEnabled(False)
         else:
             self.finish_test()
 
@@ -95,6 +107,10 @@ class TestDialog(QDialog):
         name = self.name_input.text()
         with open("results.txt", "a", encoding="utf-8") as f:
             f.write(f"{name}: {self.score}/10\n")
+
+        QMessageBox.information(self, "Wynik", f"Twój wynik to: {self.score}/10")
+        self.accept()
+
 
         QMessageBox.information(self, "Wynik", f"Twój wynik to: {self.score}/10")
         self.accept()
@@ -132,7 +148,7 @@ class AdminPanel(QDialog):
         screen_geometry = self.screen().geometry()
         x = (screen_geometry.width() - self.width()) // 2
         y = (screen_geometry.height() - self.height()) // 2 - 50
-        self.move(x, y)
+        self.move(x, y)  
 
     def load_questions(self):
         with open("test.json", "r", encoding="utf-8") as f:
@@ -144,19 +160,51 @@ class AdminPanel(QDialog):
             self.question_list.addItem(item)
 
     def highlight_selected_item(self):
+     
+   
+        """Podświetlenie tylko wybranego pytania przez pogrubienie czcionki"""
         for i in range(self.question_list.count()):
             item = self.question_list.item(i)
             if item is not None:
-                font = item.font()
-                font.setBold(False)
+                font = item.font()  # Pobieramy aktualną czcionkę
+                font.setBold(False)  # Resetujemy pogrubienie dla wszystkich elementów
                 item.setFont(font)
 
+        # Pobieramy zaznaczony element i ustawiamy mu pogrubienie
         selected_items = self.question_list.selectedItems()
         if selected_items:
             selected_item = selected_items[0]
-            font = selected_item.font()
-            font.setBold(True)
+            font = selected_item.font()  # Pobieramy czcionkę dla wybranego elementu
+            font.setBold(True)  # Pogrubiamy tylko ten element
             selected_item.setFont(font)
+
+
+    def add_question(self):
+        question_text, ok = QInputDialog.getText(self, "Dodaj pytanie", "Treść pytania:")
+        if ok and question_text:
+            options = {}
+            for option in ["A", "B", "C", "D"]:
+                answer, ok = QInputDialog.getText(self, "Dodaj odpowiedź", f"Odpowiedź {option}:")
+                if not ok or not answer:
+                    return
+                options[option] = answer
+
+            correct_answer, ok = QInputDialog.getItem(self, "Poprawna odpowiedź", "Wybierz poprawną odpowiedź:", ["A", "B", "C", "D"], 0, False)
+            if not ok:
+                return
+
+            image_path, _ = QFileDialog.getOpenFileName(self, "Wybierz obraz", "", "Images (*.png *.jpg *.jpeg)")
+
+            new_question = {
+                "question": question_text,
+                "options": options,
+                "answer": correct_answer,
+                "image": image_path
+            }
+
+            self.questions.append(new_question)
+            self.save_questions()
+            self.load_questions()
 
     def edit_question(self):
         selected_index = self.question_list.currentRow()
@@ -166,21 +214,60 @@ class AdminPanel(QDialog):
 
         question = self.questions[selected_index]
 
-        from PySide6.QtWidgets import QLineEdit  # Dodajemy import dla poprawnego działania
-
-        new_text, ok = QInputDialog.getText(
-            self, "Edytuj pytanie", "Treść pytania:", QLineEdit.Normal, question.get("question", "")
-        )
+        # Edytowanie treści pytania - poprawne wywołanie bez self i bez text=
+        new_text, ok = self.get_wider_text_input("Edytuj pytanie", "Treść pytania:", question.get("question", ""))
         if ok and new_text:
             question["question"] = new_text
 
+        # Upewniamy się, że pytanie ma sekcję 'options'
+        if "options" not in question or not isinstance(question["options"], dict):
+            question["options"] = {"A": "", "B": "", "C": "", "D": ""}
+
+        # Konwersja kluczy 'a', 'b', 'c', 'd' na 'A', 'B', 'C', 'D'
+        corrected_options = {key.upper(): value for key, value in question["options"].items()}
+        question["options"] = corrected_options
+
+        # Sprawdzamy, czy każda opcja istnieje – jeśli nie, to uzupełniamy pustą wartością
+        for option in ["A", "B", "C", "D"]:
+            if option not in question["options"]:
+                question["options"][option] = ""
+
+        # Edycja odpowiedzi
         for option in ["A", "B", "C", "D"]:
             new_option, ok = QInputDialog.getText(
-                self, "Edytuj odpowiedź", f"Odpowiedź {option}:", QLineEdit.Normal, question["options"][option]
+                self, 
+                "Edytuj odpowiedź", 
+                f"Odpowiedź {option}:",
+                QLineEdit.Normal,  # Poprawne przekazanie trybu pola edycyjnego
+                question["options"][option]  # Domyślna wartość tekstowa
             )
+
             if ok and new_option:
                 question["options"][option] = new_option
 
+        # Konwersja poprawnej odpowiedzi na wielką literę
+        current_answer = question.get("answer", "A").upper()
+        
+        new_correct_answer, ok = QInputDialog.getItem(
+            self, "Edytuj poprawną odpowiedź",
+            "Wybierz poprawną odpowiedź:",
+            ["A", "B", "C", "D"],
+            ["A", "B", "C", "D"].index(current_answer) if current_answer in ["A", "B", "C", "D"] else 0,
+            False
+        )
+        if ok:
+            question["answer"] = new_correct_answer.upper()
+
+        # Edycja ścieżki do obrazka (zapisujemy tylko względną ścieżkę!)
+        new_image_path, _ = QFileDialog.getOpenFileName(self, "Wybierz nowy obraz", "", "Images (*.png *.jpg *.jpeg)")
+        if new_image_path:
+            relative_path = os.path.relpath(new_image_path, os.getcwd()).replace("\\", "/")
+            if relative_path.startswith("img/"):
+                question["image"] = relative_path
+            else:
+                QMessageBox.warning(self, "Błąd", "Obraz musi znajdować się w katalogu 'img/'.")
+
+        # Zapisujemy zmiany
         self.save_questions()
         self.load_questions()
 
@@ -197,3 +284,13 @@ class AdminPanel(QDialog):
     def save_questions(self):
         with open("test.json", "w", encoding="utf-8") as f:
             json.dump({"questions": self.questions}, f, indent=4, ensure_ascii=False)
+
+    def get_wider_text_input(self, title, label, default_text=""):
+        """Tworzy szersze pole dialogowe do wpisywania tekstu"""
+        dialog = QInputDialog(self)
+        dialog.setWindowTitle(title)
+        dialog.setLabelText(label)
+        dialog.setTextValue(default_text)  # Poprawione przypisanie wartości początkowej
+        dialog.setMinimumWidth(500)  # Szerokie okno
+        ok = dialog.exec()
+        return dialog.textValue(), ok
