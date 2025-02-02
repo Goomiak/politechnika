@@ -2,7 +2,7 @@ from PySide6.QtWidgets import (QWidget, QLabel, QVBoxLayout, QHBoxLayout, QPushB
 from PySide6.QtGui import QPixmap, QIcon, QKeySequence
 from PySide6.QtCore import Qt, QSize
 from modules.module_dialog import ModuleDialog
-from modules.test import TestDialog, AdminPanel
+from modules.test import TestDialog, AdminPanel, NameDialog
 import json
 
 class MenuWidget(QWidget):
@@ -41,12 +41,13 @@ class MenuWidget(QWidget):
         # Tytuł aplikacji
         title = QLabel("Zasady detekcji bezpośredniej i koherentnej")
         title.setAlignment(Qt.AlignCenter)
-        title.setStyleSheet("font-size: 18px; font-weight: bold;")
+        title.setStyleSheet("font-size: 20px; font-weight: bold;")
         self.scroll_layout.addWidget(title)
 
         # Instrukcja
-        instruction = QLabel("Wybierz zagadnienie, którego chcesz się uczyć")
+        instruction = QLabel("Wybierz zagadnienie, którego chcesz się uczyć:")
         instruction.setAlignment(Qt.AlignCenter)
+        instruction.setStyleSheet("font-size: 16px;")
         self.scroll_layout.addWidget(instruction)
 
         # Moduły z ikonami zamiast przycisków
@@ -107,8 +108,14 @@ class MenuWidget(QWidget):
             self.summary_button.setEnabled(True)
 
     def start_test(self):
-        dialog = TestDialog(self)
-        dialog.exec()
+        name_dialog = NameDialog()
+        if name_dialog.exec() == QDialog.Accepted:  # Jeśli użytkownik kliknie "Rozpocznij test"
+            name = name_dialog.get_name()
+            if name:  # Sprawdzamy, czy użytkownik coś wpisał
+                test_dialog = TestDialog(name)
+                test_dialog.exec()
+            else:
+                QMessageBox.warning(None, "Błąd", "Musisz podać imię i nazwisko!")
     
     def admin_login(self):
         password, ok = QInputDialog.getText(self, "Wprowadź hasło administratora", "Hasło:", QLineEdit.Password)

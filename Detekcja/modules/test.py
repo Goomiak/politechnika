@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import (
     QDialog, QVBoxLayout, QLabel, QPushButton, QMessageBox, QLineEdit, QListWidget,
-    QInputDialog, QFileDialog, QListWidgetItem, QRadioButton, QGroupBox, QButtonGroup
+    QInputDialog, QFileDialog, QListWidgetItem, QRadioButton, QGroupBox, QButtonGroup, QApplication
 )
 
 from PySide6.QtGui import QBrush, QColor, QFont
@@ -9,12 +9,88 @@ import random
 import os
 
 
-class TestDialog(QDialog):
+
+
+class NameDialog(QDialog):
     def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Podaj swoje dane")
+        self.resize(400, 200)
+        self.layout = QVBoxLayout()
+
+        self.label = QLabel("Wpisz swoje imię i nazwisko:")
+        self.layout.addWidget(self.label)
+
+        self.name_input = QLineEdit()
+        self.layout.addWidget(self.name_input)
+
+        self.start_button = QPushButton("Rozpocznij test")
+        self.start_button.clicked.connect(self.accept)
+        self.layout.addWidget(self.start_button)
+
+        self.setLayout(self.layout)
+
+    def validate_and_accept(self):
+        if not self.name_input.text().strip():
+            QMessageBox.warning(self, "Błąd", "Musisz podać imię i nazwisko!")
+        else:
+            self.accept()  # Zamknięcie okna dialogowego
+
+    def get_name(self):
+        return self.name_input.text().strip()
+
+class TestDialog(QDialog):
+    def __init__(self, name, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Test wiedzy")
         self.resize(800, 600)
         self.center_window()
+
+        self.setStyleSheet("""
+                            QDialog {
+                                background-color: #f5f5f5; /* Jasne tło */
+                                border: 2px solid #333333; /* Ciemna ramka */
+                            }
+                            QLabel {
+                                color: black; /* Czarny tekst */
+                            }
+                            QGroupBox {
+                                border: 2px solid #333333; /* Ciemna ramka */
+                                background-color: white; /* Białe tło grup */
+                                font-weight: bold;
+                            }
+                            QRadioButton {
+                                color: black; /* Czarny tekst dla opcji */
+                                background-color: white;
+                            }
+                            QPushButton {
+                                background-color: #444444; /* Ciemniejsze przyciski */
+                                color: white; /* Biały tekst */
+                                border-radius: 5px;
+                                padding: 5px;
+                            }
+                            QPushButton:hover {
+                                background-color: #555555;
+                            }
+                            QRadioButton {
+                                color: black; /* Czarny tekst */
+                                background-color: white; /* Białe tło */
+                                spacing: 5px; /* Dystans między tekstem a kółkiem */
+                            }
+
+                            QRadioButton::indicator {
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 9px; /* Upewnia się, że kółko jest okrągłe */
+                                border: 2px solid #333333; /* Ciemna ramka */
+                                background-color: white; /* Tło dla niezaznaczonego */
+                            }
+
+                            QRadioButton::indicator:checked {
+                                background-color: #333333; /* Ciemny kolor po zaznaczeniu */
+                                border: 2px solid black; /* Ciemniejsza ramka po zaznaczeniu */
+                            }
+                        """)
 
         with open("test.json", "r", encoding="utf-8") as f:
             all_questions = json.load(f)["questions"]
@@ -22,24 +98,17 @@ class TestDialog(QDialog):
         self.questions = random.sample(all_questions, min(10, len(all_questions)))
         self.current_question = 0
         self.score = 0
+        self.name = name  # Przechowuje imię użytkownika
 
         self.layout = QVBoxLayout()
 
-        # Sekcja imienia
-        self.name_label = QLabel("Imię i nazwisko:")
-        self.layout.addWidget(self.name_label)
-
-        self.name_input = QLineEdit()
-        self.layout.addWidget(self.name_input)
-
-        self.start_button = QPushButton("Rozpocznij test")
-        self.start_button.clicked.connect(self.start_test)
-        self.layout.addWidget(self.start_button)
-
-        # Sekcja pytania
         self.question_label = QLabel()
         self.question_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.question_label.setWordWrap(True)  
+        #self.question_label.setAlignment(Qt.AlignCenter) 
         self.layout.addWidget(self.question_label)
+
+
 
         # Opcje odpowiedzi
         self.option_group = QGroupBox("Wybierz odpowiedź:")
@@ -59,39 +128,16 @@ class TestDialog(QDialog):
         self.next_button = QPushButton("Dalej")
         self.next_button.clicked.connect(self.next_question)
         self.layout.addWidget(self.next_button)
-        self.next_button.setEnabled(False)
 
         self.setLayout(self.layout)
-
-    def center_window(self):
-        screen_geometry = self.screen().geometry()
-        x = (screen_geometry.width() - self.width()) // 2
-        y = (screen_geometry.height() - self.height()) // 2 - 50
-        self.move(x, y)
-
-    def start_test(self):
-        if not self.name_input.text().strip():
-            QMessageBox.warning(self, "Błąd", "Podaj imię i nazwisko przed rozpoczęciem testu!")
-            return
-
-        self.name_input.setDisabled(True)
-        self.start_button.setDisabled(True)
         self.show_question()
-
-    def show_question(self):
-        question = self.questions[self.current_question]
-        self.question_label.setText(question["question"])
-        for i, (key, value) in enumerate(question["options"].items()):
-            self.radio_buttons[i].setText(f"{key}: {value}")
-            self.radio_buttons[i].setEnabled(True)
-            self.radio_buttons[i].setChecked(False)
 
     def next_question(self):
         selected_button = self.button_group.checkedId()
         if selected_button == -1:
             QMessageBox.warning(self, "Błąd", "Wybierz odpowiedź przed przejściem dalej!")
             return
-        
+
         selected = list(self.questions[self.current_question]["options"].keys())[selected_button]
         correct = self.questions[self.current_question]["answer"]
         if selected == correct:
@@ -103,17 +149,33 @@ class TestDialog(QDialog):
         else:
             self.finish_test()
 
+    def show_question(self):
+        question = self.questions[self.current_question]
+        self.question_label.setText(question["question"])
+
+        # Odznaczanie wszystkich opcji
+        self.button_group.setExclusive(False)  # Tymczasowo wyłącz ekskluzywność, aby móc odznaczyć
+        for radio_button in self.radio_buttons:
+            radio_button.setChecked(False)
+        self.button_group.setExclusive(True)  # Włącz ponownie, aby działała zasada pojedynczego wyboru
+
+        # Aktualizacja treści opcji
+        for i, (key, value) in enumerate(question["options"].items()):
+            self.radio_buttons[i].setText(f"{key}: {value}")
+            self.radio_buttons[i].setEnabled(True)
+
     def finish_test(self):
-        name = self.name_input.text()
         with open("results.txt", "a", encoding="utf-8") as f:
-            f.write(f"{name}: {self.score}/10\n")
+            f.write(f"{self.name}: {self.score}/10\n")
 
         QMessageBox.information(self, "Wynik", f"Twój wynik to: {self.score}/10")
         self.accept()
 
-
-        QMessageBox.information(self, "Wynik", f"Twój wynik to: {self.score}/10")
-        self.accept()
+    def center_window(self):
+        screen_geometry = self.screen().geometry()
+        x = (screen_geometry.width() - self.width()) // 2
+        y = (screen_geometry.height() - self.height()) // 2 - 50
+        self.move(x, y)
 
 
 class AdminPanel(QDialog):
@@ -294,3 +356,5 @@ class AdminPanel(QDialog):
         dialog.setMinimumWidth(500)  # Szerokie okno
         ok = dialog.exec()
         return dialog.textValue(), ok
+    
+    
