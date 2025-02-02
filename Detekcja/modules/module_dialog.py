@@ -78,8 +78,8 @@ class ModuleDialog(QDialog):
                 import matplotlib.pyplot as plt
                 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 
-                fig, ax = plt.subplots()
-                ax.text(0.5, 0.5, f"${element['content']}$", fontsize=12, ha='center', va='center')
+                fig, ax = plt.subplots(figsize=(5, 2))
+                ax.text(0.5, 0.5, f"${element['content']}$", fontsize=20, ha='center', va='center')
                 ax.axis("off")
                 
 

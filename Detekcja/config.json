@@ -9,7 +9,7 @@
             {"type": "math", "content": "P(t) = \\left|E(t)\\right|^2"},
             {"type": "text", "content": "Prąd fotodetektora:"},
             {"type": "math", "content": "I(t) = R \\cdot P(t)"},
-            {"type": "text", "content": "gdzie R - responsywność fotodetektora"},
+            {"type": "text", "content": "gdzie R - responsywność fotodetektora [A/W]"},
             {"type": "text", "content": "W sygnale elektrycznym mogą występować szybkie oscylacje związane z nośną, dlatego też w celu filtracji tych oscylacji stosuje się obwód RC. W ten sposób pozostaje użyteczna informacja o mocy sygnału."}   
           ]
         },
