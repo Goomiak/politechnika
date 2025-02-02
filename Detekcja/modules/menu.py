@@ -39,15 +39,15 @@ class MenuWidget(QWidget):
         self.scroll_layout.addWidget(logo)
 
         # Tytuł aplikacji
-        title = QLabel("Zasady detekcji bezpośredniej i koherentnej")
+        title = QLabel("Aplikacja: Zasady detekcji bezpośredniej i koherentnej")
         title.setAlignment(Qt.AlignCenter)
-        title.setStyleSheet("font-size: 20px; font-weight: bold;")
+        title.setStyleSheet("font-size: 16px; ")
         self.scroll_layout.addWidget(title)
 
         # Instrukcja
         instruction = QLabel("Wybierz zagadnienie, którego chcesz się uczyć:")
         instruction.setAlignment(Qt.AlignCenter)
-        instruction.setStyleSheet("font-size: 16px;")
+        instruction.setStyleSheet("font-size: 16px; ")
         self.scroll_layout.addWidget(instruction)
 
         # Moduły z ikonami zamiast przycisków
@@ -76,10 +76,16 @@ class MenuWidget(QWidget):
         module_layout.addWidget(self.summary_button)
         self.scroll_layout.addLayout(module_layout)
 
+        # Instrukcja
+        test_instruction = QLabel("Test wiedzy aktywuje się po obejrzeniu wszystkich modułów:")
+        test_instruction.setAlignment(Qt.AlignCenter)
+        test_instruction.setStyleSheet("font-size: 16px;")
+        self.scroll_layout.addWidget(test_instruction)
+
         # Test wiedzy
         self.test_button = QPushButton("Test wiedzy")
         self.test_button.setEnabled(False)
-        self.test_button.setStyleSheet("border: 1px solid gray; color: gray;")
+        self.test_button.setStyleSheet("border: none; color: gray;")
         self.test_button.clicked.connect(self.start_test)
 
         self.scroll_layout.addWidget(self.test_button)
@@ -88,6 +94,40 @@ class MenuWidget(QWidget):
         close_button = QPushButton("Zamknij")
         close_button.clicked.connect(self.close_app)
         self.scroll_layout.addWidget(close_button)
+
+        button_style = """
+            QPushButton {
+                background-color: #bbbbbb; /* Ciemniejsze tło */
+                color: #888888; /* Biały tekst */
+                font-size: 16px; /* Większa czcionka */
+                font-weight: bold;
+                padding: 4px;
+                border-radius: 5px;
+                border: 2px solid #888888;
+            }
+            QPushButton:hover {
+                background-color: #555555;
+            }
+        """
+
+        close_button_style = """
+            QPushButton {
+                background-color: #777777; /* Czerwone tło */
+                color: white; /* Biały tekst */
+                font-size: 16px;
+                font-weight: bold;
+                padding: 4px;
+                border-radius: 5px;
+                border: 2px solid #444444;
+            }
+            QPushButton:hover {
+                background-color: #444444;
+            }
+        """
+
+        # Ustawienie stylu dla przycisków
+        self.test_button.setStyleSheet(button_style)
+        close_button.setStyleSheet(close_button_style)
 
         self.setLayout(layout)
         
@@ -104,7 +144,20 @@ class MenuWidget(QWidget):
 
         if len(self.completed_modules) == 3:  # All modules viewed
             self.test_button.setEnabled(True)
-            self.test_button.setStyleSheet("border: 1px solid black; color: black;")
+            self.test_button.setStyleSheet("""
+                QPushButton {
+                    background-color: #777777; /* Ciemniejsze tło */
+                    color: white; /* Biały tekst */
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 4px;
+                    border-radius: 5px;
+                    border: 2px solid #444444;
+                }
+                QPushButton:hover {
+                    background-color: #444444;
+                }
+            """)
             self.summary_button.setEnabled(True)
 
     def start_test(self):
@@ -118,9 +171,59 @@ class MenuWidget(QWidget):
                 QMessageBox.warning(None, "Błąd", "Musisz podać imię i nazwisko!")
     
     def admin_login(self):
-        password, ok = QInputDialog.getText(self, "Wprowadź hasło administratora", "Hasło:", QLineEdit.Password)
+        dialog = QInputDialog(self)
+        dialog.setWindowTitle("Wprowadź hasło administratora")
+        dialog.setLabelText("Hasło:")
+        dialog.setTextEchoMode(QLineEdit.Password)
+        dialog.setStyleSheet("""
+                QDialog {
+                    background-color: #f5f5f5;
+                    border: 2px solid #333333;
+                }
+                QLabel {
+                    color: black;
+                    font-size: 16px;
+                }
+                QLineEdit {
+                    background-color: white;
+                    color: black;
+                    border: 2px solid #333333;
+                    padding: 5px;
+                    font-size: 16px;
+                    border-radius: 5px;
+                }
+                QPushButton {
+                    background-color: #444444;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 8px;
+                    border-radius: 5px;
+                    border: 2px solid #222222;
+                }
+                QPushButton:hover {
+                    background-color: #555555;
+                }
+            """)
+
+        password, ok = dialog.getText(self, "Wprowadź hasło administratora", "Hasło:", QLineEdit.Password)
+
         if ok and password == "password":
             admin_panel = AdminPanel(self)
+            admin_panel.setStyleSheet("""
+                    QPushButton {
+                        background-color: #444444;
+                        color: white;
+                        font-size: 12px;
+                        font-weight: bold;
+                        padding: 2px;
+                        border-radius: 3px;
+                        border: 2px solid #222222;
+                    }
+                    QPushButton:hover {
+                        background-color: #555555;
+                    }
+                """)
             admin_panel.exec()
         else:
             QMessageBox.warning(self, "Błąd", "Nieprawidłowe hasło!")

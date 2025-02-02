@@ -16,6 +16,38 @@ class NameDialog(QDialog):
         super().__init__(parent)
         self.setWindowTitle("Podaj swoje dane")
         self.resize(400, 200)
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #f5f5f5; /* Jasne tło */
+                border: 2px solid #333333; /* Ciemna ramka */
+            }
+            QLabel {
+                color: black; /* Czarny tekst */
+                font-size: 16px;
+            }
+            QLineEdit {
+                background-color: white;
+                color: black;
+                border: 2px solid #333333;
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+            QPushButton {
+                background-color: #444444; /* Ciemniejsze przyciski */
+                color: white; /* Biały tekst */
+                font-size: 16px;
+                font-weight: bold;
+                padding: 8px;
+                border-radius: 5px;
+                border: 2px solid #222222;
+            }
+            QPushButton:hover {
+                background-color: #555555;
+            }
+        """)
+
+
         self.layout = QVBoxLayout()
 
         self.label = QLabel("Wpisz swoje imię i nazwisko:")

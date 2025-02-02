@@ -3,10 +3,10 @@
         {
             "question": "Detekcja bezpośrednia:",
             "options": {
-                "a": "wykrywa jedynie fazę",
-                "b": "wykrywa jedynie amplitudę",
-                "c": "wykrywa jedynie częstotliwość",
-                "d": "wykrywa amplitudę, częstotliwość i fazę"
+                "A": "wykrywa jedynie fazę",
+                "B": "wykrywa jedynie amplitudę",
+                "C": "wykrywa jedynie częstotliwość",
+                "D": "wykrywa amplitudę, częstotliwość i fazę"
             },
             "answer": "b",
             "topic": "direct_detection"
@@ -278,10 +278,10 @@
         {
             "question": "Dla którego rodzaju detekcji nieistotna jest stabilność źródła?",
             "options": {
-                "a": "bezpośredniej",
-                "b": "koherentnej",
-                "c": "subkoherentnej",
-                "d": "dla wszystkich"
+                "A": "bezpośredniej",
+                "B": "koherentnej",
+                "C": "subkoherentnej",
+                "D": "dla wszystkich"
             },
             "answer": "a",
             "topic": "source_stability"
@@ -331,14 +331,14 @@
             "topic": "noise_resistance"
         },
         {
-            "question": "Treść pytania",
+            "question": "Nowe pytanie",
             "options": {
-                "A": "asdsd",
-                "B": "dsdsd",
-                "C": "sdsds",
-                "D": "sdsds"
+                "A": "Odpowiedź na A",
+                "B": "Odpowiedź na Be",
+                "C": "Odpowiedź na CE",
+                "D": "Odpowiedź ostatnia"
             },
-            "answer": "A",
+            "answer": "B",
             "image": ""
         }
     ]

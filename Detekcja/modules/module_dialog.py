@@ -88,7 +88,18 @@ class ModuleDialog(QDialog):
                 self.content_widgets.append(canvas)
             
             elif element["type"] == "simulation":
-                self.run_simulation(element["content"])  
+                self.run_simulation(element["content"]) 
+
+            elif element["type"] == "gif":
+                gif_label = QLabel()
+                gif_label.setAlignment(Qt.AlignCenter)
+                gif_path = element["content"]
+                if os.path.exists(gif_path):
+                    movie = QMovie(gif_path)
+                    gif_label.setMovie(movie)
+                    movie.start()
+                    self.slide_layout.addWidget(gif_label)
+                    self.content_widgets.append(gif_label) 
 
         # Dezaktywacja "Wstecz" na pierwszym slajdzie
         if not hasattr(self, 'is_loading') or not self.is_loading:
@@ -189,10 +200,47 @@ class ModuleDialog(QDialog):
         """ Wyszarzenie nieaktywnych przycisków """
         for button in [self.prev_button, self.next_button]:
             if button.isEnabled():
-                button.setStyleSheet("background-color: lightgray; color: black; border: 1px solid gray;")
+                button.setStyleSheet("""
+                    QPushButton {
+                        background-color: #888888; /* Domyślne szare tło */
+                        color: black;
+                        border: 2px solid #555555;
+                        font-size: 14px;
+                        font-weight: bold;
+                        padding: 4px;
+                        border-radius: 5px;
+                    }
+                    QPushButton:hover {
+                        background-color: #444444; /* Ciemne podświetlenie */
+                        color: white;
+                    }
+                    QPushButton:disabled {
+                        background-color: #d3d3d3;
+                        color: #888;
+                        border: 1px solid gray;
+                    }
+                """)
             else:
-                button.setStyleSheet("background-color: #d3d3d3; color: #888; border: 1px solid gray;")
-
+                button.setStyleSheet("""
+                    QPushButton {
+                        background-color: #888888; /* Domyślne szare tło */
+                        color: black;
+                        border: 2px solid #555555;
+                        font-size: 14px;
+                        font-weight: bold;
+                        padding: 4px;
+                        border-radius: 5px;
+                    }
+                    QPushButton:hover {
+                        background-color: #444444; /* Ciemne podświetlenie */
+                        color: white;
+                    }
+                    QPushButton:disabled {
+                        background-color: #d3d3d3;
+                        color: #888;
+                        border: 1px solid gray;
+                    }
+                """)
     def update_slider(self, value, slider_name, label):
         label.setText(f"{slider_name}: {value / 100:.2f}")
         self.simulation_widget.update_parameter(slider_name, value / 100)
