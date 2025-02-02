@@ -3,10 +3,11 @@ from PySide6.QtWidgets import (
     QInputDialog, QFileDialog, QListWidgetItem, QRadioButton, QGroupBox, QButtonGroup, QApplication
 )
 
-from PySide6.QtGui import QBrush, QColor, QFont
+from PySide6.QtGui import QBrush, QColor, QFont, QPixmap, Qt
 import json
 import random
 import os
+import datetime
 
 
 
@@ -134,6 +135,10 @@ class TestDialog(QDialog):
 
         self.layout = QVBoxLayout()
 
+        self.image_label = QLabel()
+        self.image_label.setAlignment(Qt.AlignCenter)
+        self.layout.addWidget(self.image_label)
+
         self.question_label = QLabel()
         self.question_label.setFont(QFont("Arial", 12, QFont.Bold))
         self.question_label.setWordWrap(True)  
@@ -185,6 +190,15 @@ class TestDialog(QDialog):
         question = self.questions[self.current_question]
         self.question_label.setText(question["question"])
 
+         # Obsługa obrazu
+        image_path = question.get("image", "")
+        if image_path and os.path.exists(image_path):
+            pixmap = QPixmap(image_path)
+            self.image_label.setPixmap(pixmap.scaledToWidth(550, Qt.SmoothTransformation))
+            self.image_label.show()
+        else:
+            self.image_label.hide()
+
         # Odznaczanie wszystkich opcji
         self.button_group.setExclusive(False)  # Tymczasowo wyłącz ekskluzywność, aby móc odznaczyć
         for radio_button in self.radio_buttons:
@@ -197,8 +211,9 @@ class TestDialog(QDialog):
             self.radio_buttons[i].setEnabled(True)
 
     def finish_test(self):
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open("results.txt", "a", encoding="utf-8") as f:
-            f.write(f"{self.name}: {self.score}/10\n")
+            f.write(f"{timestamp} - {self.name}: {self.score}/10\n")
 
         QMessageBox.information(self, "Wynik", f"Twój wynik to: {self.score}/10")
         self.accept()
@@ -216,6 +231,37 @@ class AdminPanel(QDialog):
         self.setWindowTitle("Panel administracyjny testu")
         self.resize(900, 500)
         self.center_window()
+
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #f5f5f5;
+                border: 2px solid #333333;
+            }
+            QLabel {
+                color: black;
+                font-size: 16px;
+            }
+            QLineEdit, QListWidget {
+                background-color: white;
+                color: black;
+                border: 2px solid #333333;
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+            QPushButton {
+                background-color: #444444;
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 4px;
+                border-radius: 5px;
+                border: 2px solid #222222;
+            }
+            QPushButton:hover {
+                background-color: #555555;
+            }
+        """)
 
         self.layout = QVBoxLayout()
 

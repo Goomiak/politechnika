@@ -169,70 +169,86 @@ class MenuWidget(QWidget):
                 test_dialog.exec()
             else:
                 QMessageBox.warning(None, "Błąd", "Musisz podać imię i nazwisko!")
-    
-    def admin_login(self):
-        dialog = QInputDialog(self)
-        dialog.setWindowTitle("Wprowadź hasło administratora")
-        dialog.setLabelText("Hasło:")
-        dialog.setTextEchoMode(QLineEdit.Password)
-        dialog.setStyleSheet("""
-                QDialog {
-                    background-color: #f5f5f5;
-                    border: 2px solid #333333;
-                }
-                QLabel {
-                    color: black;
-                    font-size: 16px;
-                }
-                QLineEdit {
-                    background-color: white;
-                    color: black;
-                    border: 2px solid #333333;
-                    padding: 5px;
-                    font-size: 16px;
-                    border-radius: 5px;
-                }
-                QPushButton {
-                    background-color: #444444;
-                    color: white;
-                    font-size: 16px;
-                    font-weight: bold;
-                    padding: 8px;
-                    border-radius: 5px;
-                    border: 2px solid #222222;
-                }
-                QPushButton:hover {
-                    background-color: #555555;
-                }
-            """)
-
-        password, ok = dialog.getText(self, "Wprowadź hasło administratora", "Hasło:", QLineEdit.Password)
-
-        if ok and password == "password":
-            admin_panel = AdminPanel(self)
-            admin_panel.setStyleSheet("""
-                    QPushButton {
-                        background-color: #444444;
-                        color: white;
-                        font-size: 12px;
-                        font-weight: bold;
-                        padding: 2px;
-                        border-radius: 3px;
-                        border: 2px solid #222222;
-                    }
-                    QPushButton:hover {
-                        background-color: #555555;
-                    }
-                """)
-            admin_panel.exec()
-        else:
-            QMessageBox.warning(self, "Błąd", "Nieprawidłowe hasło!")
 
     def center_window(self):
         screen_geometry = self.screen().geometry()
         x = (screen_geometry.width() - self.width()) // 2
         y = (screen_geometry.height() - self.height()) // 2
         self.move(x, y)
+
+    def admin_login(self):
+        login_dialog = AdminLoginDialog(self)
+        if login_dialog.exec() == QDialog.Accepted:
+            password = login_dialog.get_password()
+            if password == "password":  # Możesz zmienić hasło tutaj
+                admin_panel = AdminPanel(self)
+                admin_panel.exec()
+            else:
+                QMessageBox.warning(self, "Błąd", "Nieprawidłowe hasło!")    
     
     def close_app(self):
         self.parent().close()
+    
+class AdminLoginDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Wprowadź hasło administratora")
+        self.setFixedSize(400, 200)
+        
+        self.setStyleSheet("""
+            QDialog {
+                background-color: #f5f5f5;
+                border: 2px solid #333333;
+            }
+            QLabel {
+                color: black;
+                font-size: 16px;
+            }
+            QLineEdit {
+                background-color: white;
+                color: black;
+                border: 2px solid #333333;
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+            QPushButton {
+                background-color: #444444;
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 4px;
+                border-radius: 5px;
+                border: 2px solid #222222;
+            }
+            QPushButton:hover {
+                background-color: #555555;
+            }
+        """)
+
+        layout = QVBoxLayout()
+
+        self.label = QLabel("Podaj hasło administratora:")
+        layout.addWidget(self.label)
+
+        self.password_input = QLineEdit()
+        self.password_input.setEchoMode(QLineEdit.Password)
+        layout.addWidget(self.password_input)
+
+        self.button_layout = QHBoxLayout()
+        self.ok_button = QPushButton("OK")
+        self.cancel_button = QPushButton("Anuluj")
+
+        self.ok_button.clicked.connect(self.accept)
+        self.cancel_button.clicked.connect(self.reject)
+
+        self.button_layout.addWidget(self.ok_button)
+        self.button_layout.addWidget(self.cancel_button)
+        layout.addLayout(self.button_layout)
+
+        self.setLayout(layout)
+
+    def get_password(self):
+        return self.password_input.text()
+
+

@@ -248,5 +248,5 @@ class ModuleDialog(QDialog):
     def center_window(self):
         screen_geometry = self.screen().geometry()
         x = (screen_geometry.width() - self.width()) // 2 
-        y = (screen_geometry.height() - self.height()) // 2 - 50  
+        y = (screen_geometry.height() - self.height()) // 2 - 30
         self.move(x, y)
