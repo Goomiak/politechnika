@@ -1,0 +1,243 @@
+{
+    "slides": {
+      "direct_detection": [
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Technika RoF (Radio over Fiber)" 
+            },
+            {"type": "text", "content": "Technika RF – interdyscyplinarna dziedzina, łącząca elementy radiotechniki z fotoniką. Jej celem jest przetwarzanie, modulacja, transmisja i detekcja sygnałów radiowych z wykorzystaniem technologii optycznych. Pozwala ona na realizację tych funkcjonalności z wysokimi częstotliwościami oraz zachowaniem szerokopasmowości. Stosowana jest w radarach, systemach telekomunikacyjnych, a także w optycznych systemach transmisji danych."},
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Podstawowymi elementami fotonicznymi są:" 
+            },
+            {"type": "text", "content": "Światłowód - medium transmisyjne składające się z krzemionkowego rdzenia (najczęściej domieszkowanego innymi substancjami), płaszcza oraz warstwy buforowej - które pozwala na przesyłanie światła na duże odległości, wykorzystujące prawo całkowitego wewnętrznego odbicia."},
+            {"type": "image", "content": "img/poj1.png"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Apertura Numeryczna NA"
+            },
+            {"type": "text", "content": "Apertura numeryczna NA – parametr określający kąt akceptacji, czyli maksymalny kąt w stosunku do osi rdzenia włókna, pod którym światło wprowadzone do światłowodu nie będzie wyciekać poza niego. Apertura bezpośrednio zależy od współczynników załamania światła w rdzeniu oraz w płaszczu i przedstawia się następującymi wzorami:"},
+            {"type": "image", "content": "img/poj3.png"},
+            {"type": "text", "content": "Apertura numeryczna dla SMF wynosi od 0.05 do 0.4 (średnio 0.1), dla MMF wynosi średnio 0.3."},
+            {"type": "image", "content": "img/poj2.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Źrodło światła i fotodetektor"
+            },
+            {"type": "text", "content": "Źródło światła - element lub urządzenie generujące światło w systemach optycznych. Najczęściej jest to laser lub dioda elektroluminescencyjna (LED)."},
+            {"type": "image", "content": "img/poj4.png"},
+            {"type": "text", "content": "Fotodetektor - detektor światła, który przekształca sygnał optyczny na sygnał elektryczny. Najczęściej jest to fotodioda."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Podstawowe zjawiska optyczne:"
+            },
+            {"type": "text", "content": "Dyfrakcja - rozproszenie światła, które występuje, gdy światło przechodzi przez przeszkody lub szczeliny. Są to wszelkie odstępstwa od prostoliniowego biegu fal."},
+            {"type": "image", "content": "img/poj5.png"},
+            {"type": "text", "content": "Rozproszenie Rayleighego (Rozproszenie Liniowe) – spowodowane przez małe w stosunku do długości fali niejednorodności w światłowodzie stworzone na etapie produkcyjnym. Najczęściej są to fluktuacje kompozycji szkła oraz fluktuacje gęstości. Rozproszenie Rayleigha przyczynia się do 96% strat tłumieniowych w światłowodzie. Część rozproszonego światła jest odbijana z powrotem w kierunku źródła światła. Zjawisko to wykorzystywane jest do testowania światłowodów z pomocą reflektometru optycznego OTDR."},
+            {"type": "image", "content": "img/poj6.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Rozproszenie Mie (liniowe):"
+            },
+            {"type": "text", "content": "Rozproszenie Mie – spowodowane przez cząsteczki wielkości podobnej do długości fali (większe niż 10% długości fali). W światłowodach są to niejednorodności, takie jak zmiany współczynnika załamania światła rdzeń-płaszcz na całej długości włókna, zanieczyszczenia na styku rdzeń-płaszcz, odkształcenia lub pęcherzyki we włóknie lub wahania średnicy. Rozproszenie Mie można zmniejszyć, ostrożnie usuwając niedoskonałości z materiału szklanego, dokładnie kontrolując jakość i czystość procesu produkcyjnego. W przypadku włókien komercyjnych efekty rozpraszania Mie są pomijalne – włókna optyczne są produkowane z bardzo niewielką liczbą dużych defektów."},
+            {"type": "image", "content": "img/poj7.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Rozproszenie Brillouina (Nieliniowe)"
+            },
+            {"type": "text", "content": "Rozproszenie Brillouina – spowodowane nieliniowością medium. W światłowodach objawia się jako modulacja światła przez energię cieplną w materiale. Foton padający może zostać przekształcony w foton rozproszony o nieco niższej energii, zwykle rozprzestrzeniający się w kierunku wstecznym, oraz w fonon (energię drgającą). To sprzężenie pól optycznych i fal akustycznych następuje poprzez elektrostrykcję. Częstotliwość odbitej wiązki jest nieco niższa od częstotliwości wiązki padającej. Różnica częstotliwości odpowiada częstotliwości emitowanych fononów. Nazywa się to przesunięciem częstotliwości Brillouina. Zjawisko to jest wykorzystywane w czujnikach światłowodowych. Rozproszenie Brillouina może zachodzić spontanicznie nawet dla niskich poziomów mocy."},
+            {"type": "image", "content": "img/poj8.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Stymulowane Rozproszenie Ramana (Rozproszenie Nieliniowe)"
+            },
+            {"type": "text", "content": "Stymulowane Rozproszenie Ramana – jest odpowiedzią światłowodu na optyczną intensywność światła. Spowodowane jest wibracjami sieci krystalicznej (lub szklanej). Stymulowane rozpraszanie Ramana wytwarza fonon optyczny o wysokiej częstotliwości, w porównaniu do rozpraszania Brillouina, które wytwarza fonon akustyczny o niskiej częstotliwości i rozproszony foton. Gdy dwie wiązki laserowe o różnych długościach fal (i zazwyczaj tym samym kierunku polaryzacji) – rozprzestrzeniają się razem przez ośrodek aktywny Ramana – wiązka o dłuższej długości fali może ulec wzmocnieniu optycznemu kosztem wiązki o krótszej długości fali. Zjawisko to zostało wykorzystane w przypadku wzmacniaczy i laserów Ramana."},
+            {"type": "image", "content": "img/poj9.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Interferencja"
+            },
+            {"type": "text", "content": "Interferencja - zjawisko nakładania się fal świetlnych, co w efekcie może powodować wzmocnienie lub wygaszenie sygnału. W wyniku nakładania się fal – powstaje fala będąca ich wypadkową. Interferencja zachodzi, gdy te fale mają tę samą długość. Jeśli dwie fale są zgodne również w fazie – nazywamy to zjawisko interferencją konstruktywną. Wówczas w jednym miejscu następuje wzmocnienie, a w innym osłabienie lub całkowity zanik drgań. Jeśli fazy obu fal są przeciwne – mamy do czynienia z interferencją destruktywną, gdy fale ulegają całkowitemu wygaszeniu. "},
+            {"type": "image", "content": "img/poj10.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "white", "background_color": "navy",
+            "content": "Modulacja - proces zmiany parametrów fali nośnej (amplituda, częstotliwość, faza) w celu przenoszenia informacji."
+            },
+            {"type": "image", "content": "img/poj11.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Polaryzacja - uporządkowana relacja miedzy kierunkiem oscylacji, a kierunkiem propagacji fali świetlnej. Może być liniowa, kołowa lub eliptyczna. Światło niespolaryzowane można spolaryzować z pomocą specjalnych płytek zwanych polaryzatorami."},
+            {"type": "image", "content": "img/poj12.png"},
+            {"type": "text", "content": "Elektroabsorbcja – ogólna zmiana stałych absorbcji materiału."},
+            {"type": "text", "content": "Efekt Franza-Keldysha – zmiana absorbcji występująca w niektórych masywnych półprzewodnikach."},
+            {"type": "text", "content": "Ograniczony Kwantowo Efekt Starka – zmiana absorbcji niektórych półprzewodnikowych studni kwantowych"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Efekt elektrooptyczny - opisuje zmiany właściwości optycznych mateirału w zależności od przyłożonego pola elektrycznego."},
+            {"type": "image", "content": "img/poj13.png"},
+            {"type": "text", "content": "Efekt elektrochemiczny – tworzenie pasma absorbcyjnego na pewnej długości fali, które ujawnia się poprzez zmianę koloru."},
+            {"type": "text", "content": "Efekt Pockelsa (efekt liniowo-elektrooptyczny) – zmiana współczynnika załamania w sposób liniowo-proporcjonalny do pola elektrycznego. Ulegają mu kryształy nie posiadające symetrii inwersyjnej."},
+            {"type": "text", "content": "Efekt Kerra (Efekt QEO, Efekt kwadratowo-elektrooptyczny) – zmiana współczynnika załamania proporcjonalna do kwadratu pola elektrycznego. Wszystkie materiały ulegają efektowi Kerra w różnym stopniu, ale z reguły jest on słabszy niż efekt Pockelsa."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Elektrożyracja – zmiana w aktywności optycznej "},
+            {"type": "text", "content": "Efekt refrakcji elektronów – przenikalność elektryczna zmienia się, gdy materiał jest oświetlony elektronami o dużej energii, najczęściej podczas mikroskopowej transmisji elektronów lub mikroskopowym skanowaniu elektronów. Występuje w niektórych kryształach i materiałach amorficznych. Efekt jest nieliniowy i odwracalny. Inaczej nazywa się go modyfikacją przenikalności elektrycznej indukowaną elektronami (EIPM)."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Zagadnienia radiotechniczne:"
+            },
+            {"type": "text", "content": "Antena - urządzenie emitujące i odbierające fale radiowe. Antena konwertuje sygnał elektryczny na fale radiowe i odwrotnie. Jest interfejsem między falami radiowymi propagującymi w przestrzeni a prądami elektrycznymi poruszającymi się w metalowych przewodnikach. Antena pełni funkcję nadajnika lub odbiornika. Antenę opisuje m.in. charakterystyka promieniowania."},
+            {"type": "image", "content": "img/poj14.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Mikrofale - fale elektromagnetyczne o częstotliwościach 300 MHz – 300 GHz, wykorzystywane w komunikacji bezprzewodowej. "},
+            {"type": "image", "content": "img/poj15.png"},
+            {"type": "image", "content": "img/poj16.png"}
+          ]
+        }
+      ],
+      "coherent_detection": [
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Modulacja Amplitudy (AM) – polega na zmianie wartości amplitudy nośnej proporcjonalnie do wartości amplitudy sygnału modulującego." 
+            },
+            {"type": "image", "content": "img/mod1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod3.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod4.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod5.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod6.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Modulacja Częstotliwości (FM) – polega na zmianie chwilowej częstotliwości nośnej proporcjonalnie do sygnału modulującego." 
+            },
+            {"type": "image", "content": "img/mod7.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod8.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod9.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "highlighted_text", "bold": true, "text_color": "black", "background_color": "white",
+            "content": "Modulacja Fazy (PM) – polega na zmianie fazy nośnej w zależności od sygnału modulującego." 
+            },
+            {"type": "image", "content": "img/mod10.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod11.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod12.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/mod13.png"}
+          ]
+        }
+      ],
+      "summary": [
+        {
+          "elements": [
+            {"type": "image", "content": "img/dev1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/dev2.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/dev3.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/dev4.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/dev5.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/dev6.png"}
+          ]
+        }
+      ]
+    }
+  }
+  
