@@ -81,7 +81,7 @@
                       {
                           "type": "simulation",
                           "content": {
-                              "script_path": "sim/dir2.py",
+                              "simulation_name": "direct_detection",
                               "sliders": {
                                   "Amplituda": {"min": 0.1, "max": 2.0, "default": 1.0},
                                   "Częstotliwość [THz]": {"min": 10, "max": 200, "default": 150},

@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLa
 from PySide6.QtGui import QPixmap, QTextOption, QMovie
 from PySide6.QtCore import Qt, QTimer
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+from simulations import SIMULATION_CLASSES
 
 class ModuleDialog(QDialog):
     def __init__(self, slides, parent=None):
@@ -88,7 +89,8 @@ class ModuleDialog(QDialog):
                 self.content_widgets.append(canvas)
             
             elif element["type"] == "simulation":
-                self.run_simulation(element["content"]) 
+                self.load_simulation(element["content"])
+
 
             elif element["type"] == "gif":
                 gif_label = QLabel()
@@ -119,9 +121,21 @@ class ModuleDialog(QDialog):
             self.current_slide -= 1
             self.show_slide()
 
-    def run_simulation(self, simulation_data):
-        script_path = simulation_data["script_path"]
-        sliders_config = simulation_data.get("sliders", {})
+    def load_simulation(self, simulation_data):
+        """Ładowanie i uruchamianie symulacji na podstawie config.json"""
+        if "simulation_name" not in simulation_data:
+            error_label = QLabel("Błąd: Brak klucza 'simulation_name' w config.json.")
+            self.slide_layout.addWidget(error_label)
+            self.content_widgets.append(error_label)
+            return
+
+        simulation_name = simulation_data["simulation_name"]
+
+        if simulation_name not in SIMULATION_CLASSES:
+            error_label = QLabel(f"Błąd: Symulacja '{simulation_name}' nie istnieje.")
+            self.slide_layout.addWidget(error_label)
+            self.content_widgets.append(error_label)
+            return
 
         # Wyłączenie i wyszarzenie obu przycisków przed załadowaniem symulacji
         self.is_loading = True  # Flaga oznaczająca ładowanie symulacji
@@ -140,61 +154,50 @@ class ModuleDialog(QDialog):
         self.slide_layout.addWidget(self.loading_label)
         self.content_widgets.append(self.loading_label)
 
-        # Opóźnione uruchomienie symulacji (imitacja długiego ładowania)
-        QTimer.singleShot(1500, lambda: self.load_simulation(script_path, sliders_config))
+        # Opóźnione uruchomienie symulacji
+        QTimer.singleShot(1500, lambda: self.run_simulation(simulation_data))
 
-    def load_simulation(self, script_path, sliders_config):
+
+    def run_simulation(self, simulation_data):
+        simulation_name = simulation_data["simulation_name"]
+        sliders_config = simulation_data.get("sliders", {})
+        """Uruchamianie symulacji po załadowaniu"""
         # Usunięcie ikonki ładowania
         self.loading_label.setParent(None)
         self.content_widgets.remove(self.loading_label)
 
-        if not os.path.exists(script_path):
-            error_label = QLabel(f"Błąd: Plik {script_path} nie istnieje.")
-            self.slide_layout.addWidget(error_label)
-            self.content_widgets.append(error_label)
-            return
-        
-        spec = importlib.util.spec_from_file_location("simulation_module", script_path)
-        simulation_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(simulation_module)
-        
-        if not hasattr(simulation_module, "Simulation"):
-            error_label = QLabel("Błąd: Brak klasy Simulation w module symulacji.")
-            self.slide_layout.addWidget(error_label)
-            self.content_widgets.append(error_label)
-            return
-        
-        self.simulation_widget = simulation_module.Simulation()
+        # Tworzenie instancji symulacji
+        self.simulation_widget = SIMULATION_CLASSES[simulation_name]()
         self.canvas = FigureCanvas(self.simulation_widget.fig)
         self.slide_layout.addWidget(self.canvas)
         self.content_widgets.append(self.canvas)
-        
+
+        # Dodanie suwaków dla parametrów symulacji
         for slider_name, slider_params in sliders_config.items():
             slider_container = QWidget()
             slider_layout = QVBoxLayout()
-            
+
             slider_label = QLabel(f"{slider_name}: {slider_params['default']:.2f}")
             slider_label.setStyleSheet("color: black; font-size: 14px;")
             slider_layout.addWidget(slider_label)
-            
+
             slider = QSlider(Qt.Horizontal)
             slider.setMinimum(int(slider_params["min"] * 100))
             slider.setMaximum(int(slider_params["max"] * 100))
             slider.setValue(int(slider_params["default"] * 100))
             slider.valueChanged.connect(lambda value, s_name=slider_name, lbl=slider_label: self.update_slider(value, s_name, lbl))
             slider_layout.addWidget(slider)
-            
+
             slider_container.setLayout(slider_layout)
             self.slide_layout.addWidget(slider_container)
             self.content_widgets.append(slider_container)
 
         # Aktywacja przycisków po załadowaniu symulacji
         self.is_loading = False  # Koniec ładowania
-
-        # Aktywacja przycisków poprawnie dopiero po zakończeniu ładowania
         self.prev_button.setEnabled(self.current_slide > 0)
         self.next_button.setEnabled(True)
         self.apply_button_style()
+
 
     def apply_button_style(self):
         """ Wyszarzenie nieaktywnych przycisków """
@@ -241,9 +244,14 @@ class ModuleDialog(QDialog):
                         border: 1px solid gray;
                     }
                 """)
+
     def update_slider(self, value, slider_name, label):
-        label.setText(f"{slider_name}: {value / 100:.2f}")
-        self.simulation_widget.update_parameter(slider_name, value / 100)
+        """ Aktualizacja wartości suwaka i zmiana parametru symulacji """
+        float_value = value / 100.0
+        label.setText(f"{slider_name}: {float_value:.2f}")
+        if hasattr(self.simulation_widget, "update_parameter"):
+            self.simulation_widget.update_parameter(slider_name, float_value)
+            self.canvas.draw()
 
     def center_window(self):
         screen_geometry = self.screen().geometry()
