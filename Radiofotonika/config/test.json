@@ -1,0 +1,452 @@
+{
+    "questions": [
+        {
+            "question": "Prawo całkowitego wewnętrznego odbicia w światłowodach dotyczy kąta:",
+            "options": {
+                "A": "dysocjacji",
+                "B": "akceptacji",
+                "C": "interferencji",
+                "D": "preferencji"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Apertura numeryczna dla światłowodu jednomodowego o współczynniku załamania w rdzeniu 1.45213 i współczynniku załamania płaszcza 1.44692 wynosi:",
+            "options": {
+                "A": "0.00521",
+                "B": "0.01510",
+                "C": "0.07218",
+                "D": "0.12289"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Zjawisko polegające na zmianie prostoliniowego biegu fal po przejściu przez przeszkodę lub szczelinę to:",
+            "options": {
+                "A": "dyfrakcja",
+                "B": "modulacja",
+                "C": "interferencja",
+                "D": "polaryzacja"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Zjawisko polegające na nakładaniu się fal, co w wyniku daje wypadkową falę to:",
+            "options": {
+                "A": "dyfrakcja",
+                "B": "modulacja",
+                "C": "interferencja",
+                "D": "polaryzacja"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Zjawisko polegające na zmianie amplitudy, częstotliwości lub fazy fali nośnej, by umożliwić transmisję informacji to:",
+            "options": {
+                "A": "dyfrakcja",
+                "B": "modulacja",
+                "C": "interferencja",
+                "D": "polaryzacja"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Zjawisko polegające na zmianie relacji między kierunkiem oscylacji, a kierunkiem propagacji fali to:",
+            "options": {
+                "A": "dyfrakcja",
+                "B": "modulacja",
+                "C": "interferencja",
+                "D": "polaryzacja"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Najpowszechniejszym rodzajem liniowego rozproszenia w światłowodach jest rozproszenie:",
+            "options": {
+                "A": "Rayleighego",
+                "B": "Mie",
+                "C": "Brillouina",
+                "D": "Ramana"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Rozproszenie liniowe spowodowane przez cząsteczki wielkości podobnej do długości fali to rozproszenie:",
+            "options": {
+                "A": "Rayleighego",
+                "B": "Mie",
+                "C": "Brillouina",
+                "D": "Ramana"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Zjawisko wykorzystywane do testowania światłowodów z pomocą reflektometru optycznego to rozproszenie:",
+            "options": {
+                "A": "Rayleighego-",
+                "B": "Mie",
+                "C": "Brillouina",
+                "D": "Ramana"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Rozproszenie wynikające z niedoskonałości powstałych na etapie produkcji światłowodu to rozproszenie:",
+            "options": {
+                "A": "Rayleighego",
+                "B": "Mie",
+                "C": "Brillouina",
+                "D": "Ramana"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Rozproszenie polegające na przekształceniu fotonu padającego w foton o niższej energii oraz fonon to rozproszenie:",
+            "options": {
+                "A": "Rayleighego",
+                "B": "Mie",
+                "C": "Brillouina",
+                "D": "Ramana"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Przesunięcie częstotliwości Brillouina dla wiązki padającej (fp) oraz odbitej (fo), dla częstotliwości emitowanych fononów (ff) opisywane jest wzorami:",
+            "options": {
+                "A": "fp < fo , fp + fo = ff",
+                "B": "fp > fo , fp + fo = ff",
+                "C": "fp < fo , fo - fp = ff",
+                "D": "fp > fo , fp - fo = ff"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Rozproszenie objawiające się wzmocnieniem optycznym jednej wiązki kosztem drugiej to rozproszenie:",
+            "options": {
+                "A": "Rayleighego",
+                "B": "Mie",
+                "C": "Brillouina",
+                "D": "Ramana"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Fala 1310nm o mocy 1mW oraz 1550nm o mocy 1mW propagują przez ośrodek aktywny Ramana. Który zestaw wartości mocy tych fal po przejściu przez ośrodek jest teoretycznie zgodny ze zjawiskiem rozproszenia Ramana?",
+            "options": {
+                "A": "1310nm: 0.5mW, 1550nm: 0.5mW",
+                "B": "1310nm: 0.5mW, 1550nm: 1.5mW",
+                "C": "1310nm: 1.5mW, 1550nm: 0.5mW",
+                "D": "1310nm: 1.5mW, 1550nm: 1.5mW"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Interferencją konstruktywną nazywamy:",
+            "options": {
+                "A": "zmianę toru biegu fal przy przejściu przez przeszkodę",
+                "B": "zniekształcenie impulsu, dzielące go na dwa mniejsze impulsy",
+                "C": "powstanie nowej fali w wyniku nałożenia się dwóch innych fal",
+                "D": "zmianę właściwości optycznych materiału w zależności od przyłożonego pola elektrycznego"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Interferencją destruktywną nazywamy:",
+            "options": {
+                "A": "powstanie wypadkowej fali w wyniku nakładania się fal zgodnych w fazie",
+                "B": "powstanie wypadkowej fali w wyniku nakładania się fal o różnych, ale nie przeciwnych fazach",
+                "C": "powstanie wypadkowej fali w wyniku nakładania się fal o różnych, przeciwnych fazach",
+                "D": "wygaszenie obydwu fal w wyniku nakładania się fal o różnych, przeciwnych fazach"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie aktywności optycznej to:",
+            "options": {
+                "A": "Efekt Franza-Keldysha",
+                "B": "Elektrożyracja",
+                "C": "Efekt Pockelsa",
+                "D": "Efekt Refrakcji Elektronów"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie stałych absorbcji w masywnych półprzewodnikach to:",
+            "options": {
+                "A": "Ograniczony Kwantowo Efekt Starka",
+                "B": "Efekt Kerra",
+                "C": "Efekt Franza-Keldysha",
+                "D": "Efekt Refrakcji Elektronów"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie współczynnika załamania światła z proporcjonalnością liniową jest:",
+            "options": {
+                "A": "Efekt Pockelsa",
+                "B": "Efekt Kerra",
+                "C": "Efekt Franza-Keldysha",
+                "D": "Efekt elektrochemiczny"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Zjawiskiem zmiany absorbcji w półprzewodnikowych studniach kwantowych jest:",
+            "options": {
+                "A": "Efekt elektrochemiczny",
+                "B": "Elektrożyracja",
+                "C": "Efekt Kerra",
+                "D": "Efekt Starka"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Zjawiskiem zmiany przenikalności elektrycznej wraz z oświetleniem materiału elektronami o dużej energii nazywamy:",
+            "options": {
+                "A": "Efekt elektrochemiczny",
+                "B": "Efekt Refrakcji Elektronów",
+                "C": "Elektrożyrację",
+                "D": "Elektroabsorbcję"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Zjawiskiem elektrooptycznym, które polega na zmianie współczynnika załamania światła z proporcjonalnością kwadratową jest:",
+            "options": {
+                "A": "Efekt Pockelsa",
+                "B": "Efekt Kerra",
+                "C": "Efekt Franza-Keldysha",
+                "D": "Efekt elektrochemiczny"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Efekt elektrochemiczny polega na:",
+            "options": {
+                "A": "ogólnej zmianie stałych absorbcji materiału",
+                "B": "zmianie aktywności optycznej materiału",
+                "C": "tworzeniu pasma absorbcyjnego na pewnej długości fali",
+                "D": "zmianie przenikalności elektrycznej pod wpływem światła"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Mikrofale to fale elektromagnetyczne z zakresu:",
+            "options": {
+                "A": "300Hz - 300kHz",
+                "B": "300kHz - 300MHz",
+                "C": "300MHz - 300GHz",
+                "D": "300GHz - 300THz"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Zakres długości fal światła widzialnego mieści się między:",
+            "options": {
+                "A": "380nm - 750nm",
+                "B": "485nm - 590nm",
+                "C": "560nm - 830nm",
+                "D": "310nm - 650nm"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Zakres częstotliwości światła widzialnego mieści się między:",
+            "options": {
+                "A": "480THz - 510THz",
+                "B": "300THz - 820THz",
+                "C": "400THz - 790THz",
+                "D": "530THz - 670THz"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Krótkie fale radiowe przypadają na rząd częstotliwości:",
+            "options": {
+                "A": "1Hz - 1kHz",
+                "B": "100kHz - 100MHz",
+                "C": "1kHz - 1THz",
+                "D": "100MHz - 100GHz"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Jakie zjawisko przedstawia powyższy wykres?",
+            "options": {
+                "A": "modulacji AM o głębokości 50%",
+                "B": "modulacji AM o głębokości 100%",
+                "C": "modulacji AM o głębokości 150%",
+                "D": "modulacji FM"
+            },
+            "answer": "C",
+            "image": "img/test2.png"
+        },
+        {
+            "question": "Jakie zjawisko przedstawia powyższy wykres?",
+            "options": {
+                "A": "modulacji AM o głębokości 50%",
+                "B": "modulacji AM o głębokości 100%",
+                "C": "modulacji AM o głębokości 150%",
+                "D": "modulacji FM"
+            },
+            "answer": "D",
+            "image": "img/test4.png"
+        },
+        {
+            "question": "Jakie zjawisko przedstawia powyższy wykres?",
+            "options": {
+                "A": "modulacji AM o głębokości 50%",
+                "B": "modulacji AM o głębokości 100%",
+                "C": "modulacji AM o głębokości 150%",
+                "D": "modulacji FM"
+            },
+            "answer": "B",
+            "image": "img/test3.png"
+        },
+        {
+            "question": "Sygnał nośny N(t)=2cos(100πt) został zmodulowany amplitudowo sygnałem M(t)=4cos(300πt). Jakie jest pasmo częstotliwości dla sygnału zmodulowanego?",
+            "options": {
+                "A": "100Hz",
+                "B": "200Hz",
+                "C": "300Hz",
+                "D": "600Hz"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Sygnał nośny ma moc 4mW. Ile wynosi moc sygnału zmodulowanego dla głębokości modulacji 0.8?",
+            "options": {
+                "A": "5.28mW",
+                "B": "7.2mW",
+                "C": "3.03mW",
+                "D": "3.2mW"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "Sygnał nośny N(t)=2cos(100πt) został zmodulowany częstotliwościowo sygnałem M(t)=4cos(300πt). Ile wynosi współczynnik modulacji dla czułości modulatora równej 5GHz/V?",
+            "options": {
+                "A": "6.7 x 10^7",
+                "B": "3.33 x 10^7",
+                "C": "4 x 10^8",
+                "D": "1.33 x 10^8"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Sygnał nośny N(t)=2cos(100πt) został zmodulowany fazowo sygnałem M(t)=4cos(300πt). Ile wynosi współczynnik modulacji dla czułości modulatora równej 1rad/V?",
+            "options": {
+                "A": "1rad",
+                "B": "2rad",
+                "C": "4rad",
+                "D": "8rad"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Ile symboli modulacji N-QAM można otrzymać przy 8 bitach?",
+            "options": {
+                "A": "3",
+                "B": "8",
+                "C": "16",
+                "D": "256"
+            },
+            "answer": "D"
+        },
+        {
+            "question": "Na ilu bitach realizowane są symbole modulacji 16-QAM?",
+            "options": {
+                "A": "4",
+                "B": "16",
+                "C": "32",
+                "D": "256"
+            },
+            "answer": "A"
+        },
+        {
+            "question": "W modulacji QAM symbol jest jednoznacznie identyfikowany na podstawie:",
+            "options": {
+                "A": "wyłącznie amplitudy",
+                "B": "częstotliwości i fazy",
+                "C": "amplitudy i fazy",
+                "D": "amplitudy i częstotliwości"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "W modulacji QAM każdy symbol kodowany jest z pomocą kodowania:",
+            "options": {
+                "A": "nb/mb",
+                "B": "Graya",
+                "C": "HDB-3",
+                "D": "AMI-1"
+            },
+            "answer": "B"
+        },
+        {
+            "question": "Modulator Mach-Zendera jest modulatorem:",
+            "options": {
+                "A": "akustooptycznym",
+                "B": "elektro-absorbcyjnym",
+                "C": "elektrooptycznym",
+                "D": "polaryzacyjnym"
+            },
+            "answer": "C"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "A": "Mach-Zendera",
+                "B": "AOM",
+                "C": "modulator diodowy",
+                "D": "modulator polaryzacyjny"
+            },
+            "answer": "A",
+            "image": "img/device1.png"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "A": "Mach-Zendera",
+                "B": "AOM",
+                "C": "modulator diodowy",
+                "D": "modulator polaryzacyjny"
+            },
+            "answer": "B",
+            "image": "img/test5.png"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "A": "Mach-Zendera",
+                "B": "AOM",
+                "C": "modulator diodowy",
+                "D": "modulator polaryzacyjny"
+            },
+            "answer": "C",
+            "image": "img/test6.png"
+        },
+        {
+            "question": "Jaki modulator przedstawiono na obrazku?",
+            "options": {
+                "A": "Mach-Zendera",
+                "B": "AOM",
+                "C": "modulator diodowy",
+                "D": "modulator polaryzacyjny"
+            },
+            "answer": "D",
+            "image": "img/test1.png"
+        },
+        {
+            "question": "Modulator przedstawiony na obrazku funkcjonuje na zasadzie zmianie parametrów poprzez:",
+            "options": {
+                "A": "oświetlanie matrycy pikseli",
+                "B": "regulację prądu zasilania",
+                "C": "dyfrakcję światła pod wpływem ultradźwięków",
+                "D": "transmisji dwóch wiązek światła przez interferometr"
+            },
+            "answer": "A",
+            "image": "img/device6.png"
+        }
+    ]
+}

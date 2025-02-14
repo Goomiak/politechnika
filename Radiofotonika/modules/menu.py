@@ -39,7 +39,7 @@ class MenuWidget(QWidget):
         self.scroll_layout.addWidget(logo)
 
         # Tytuł aplikacji
-        title = QLabel("Aplikacja: Zasady detekcji bezpośredniej i koherentnej")
+        title = QLabel("Podstawy technik i systemów radiowo-fotonicznych")
         title.setAlignment(Qt.AlignCenter)
         title.setStyleSheet("font-size: 16px; ")
         self.scroll_layout.addWidget(title)

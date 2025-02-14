@@ -1,5 +1,7 @@
+import importlib.util
 import os
-from PySide6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QTextEdit, QSlider, QWidget
+import json
+from PySide6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QTextEdit, QSlider, QWidget, QRadioButton, QVBoxLayout, QButtonGroup
 from PySide6.QtGui import QPixmap, QTextOption, QMovie
 from PySide6.QtCore import Qt, QTimer
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
@@ -78,7 +80,7 @@ class ModuleDialog(QDialog):
                 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 
                 fig, ax = plt.subplots(figsize=(5, 2))
-                ax.text(0.5, 0.5, f"${element['content']}$", fontsize=20, ha='center', va='center')
+                ax.text(0.5, 0.5, f"${element['content']}$", fontsize=14, ha='center', va='center')
                 ax.axis("off")
                 
 
@@ -159,6 +161,7 @@ class ModuleDialog(QDialog):
     def run_simulation(self, simulation_data):
         simulation_name = simulation_data["simulation_name"]
         sliders_config = simulation_data.get("sliders", {})
+        radio_buttons_config = simulation_data.get("radio_buttons", {})
         """Uruchamianie symulacji po załadowaniu"""
         # Usunięcie ikonki ładowania
         self.loading_label.setParent(None)
@@ -170,6 +173,28 @@ class ModuleDialog(QDialog):
         self.slide_layout.addWidget(self.canvas)
         self.content_widgets.append(self.canvas)
 
+         # Obsługa radio buttons dla liczby symboli
+        if "Liczba symboli" in radio_buttons_config:
+            group_box = QWidget()
+            group_layout = QVBoxLayout()
+            button_group = QButtonGroup(group_box)
+            
+            for value in radio_buttons_config["Liczba symboli"]["options"]:
+                radio_button = QRadioButton(str(value))
+                button_group.addButton(radio_button)
+                group_layout.addWidget(radio_button)
+
+                # Ustawienie domyślnej wartości
+                if value == radio_buttons_config["Liczba symboli"]["default"]:
+                    radio_button.setChecked(True)
+
+                # Po zmianie wartości aktualizujemy symulację
+                radio_button.toggled.connect(lambda checked, v=value: self.update_radio(v, checked))
+
+            group_box.setLayout(group_layout)
+            self.slide_layout.addWidget(group_box)
+            self.content_widgets.append(group_box)
+
         # Dodanie suwaków dla parametrów symulacji
         for slider_name, slider_params in sliders_config.items():
             slider_container = QWidget()
@@ -180,12 +205,26 @@ class ModuleDialog(QDialog):
             slider_layout.addWidget(slider_label)
 
             slider = QSlider(Qt.Horizontal)
-            slider.setMinimum(int(slider_params["min"] * 100))
-            slider.setMaximum(int(slider_params["max"] * 100))
-            slider.setValue(int(slider_params["default"] * 100))
-            slider.valueChanged.connect(lambda value, s_name=slider_name, lbl=slider_label: self.update_slider(value, s_name, lbl))
-            slider_layout.addWidget(slider)
 
+            # Ustawienie zakresów dla QSlider (wszystko jako int)
+            if slider_params["int"]:
+                slider.setMinimum(slider_params["min"])
+                slider.setMaximum(slider_params["max"])
+                slider.setSingleStep(slider_params["step"])
+                slider.setValue(slider_params["default"])
+            else:
+                # Przeskalowanie zmiennoprzecinkowych wartości na int (dla QSlider)
+                scale_factor = 100  # Można zmieniać dla większej precyzji
+                slider.setMinimum(int(slider_params["min"] * scale_factor))
+                slider.setMaximum(int(slider_params["max"] * scale_factor))
+                slider.setSingleStep(int(slider_params["step"] * scale_factor))
+                slider.setValue(int(slider_params["default"] * scale_factor))
+
+            # Aktualizacja suwaka
+            slider.valueChanged.connect(lambda value, s_name=slider_name, s_params=slider_params, lbl=slider_label:
+                                        self.update_slider(value / scale_factor if not s_params["int"] else value, s_name, lbl))
+
+            slider_layout.addWidget(slider)
             slider_container.setLayout(slider_layout)
             self.slide_layout.addWidget(slider_container)
             self.content_widgets.append(slider_container)
@@ -245,10 +284,17 @@ class ModuleDialog(QDialog):
 
     def update_slider(self, value, slider_name, label):
         """ Aktualizacja wartości suwaka i zmiana parametru symulacji """
-        float_value = value / 100.0
-        label.setText(f"{slider_name}: {float_value:.2f}")
+        label.setText(f"{slider_name}: {value:.2f}" if isinstance(value, float) else f"{slider_name}: {int(value)}")
+        
         if hasattr(self.simulation_widget, "update_parameter"):
-            self.simulation_widget.update_parameter(slider_name, float_value)
+            self.simulation_widget.update_parameter(slider_name, value)
+            self.canvas.draw()
+    
+
+    def update_radio(self, value, checked):
+        """Aktualizacja wartości dla radio box (Liczba symboli)"""
+        if checked and hasattr(self.simulation_widget, "update_parameter"):
+            self.simulation_widget.update_parameter("Liczba symboli", value)
             self.canvas.draw()
 
     def center_window(self):

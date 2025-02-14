@@ -1,0 +1,393 @@
+{
+    "slides": {
+      "direct_detection": [
+        {
+          "elements": [
+            {"type": "text", "content": "Technika RoF (Radio over Fiber)", "bold": true},
+            {"type": "text", "content": "Technika RF – interdyscyplinarna dziedzina, łącząca elementy radiotechniki z fotoniką. Jej celem jest przetwarzanie, modulacja, transmisja i detekcja sygnałów radiowych z wykorzystaniem technologii optycznych. Pozwala ona na realizację tych funkcjonalności z wysokimi częstotliwościami oraz zachowaniem szerokopasmowości. Stosowana jest w radarach, systemach telekomunikacyjnych, a także w optycznych systemach transmisji danych."},
+            {"type": "text", "content": "Podstawowymi elementami fotonicznymi są:", "bold": true},
+            {"type": "text", "content": "Światłowód - medium transmisyjne składające się z krzemionkowego rdzenia (najczęściej domieszkowanego innymi substancjami), płaszcza oraz warstwy buforowej - które pozwala na przesyłanie światła na duże odległości, wykorzystujące prawo całkowitego wewnętrznego odbicia."},
+            {"type": "image", "content": "img/poj1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Apertura Numeryczna NA", "bold": true},
+            {"type": "text", "content": "Apertura numeryczna NA – parametr określający kąt akceptacji, czyli maksymalny kąt w stosunku do osi rdzenia włókna, pod którym światło wprowadzone do światłowodu nie będzie wyciekać poza niego. Apertura bezpośrednio zależy od współczynników załamania światła w rdzeniu oraz w płaszczu i przedstawia się następującymi wzorami:"},
+            {"type": "image", "content": "img/poj3.png"},
+            {"type": "text", "content": "Apertura numeryczna dla SMF wynosi od 0.05 do 0.4 (średnio 0.1), dla MMF wynosi średnio 0.3."},
+            {"type": "image", "content": "img/poj2.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Źrodło światła i fotodetektor" },
+            {"type": "text", "content": "Źródło światła - element lub urządzenie generujące światło w systemach optycznych. Najczęściej jest to laser lub dioda elektroluminescencyjna (LED)."},
+            {"type": "image", "content": "img/poj4.png"},
+            {"type": "text", "content": "Fotodetektor - detektor światła, który przekształca sygnał optyczny na sygnał elektryczny. Najczęściej jest to fotodioda."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Podstawowe zjawiska optyczne:"},
+            {"type": "text", "content": "Dyfrakcja - rozproszenie światła, które występuje, gdy światło przechodzi przez przeszkody lub szczeliny. Są to wszelkie odstępstwa od prostoliniowego biegu fal."},
+            {"type": "image", "content": "img/poj5.png"},
+            {"type": "text", "content": "Rozproszenie Rayleighego (Rozproszenie Liniowe) – spowodowane przez małe w stosunku do długości fali niejednorodności w światłowodzie stworzone na etapie produkcyjnym. Najczęściej są to fluktuacje kompozycji szkła oraz fluktuacje gęstości. Rozproszenie Rayleigha przyczynia się do 96% strat tłumieniowych w światłowodzie. Część rozproszonego światła jest odbijana z powrotem w kierunku źródła światła. Zjawisko to wykorzystywane jest do testowania światłowodów z pomocą reflektometru optycznego OTDR."},
+            {"type": "image", "content": "img/poj6.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Rozproszenie Mie (liniowe):"},
+            {"type": "text", "content": "Rozproszenie Mie – spowodowane przez cząsteczki wielkości podobnej do długości fali (większe niż 10% długości fali). W światłowodach są to niejednorodności, takie jak zmiany współczynnika załamania światła rdzeń-płaszcz na całej długości włókna, zanieczyszczenia na styku rdzeń-płaszcz, odkształcenia lub pęcherzyki we włóknie lub wahania średnicy. Rozproszenie Mie można zmniejszyć, ostrożnie usuwając niedoskonałości z materiału szklanego, dokładnie kontrolując jakość i czystość procesu produkcyjnego. W przypadku włókien komercyjnych efekty rozpraszania Mie są pomijalne – włókna optyczne są produkowane z bardzo niewielką liczbą dużych defektów."},
+            {"type": "image", "content": "img/poj7.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Rozproszenie Brillouina (Nieliniowe)"},
+            {"type": "text", "content": "Rozproszenie Brillouina – spowodowane nieliniowością medium. W światłowodach objawia się jako modulacja światła przez energię cieplną w materiale. Foton padający może zostać przekształcony w foton rozproszony o nieco niższej energii, zwykle rozprzestrzeniający się w kierunku wstecznym, oraz w fonon (energię drgającą). To sprzężenie pól optycznych i fal akustycznych następuje poprzez elektrostrykcję. Częstotliwość odbitej wiązki jest nieco niższa od częstotliwości wiązki padającej. Różnica częstotliwości odpowiada częstotliwości emitowanych fononów. Nazywa się to przesunięciem częstotliwości Brillouina. Zjawisko to jest wykorzystywane w czujnikach światłowodowych. Rozproszenie Brillouina może zachodzić spontanicznie nawet dla niskich poziomów mocy."},
+            {"type": "image", "content": "img/poj8.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Stymulowane Rozproszenie Ramana (Rozproszenie Nieliniowe)"},
+            {"type": "text", "content": "Stymulowane Rozproszenie Ramana – jest odpowiedzią światłowodu na optyczną intensywność światła. Spowodowane jest wibracjami sieci krystalicznej (lub szklanej). Stymulowane rozpraszanie Ramana wytwarza fonon optyczny o wysokiej częstotliwości, w porównaniu do rozpraszania Brillouina, które wytwarza fonon akustyczny o niskiej częstotliwości i rozproszony foton. Gdy dwie wiązki laserowe o różnych długościach fal (i zazwyczaj tym samym kierunku polaryzacji) – rozprzestrzeniają się razem przez ośrodek aktywny Ramana – wiązka o dłuższej długości fali może ulec wzmocnieniu optycznemu kosztem wiązki o krótszej długości fali. Zjawisko to zostało wykorzystane w przypadku wzmacniaczy i laserów Ramana."},
+            {"type": "image", "content": "img/poj9.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Interferencja"},
+            {"type": "text", "content": "Interferencja - zjawisko nakładania się fal świetlnych, co w efekcie może powodować wzmocnienie lub wygaszenie sygnału. W wyniku nakładania się fal – powstaje fala będąca ich wypadkową. Interferencja zachodzi, gdy te fale mają tę samą długość. Jeśli dwie fale są zgodne również w fazie – nazywamy to zjawisko interferencją konstruktywną. Wówczas w jednym miejscu następuje wzmocnienie, a w innym osłabienie lub całkowity zanik drgań. Jeśli fazy obu fal są przeciwne – mamy do czynienia z interferencją destruktywną, gdy fale ulegają całkowitemu wygaszeniu. "},
+            {"type": "image", "content": "img/poj10.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Modulacja - proces zmiany parametrów fali nośnej (amplituda, częstotliwość, faza) w celu przenoszenia informacji."},
+            {"type": "image", "content": "img/poj11.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Polaryzacja", "bold":true},
+            {"type": "text", "content": "Polaryzacja to uporządkowana relacja miedzy kierunkiem oscylacji, a kierunkiem propagacji fali świetlnej. Może być liniowa, kołowa lub eliptyczna. Światło niespolaryzowane można spolaryzować z pomocą specjalnych płytek zwanych polaryzatorami."},
+            {"type": "image", "content": "img/poj12.png"}
+          
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Efekt elektrooptyczny - opisuje zmiany właściwości optycznych mateirału w zależności od przyłożonego pola elektrycznego.", "bold":true},
+            {"type": "image", "content": "img/poj13.png"},
+            {"type": "text", "content": "Efekt elektrochemiczny – tworzenie pasma absorbcyjnego na pewnej długości fali, które ujawnia się poprzez zmianę koloru."},
+            {"type": "text", "content": "Efekt Pockelsa (efekt liniowo-elektrooptyczny) – zmiana współczynnika załamania w sposób liniowo-proporcjonalny do pola elektrycznego. Ulegają mu kryształy nie posiadające symetrii inwersyjnej."},
+            {"type": "text", "content": "Efekt Kerra (Efekt QEO, Efekt kwadratowo-elektrooptyczny) – zmiana współczynnika załamania proporcjonalna do kwadratu pola elektrycznego. Wszystkie materiały ulegają efektowi Kerra w różnym stopniu, ale z reguły jest on słabszy niż efekt Pockelsa."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Elektrożyracja – zmiana w aktywności optycznej "},
+            {"type": "text", "content": "Efekt refrakcji elektronów – przenikalność elektryczna zmienia się, gdy materiał jest oświetlony elektronami o dużej energii, najczęściej podczas mikroskopowej transmisji elektronów lub mikroskopowym skanowaniu elektronów. Występuje w niektórych kryształach i materiałach amorficznych. Efekt jest nieliniowy i odwracalny. Inaczej nazywa się go modyfikacją przenikalności elektrycznej indukowaną elektronami (EIPM)."},
+            {"type": "text", "content": "Elektroabsorbcja – ogólna zmiana stałych absorbcji materiału."},
+            {"type": "text", "content": "Efekt Franza-Keldysha – zmiana absorbcji występująca w niektórych masywnych półprzewodnikach."},
+            {"type": "text", "content": "Ograniczony Kwantowo Efekt Starka – zmiana absorbcji niektórych półprzewodnikowych studni kwantowych"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Zagadnienia radiotechniczne:"},
+            {"type": "text", "content": "Antena - urządzenie emitujące i odbierające fale radiowe. Antena konwertuje sygnał elektryczny na fale radiowe i odwrotnie. Jest interfejsem między falami radiowymi propagującymi w przestrzeni a prądami elektrycznymi poruszającymi się w metalowych przewodnikach. Antena pełni funkcję nadajnika lub odbiornika. Antenę opisuje m.in. charakterystyka promieniowania."},
+            {"type": "image", "content": "img/poj14.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Mikrofale - fale elektromagnetyczne o częstotliwościach 300 MHz – 300 GHz, wykorzystywane w komunikacji bezprzewodowej. "},
+            {"type": "image", "content": "img/poj15.png"},
+            {"type": "text", "content": "Podstawowy wzór na częstotliwości fali:"},
+            {"type": "math", "content": "f = \\frac{c}{\\lambda}"}
+          ]
+        }
+      ],
+      "coherent_detection": [
+        {
+          "elements": [
+            {"type": "text", "bold": true,  "content": "Modulacja Amplitudy (AM) – polega na zmianie wartości amplitudy nośnej proporcjonalnie do wartości amplitudy sygnału modulującego." },
+            {"type": "image", "content": "img/mod1.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja AM c.d.", "bold":true},
+            {"type": "text", "content": "Poziom modulacji określa głębokość modulacji μ – opisana wzorem:"},
+            {"type": "math", "content": "\\mu = \\frac{A_m}{A_c}"},
+            {"type": "text", "content": "Stąd sygnał zmodulowany może być przedstawiony jako:"},
+            {"type": "math", "content": "S(t) = A_c [1 + \\mu \\cos(2\\pi f_m t)] \\cos(2\\pi f_c t)"},
+            {"type": "text", "content": "Załóżmy, że A<sub>max</sub> i A<sub>min</sub> są odpowiednio największą i najmniejszą wartością amplitudy fali zmodulowanej. A<sub>max</sub> można osiągnąć, gdy cosinusy przyjmują wartość 1, stąd:"},
+            {"type": "math", "content": "A_{max} = A_c + A_m "},
+            {"type": "text", "content": "Analogicznie A<sub>min</sub> można osiągnąć, gdy cosinusy przyjmują wartość -1, stąd:"},
+            {"type": "math", "content": "A_{min} = A_c - A_m "},
+            {"type": "text", "content": "Łącząc te dwa wyrażenia otrzymujemy:"},
+            {"type": "math", "content": "A_c = \\frac{A_{max} + A_{min}}{2} "},
+            {"type": "math", "content": "A_m = \\frac{A_{max} - A_{min}}{2} "}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja AM c.d.", "bold":true},
+            {"type": "text", "content": "Na podstawie poprzednich wyrażeń otrzymujemy kolejny wzór na głębokość modulacji:"},
+            {"type": "math", "content": "\\mu = \\frac{A_{max} - A_{min}}{A_{max} + A_{min}}"},
+            {"type": "text", "content": "Bardzo często podaje się głębokość modulacji w procentach. Idealna modulacja powinna mieć głębokość μ=100%. Modulacja, której głębokość jest mniejsza niż 100% nazywana jest niedomodulowaniem, a taka, której głębokość jest większa niż 100% nazywana jest przemodulowaniem. Wraz ze wzrostem współczynnika głębokości – nośna doświadcza odwrócenia o 180°, co powoduje wykształcenie się dodatkowych wstęg, co powoduje zniekształcenie fali. Stąd też przemodulowana fala powoduje interferencje, których nie da się wyeliminować."},
+            {"type": "image", "content": "img/modul2.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja AM c.d.", "bold":true},
+            {"type": "text", "content": "Pasmo częstotliwości jest równe różnicy największej i najmniejszej częstotliwości sygnału. Podstawowym wzorem do obliczenia pasma jest:"},
+            {"type": "math", "content": "B = f_{+} - f_{-}"},
+            {"type": "text", "content": "Biorąc pod uwagę wcześniej wspomniane wzory, można zauważyć, że:"},
+            {"type": "math", "content": "S(t) = A_c \\cos(2\\pi f_c t) + \\frac{1}{2} A_c \\mu \\cos[2\\pi (f_c + f_m)t] + \\frac{1}{2} A_c \\mu \\cos[2\\pi (f_c - f_m)t]"},
+            {"type": "text", "content": "Stąd amplituda fali zmodulowanej posiada trzy częstotliwości w swoim widmie częstotliwość nośną f<sub>c</sub>, częstotliwość górnowstęgową f<sub>c</sub>+f<sub>m</sub> oraz częstotliwość dolnowstęgową f<sub>c</sub>-f<sub>m</sub>. Stąd:"},
+            {"type": "math", "content": "f_{+} = f_c + f_m \\quad i \\quad f_{-} = f_c - f_m"},
+            {"type": "math", "content": " B = 2 f_m "},
+            {"type": "text", "content": "Obliczenia mocy na podstawie wzoru częstotliwościowego można przedstawić jako:"},
+            {"type": "math", "content": " P_t = P_c + P_{USB} + P_{LSB} "}
+
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja AM c.d.", "bold":true},
+            {"type": "text", "content": "Standardowy wzór na moc sygnału cosinusoidalnego to:"},
+            {"type": "math", "content": "P = \\frac{V_{rms}}{2} = \\frac{\\sqrt{2}}{2} V_p"},
+            {"type": "text", "content": "gdzie V<sub>rms</sub> – wartość średniokwadraturowa sygnału, V<sub>p</sub> - wartość szczytowa sygnału."},
+            {"type": "text", "content": "Na tej podstawie moce sygnałów wynoszą odpowiednio:"},
+            {"type": "math", "content": "P_c = \\frac{A_c^2}{2R} \\quad i \\quad P_{USB} = P_{LSB} = \\frac{(A_c \\mu)^2}{8R}"},
+            {"type": "text", "content": "Stąd:"},
+            {"type": "math", "content": "P_t = P_c \\left( 1 + \\frac{\\mu^2}{2} \\right)"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja AM c.d.", "bold":true},
+            {"type": "text", "content": "Modulator amplitudy konstruuje się w oparciu o powyższą algebrę oraz jeden z poniższych schematów. Jedno rozwiązanie wykorzystuje urządzenie spełniające prawo kwadratowe lub diodę przełączającą."},
+            {"type": "image", "content": "img/modul3.png"},
+            {"type": "text", "content": "Rozróżnia się modulację dwuwstęgową DSB (z nośną (LC) lub z wytłumioną nośną (SC)), jednowstęgową (SSC) oraz z częściowo tłumioną wstęgą boczną (VSC). Bazowa modulacja amplitudy to zatem AM DSB-LC."},
+            {"type": "text", "content": "Modulacje fazy i częstotliwości są nazywane modulacjami kąta sygnału nośnego. Standardowe równanie kąta fali zmodulowanej to:"},
+            {"type": "math", "content": "S(t) = A_c \\cos[\\theta(t)]"}
+
+          ]
+        },
+        {
+          "elements": [
+            
+              {"type": "simulation", "content": {
+                  "simulation_name": "am_simulation",
+                  "sliders": {
+                      "Amplituda nośnej": {"min": 0.25, "max": 1.0, "default": 1.0, "step": 0.25, "int": false},
+                      "Częstotliwość nośnej": {"min": 10, "max": 200, "default": 150, "step": 10, "int": false},
+                      "Amplituda sygnału modulującego": {"min": 0.5, "max": 2.0, "default": 1.0, "step": 0.5, "int": false},
+                      "Częstotliwość sygnału modulującego": {"min": 5, "max": 15, "default": 10, "step": 5, "int": false}
+                  }
+              }}
+          ]
+      },
+      {
+        "elements": [
+            {"type": "text", "content": "Symulacja przedstawia modulację amplitudy (AM) z możliwością regulacji głębokości modulacji."},
+            {"type": "simulation", "content": {
+                "simulation_name": "am_depth_simulation",
+                "sliders": {
+                    "Głębokość modulacji (μ)": {"min": 0.2, "max": 3.0, "default": 0.5, "step": 0.1, "int": false}
+                }
+            }}
+        ]
+    },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Modulacja Częstotliwości (FM) – polega na zmianie chwilowej częstotliwości nośnej proporcjonalnie do sygnału modulującego."},
+            {"type": "image", "content": "img/mod7.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja FM c.d.", "bold":true},
+            {"type": "text", "content": "Częstotliwość fali zwiększa się, gdy amplituda sygnału modulującego lub nośnej się zwiększa. Analogicznie zmniejsza się, gdy amplituda jednego z tych sygnałów się zmniejsza. Gdy sygnał modulujący wynosi 0 – częstotliwość fali zmodulowanej pozostaje stała i równa częstotliwości nośnej sygnału."},
+            {"type": "text", "content": "Częstotliwość chwilowa w modulacji FM wynosi:"},
+            {"type": "math", "content": "f_i = f_c + k_f m(t)"},
+            {"type": "text", "content": "gdzie m(t) – sygnał nośny, k<sub>f</sub> - wrażliwość częstotliwości"},
+            {"type": "text", "content": "Korzystając z własności częstotliwości kątowej ω<sub>i</sub> i kąta θ<sub>i</sub>(t):"},
+            {"type": "math", "content": "\\omega_i = \\frac{d\\theta_i(t)}{dt}"},
+            {"type": "text", "content": "Stąd po przekształceniu:"},
+            {"type": "math", "content": "\\theta_i(t) = 2\\pi \\int f_i dt"}
+
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja FM c.d.", "bold":true},
+            {"type": "text", "content": "Po podstawieniu f<sub>i</sub> oraz rozwiązaniu całki, otrzymujemy równanie sygnału zmodulowanego FM:"},
+            {"type": "math", "content": " S(t) = A_c \\cos(2\\pi f_c t + \\beta \\sin(2\\pi f_m t))"},
+            {"type": "text", "content": "gdzie β – współczynnik modulacji"},
+            {"type": "math", "content": "\\beta = \\frac{\\Delta f}{f_m} = \\frac{k_f A_m}{f_m}"},
+            {"type": "text", "content": "Warto nadmienić, iż Δf – dewiacja częstotliwości, czyli maksymalny odchył od częstotliwości nośnej przy danym sygnale modulującym. Częstotliwość sygnału modulującego o częstotliwości f<sub>m</sub> zmienia się w zakresie [f<sub>m</sub>-Δf,f<sub>m</sub>+Δf]."},
+            {"type": "text", "content": "Wyróżniamy modulacje FM wąskopasmowe i szerokopasmowe na podstawie wartości β. Modulacje szerokopasmowe to takie, dla których β>1, a wąskopasmowe dla których β jest mniejsze od 1."}
+
+
+          ]
+        },
+        {
+          "elements": [
+            
+              {"type": "simulation", "content": {
+                  "simulation_name": "fm_sim",
+                  "sliders": {
+                      "Amplituda nośnej": {"min": 0.25, "max": 1.0, "default": 1.0, "step": 0.25, "int": false},
+                      "Częstotliwość nośnej": {"min": 80, "max": 150, "default": 100, "step": 1, "int": true},
+                      "Amplituda sygnału modulującego": {"min": 0.5, "max": 1.0, "default": 1.0, "step": 0.25, "int": false},
+                      "Częstotliwość sygnału modulującego": {"min": 5, "max": 15, "default": 10, "step": 1, "int": true}
+                  }
+              }}
+          ]
+      },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Modulacja Fazy (PM) – polega na zmianie fazy nośnej w zależności od sygnału modulującego."},
+            {"type": "image", "content": "img/mod10.png"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja PM c.d.", "bold":true},
+            {"type": "text", "content": "Faza fali zmodulowanej ma nieskończenie punktów, gdzie przesunięcie w fazie może nastąpić. Chwilowa amplituda sygnału modulującego zmienia fazę sygnału nośnego. Gdy amplituda jest dodatnia – faza zmienia się w jednym kierunku, a kiedy ujemna – w przeciwnym."},
+            {"type": "text", "content": "Równanie chwilowej fazy przedstawia się jako:"},
+            {"type": "math", "content": " \\phi_i = k_p m(t)"},
+            {"type": "text", "content": "gdzie k<sub>p</sub> – wrażliwość fazy, m(t) – sygnał nośny."},
+            {"type": "text", "content": "Standardowe równanie fali zmodulowanej fazowo przedstawia się jako:"},
+            {"type": "math", "content": "S(t) = A_c \\cos(2\\pi f_c t + \\phi_i)"},
+            {"type": "text", "content": "Po podstawieniu równania chwilowej fazy oraz β=k<sub>p</sub> A<sub>m</sub>=Δ<sub>ϕ</sub>, po zmodulowaniu otrzymujemy równanie sygnału zmodulowanego PM:"},
+            {"type": "math", "content": "S(t) = A_c \\cos(2\\pi f_c t + \\beta \\cos(2\\pi f_m t)) "},
+            {"type": "text", "content": "gdzie Δ<sub>ϕ</sub> – dewiacja fazy"}
+
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja Polaryzacji Światła – polega na zmianie stanu polaryzacji światła w odpowiedzi na sygnał modulujący. ", "bold":true},
+            {"type": "text", "content": "Zmiana rodzaju polaryzacji niesie za sobą informacje. W systemach PDM wykorzystuje się dwa ortogonalne stany polaryzacji do przesyłania dwóch niezależnych strumieni danych na jednej fali nośnej. Modulator zmienia płaszczyznę polaryzacji, zazwyczaj liniowo spolaryzowanego promieniowania. Zmiana płaszczyzny polaryzacji często jest wymuszonej dwójłomności modulatora, czego efektem są różne fazy między promieniem zwyczajnym a nadzwyczajnym."},
+            {"type": "text", "content": "Modulacja Kwadraturowa Amplitudy (M-QAM) ", "bold": true},
+            {"type": "text", "content": "Modulacja M-QAM - stanowi połączenie ASK i PSK, dzięki czemu można przesyłać więcej informacji na tej samej częstotliwości nośnej. Ta cyfrowa modulacja składa się z komponentu in-phase I(t), czyli amplitudy nośnej w fazie, oraz komponentu kwadraturowego Q(t), czyli amplitudy przesuniętej o 90°."},
+
+            {"type": "math", "content": " S(t) = I(t) \\cos(2\\pi f_c t) + Q(t) \\sin(2\\pi f_c t)"},
+            {"type": "text", "content": "Modulacja ta pozwala na osiągnięcie M=2<sup>N</sup> różnych kombinacji amplitudy i fazy, gdzie N to liczba możliwych do przesłania bitów na symbol, a M to liczba symboli modulacji QAM. Przy założeniu, że oś pozioma reprezentuje komponent I(t), a pionowa Q(t) – kombinacje punktów ( i , q ) tworzą diagram konstelacji w układzie kartezjańskim. Każda kombinacja reprezentuje dokładnie jeden symbol. "}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulacja QAM c.d. ", "bold":true},
+    
+            {"type": "image", "content": "img/modul4.png"},
+            {"type": "text", "content": "Każdy symbol konstelacji różni się fazą lub amplitudą. Wynika to z faktu, iż każdy stan bitowy ma określoną amplitudę i fazę, które jednoznacznie określają jego położenie w konstelacji. Wartości współrzędnych są dobierane tak, by zapewnić maksymalną odległość miedzy punktami (tzw. minimalizację błędu symbolowego). Realizuje się to poprzez zastosowanie kodu Graya do przypisywania wartości binarnych do punktów konstelacji w taki sposób, aby sąsiednie punkty różniły się dokładnie jednym bitem, co ogranicza również błąd do pojedynczego bitu. Dzięki temu unikamy błędów w interpretacji symboli, szczególnie występującego na wielu bitach."}
+
+
+          ]
+        },
+        {
+          "elements": [
+              {"type": "text", "bold": true, "content": "Modulacja QAM - symulacja"},
+              {"type": "text", "content": "Symulacja prezentuje konstelację punktów modulacji QAM."},
+              {"type": "simulation", "content": {
+                  "simulation_name": "qam_simulation",
+                  "radio_buttons": {
+                    "Liczba symboli": {
+                        "options": [4, 16, 64, 256, 1024],
+                        "default": 64
+                    }
+                },
+                  "sliders": {
+                    "Iteracje": {"min": 1, "max": 20, "default": 10, "step": 1, "int": true},
+                    "Szum (std)": {"min": 0.01, "max": 0.2, "default": 0.03, "step": 0.01, "int": false}
+                  }
+              }}
+          ]
+      }
+      ],
+      "summary": [
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory Elektrooptyczne (EOM) – wykorzystują efekt elektrooptyczny, w którym współczynnik załamania światła w materiale zmienia się pod wpływem pola elektrycznego.", "bold":true},
+            {"type": "text", "content": "Modulator Mach-Zehndera (MZM), bazuje na zjawisku zmiany różnicy faz między dwoma ramionami interferometru Mach-Zehndera przez  sygnał RF, co moduluje amplitudę lub fazę światła. W interferometrze Mach-Zehndera promień świetlny padający na wejście układu rozdzielany jest układem luster na dwa promienie, z których każdy przechodzi przez interferometr inną drogą. Następnie oba promienie ponownie spotykają się na wyjściu układu. "},
+            {"type": "text", "content": "Obraz interferencyjny oglądany na ekranie, zależy od różnicy faz obu promieni, a zatem jest on czuły na najdrobniejsze detale, które mogą wpływać na różnicę dróg optycznych pomiędzy ramionami interferomentru. Jeśli w jednym z ramion sygnałowych umieścimy obiekt fazowy (dowolny, przeźroczysty o nieznacznie zmieniającym się w czasie lub przestrzeni współczynniku załamania) – to efekty tych zmian widoczne będą na obrazie interferencyjnym w postaci układu prążków. Można to wykorzystać do badania subtelnych niejednorodności obiektów przezroczystych."},
+
+            {"type": "image", "content": "img/device1.png"},
+            {"type": "text", "content": "Modulator fazowy, bazuje na zmianie fazy światła przez oddziaływanie sygnału RF na fazę propagującej fali optycznej."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory akustooptyczne (AOM) – wykorzystują efekt akustooptyczny, w którym fala akustyczna powoduje zmiany współczynnika załamania w materiale optycznym.", "bold":true},
+            {"type": "text", "content": "Sygnał RF generuje fale akustyczne, któa tworzą dynamiczną siatkę dyfrakcyjną, modulując intensywność, częstotliwość lub fazę światła. Głównym elementem budowy jest przezroczysty materiał, przez który przechodzi światło. Do materiału przykładana jest fala ultradźwiękowa generowana przez przetwornik piezoelektryczny. Fala ta tworzy w materiale okresowe zmiany gęstości (kratę refrakcyjną), co powoduje dyfrakcję światła. Kąt i intensywność dyfrakcji zależą od częstotliwości i amplitudy fali ultradźwiękowej. Takie modulatory można stosować w laserach impulsowych, skanerów optycznych, spektroskopów, a także dla komunikacji optycznej."},
+            {"type": "image", "content": "img/device2.png"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory termooptyczne (TOM) – zmieniają współczynnik załamania światła w oparciu o efekt cieplny wywołany sygnałem elektrycznym. ", "bold": true},
+            {"type": "text", "content": "Zmiana temperatury kontroluje refrakcję światła w materiale. Zbudowane są głównie z materiału zmieniającego współczynnik załamania światła pod wpływem temperatury tj. polimery, czy krzemionka. Potrzebuje również źródła ciepła, takiego jak grzałka lub laser, które kontroluje temperaturę. Temperatura wpływa na współczynnik załamania światła, co zmienia propagację fali świetlnej w modulatorze. Efekt jest wykorzystywany głównie w falowodach optycznych. Modulatory takie można stosować również w przełącznikach optycznych, matrycach sterujących światłem w układach fotonicznych, a także systemach telekomunikacyjnych."},
+
+            {"type": "text", "content": "Modulatory optomechaniczne (OMM) – wykorzystują interakcję światła z mikro- i nanostrukturami mechanicznymi.", "bold":true},
+            {"type": "text", "content": "Sygnał RF wywołuje oscylacje mechaniczne, które zmieniają charakterystykę propagacji światła. Wykorzystują mikroskopijne układy mechaniczne (MEMS) lub elementy światłowodowe zawieszone na elastycznych podporach. Światło oddziałuje z mechanicznymi oscylacjami układu. Oddziaływanie optyczno-mechaniczne prowadzi do zmiany intensywności, fazy lub polaryzacji światła. Mechaniczne wibracje mogą modulować światło lub przesuwać jego długość fali. Modulatory te można zastosować dla detekcji bardzo małych sił, przesunięć i mas, a także czujnikach w systemach MEMS/NEMS."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory półprzewodnikowe (SOM) – oparte są na materiałach półprzewodnikowych, takich jak GaAs lub InP", "bold": true},
+            {"type": "text", "content": "- modulatory elektro-absorbcyjne (EAM) – wykorzystują efekt elektroabsorbcji, gdzie zmienne pole elektryczne kontroluje absorbcję światła. Oparte są na półprzewodnikowych materiałach tj. GaAs, czy InP, często zbudowane jako elementy falowodowe. Pole elektryczne zmienia współczynnik absorbcji światła w materiale. Zjawisko elektroabsorbcji pozwala modulować światło bez ruchomych części. Takie modulatory można stosować w szybkich modulatorach w systemach światłowodowych, a także w laserach VCSEL dla celów telekomunikacyjnych."},
+            {"type": "text", "content": "- modulatory diodowe, zmiana prądu steruje emisją światła w diodach laserowych. Wykorzystują LED lub diody laserowe jako źródło światła, gdzie natężenie światła kontrolowane jest prądem zasilania. Regulacja prądu sterującego zmienia intensywność emitowanego światła. Dodatkowo w laserach możliwa jest modulacja FM lub PM. Dzięki tym własnościom modulatory diodowe znajdą zastosowanie w światłowodowych sieciach komunikacyjnych, projektorach optycznych, oświetleniu z modulacją intensywności (np. LiFi)."},
+            {"type": "image", "content": "img/device3.png"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory przestrzenne (SLM) – wykorzystują zmienny współczynnik załamania lub polaryzację w matrycach pikseli do modulacji światła. ", "bold": true},
+            {"type": "text", "content": "Składają się z matrycy pikseli, gdzie każdy piksel może modulować światło. Pojedynczy piksel działa jak indywidualny modulator. Światło przechodzi przez piksele, które zmieniają jego intensywność, fazę lub kierunek w zależności od napięcia sterującego. Wykorzystuje się efekty elektrooptyczne i mechaniczne, by to umożliwić. Dzięki temu możliwe zastosowania dla tych modulatorów to wyświetlacze holograficzne, adaptacyjne optyki, a także kamery wielospektralne."},
+            {"type": "gif", "content": "img/dev_gif.gif"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory polaryzacyjne – zmieniają stan polaryzacji światła w odpowiedzi na sygnał elektryczny. ", "bold": true},
+            {"type": "text", "content": "Wykorzystują materiały polaryzujące, a także układy złożone z rotatorów polaryzacji i filtrów. Pole elektryczne, magnetyczne lub mechaniczne zmienia stan polaryzacji światła. Następnie światło przechodzi przez analizator (filtr polaryzacyjny), który blokuje część światła w zależności od polaryzacji. Można takie modulatory stosować w komunikacji optycznej, systemach detekcji polaryzacji, a także obrazowaniu wielospektralnym."},
+            {"type": "image", "content": "img/device4.png"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Modulatory fototermiczne – wykorzystują zmiany indeksu załamania pod wpływem efektu cieplnego indukowanego światłem. ", "bold": true},
+            {"type": "text", "content": "Składają się z materiałów pochłaniających światło i przekształcających energię świetlną w ciepło. Absorbcja światła generuje lokalne zmiany temperatury, co wpływa na optyczne właściwości materiału. Modulacja wynika z indukowanego gradientu temperatury. Takie modulatory stosuje się w detektorach światła, optycznych przełącznikach, a także dla mikroskopii termicznej."},
+            {"type": "image", "content": "img/device5.png"}
+
+          ]
+        }
+       
+      ]
+    }
+  }
+  

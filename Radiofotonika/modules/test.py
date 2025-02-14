@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (
     QInputDialog, QFileDialog, QListWidgetItem, QRadioButton, QGroupBox, QButtonGroup
 )
 
-from PySide6.QtGui import QFont, QPixmap, Qt
+from PySide6.QtGui import QBrush, QColor, QFont, QPixmap, Qt
 import json
 import random
 import os
@@ -76,7 +76,7 @@ class TestDialog(QDialog):
     def __init__(self, name, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Test wiedzy")
-        self.resize(800, 600)
+        self.resize(900, 600)
         self.center_window()
 
         self.setStyleSheet("""
@@ -192,11 +192,11 @@ class TestDialog(QDialog):
         # Obsługa obrazu
         image_path = question.get("image", "")
         if image_path and os.path.exists(image_path):
-            pixmap = QPixmap(image_path)
-            self.image_label.setPixmap(pixmap.scaledToWidth(550, Qt.SmoothTransformation))
-            self.image_label.show()
+                pixmap = QPixmap(image_path)
+                self.image_label.setPixmap(pixmap)  # Ustawienie obrazu bez zmiany rozmiaru
+                self.image_label.show()
         else:
-            self.image_label.hide()
+                self.image_label.hide()
 
         # Odznaczanie wszystkich opcji
         self.button_group.setExclusive(False)  # Tymczasowo wyłącz ekskluzywność, aby móc odznaczyć

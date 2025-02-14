@@ -1,0 +1,244 @@
+{
+    "slides": {
+      "direct_detection": [
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja Bezpośrednia – detekcja polegająca wyłącznie na pomiarze mocy optycznej sygnału, bez uwzględniania informacji o fazie lub częstotliwości nośnej. ", "bold": true},
+            {"type": "text", "content": "Sygnał optyczny E(t) trafia na fotodetektor (np. fotodiodę), która generuje prąd proporcjonalny do mocy optycznej P(t). Fotodetektor przekształca moc optyczną na prąd elektryczny na podstawie poniższych wzorów. "},
+            {"type": "text", "content": "Moc optyczna:"},
+            {"type": "math", "content": "P(t) = \\left|E(t)\\right|^2"},
+            {"type": "text", "content": "Prąd fotodetektora:"},
+            {"type": "math", "content": "I(t) = R \\cdot P(t)"},
+            {"type": "text", "content": "gdzie R - responsywność fotodetektora [A/W]"},
+            {"type": "text", "content": "W sygnale elektrycznym mogą występować szybkie oscylacje związane z nośną, dlatego też w celu filtracji tych oscylacji stosuje się obwód RC. W ten sposób pozostaje użyteczna informacja o mocy sygnału."}   
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "W przypadku detekcji szerokopasmowej dochodzi do tzw. samomieszania. W przypadku sygnału dwuwstęgowego – detektor zmierzy całkowitą moc optyczną sygnału, co prowadzi do sumowania wstęg górnej i dolnej, przez co wypadkowy sygnał elektryczny przedstawi się wzorem:"},
+            {"type": "math", "content": "I(t) \\propto \\left|E_{USB}(t) + E_{LSB}(t)\\right|^2"},
+            {"type": "text", "content": "gdzie: USB - Upper Side Band, LSB - Lower Side Band"},
+            {"type": "text", "content": "Przy niskim próbkowaniu – wstęgi mogą nachodzić na siebie, co powoduje interferencje i zniekształcenie użytecznego sygnału. Detektor musi mieć pasmo wystarczające do uchwycenia obu wstęg, co zwiększa wymagania stawiane układowi odbiorczemu."},
+            {"type": "text", "content": "Detekcja bezpośrednia nie odtwarza informacji o fazie ani częstotliwości sygnału optycznego, co uniemożliwia stosowanie zaawansowanych metod modulacji. Ograniczenia te wynikają z szumów termicznych, szumów prądowych na fotodiodzie oraz szumów kwantowych (związanych z fluktuacją liczby fotonów). Przy szerokopasmowych sygnałach (np. dwuwstęgowych) nakładanie się pasm prowadzi do zjawiska aliasingu i trudności w dekodowaniu informacji."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja bezpośrednia wymaga stosunkowo prostego układu pojedynczego fotodetektora i podstawowego układu odbiorczego, co sprawia, że jest to stosunkowo tanie rozwiązanie – z uwagi na brak konieczności stosowania lokalnego oscylatora i złożonych metod przetwarzania sygnałów. Detekcja ma natomiast świetne warunki dla sygnałów z modulacją intensywności IM/DD (Intensity Modulation / Direct Detection)."},
+            {"type": "text", "content": "Detekcję bezpośrednią można stosować w sieciach światłowodowych krótkiego zasięgu tj. optyczne LAN, czy dostępowe PON. Można również ją stosować przy systemach komunikacji o niskiej przepustowości, gdzie niezawodność jest wysoka, a modulacja fazowa lub kwadraturowa nie jest wymagana. Detekcja bezpośrednia nadaje się również przy konstrukcji czujników optycznych przemysłowych i biomedycznych."},
+            {"type": "text", "content": "Przykładowy schemat układu detekcji bezpośredniej:"},
+            {"type": "image", "content": "img/direct1.png"},
+            {"type": "text", "content": "Proces doboru elementów układu powinien zawierać analizę: <br>   - zakresu spektrum detekcji, <br> - wymaganej szybkości reakcji,<br> - czułości sygnału, <br> - poziomu dopuszczalnych szumów, <br> - kosztów i warunków pracy (np. temperatura)"}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Fotodioda (PIN lub APD) – odbiera sygnał optyczny i przekształca go bezpośrednio na sygnał elektryczny.", "bold": true},
+            {"type": "text", "content": "Fotodioda PIN (Positive-Intrinsic-Negative) - Konwertuje sygnał optyczny na prąd elektryczny. Składa się z warstwy P (zubożony półprzewodnik typu P), warstwy I (o wysokiej rezystywności) oraz warstwy N (półprzewodnik typu N). Obecność warstwy I jest kluczowa dla procesu absorbcji światła. Fotodiody PIN gwarantują dużą szybkość odpowiedzi, dzięki zastosowaniu cienkiej warstwy I oraz umiarkowaną czułość."},
+            {"type": "image", "content": "img/dir2.png"},
+            {"type": "text", "content": "Światło pada na warstwę I fotodiody, gdzie generowane są pary elektron-dziura w procesie absorbcji fotonów. Zewnętrzne pole elektryczne przyłożone do fotodiody powoduje rozdzielenie elektronów i dziur oraz ich transport do warstw P i N. Uzyskany w ten sposób przepływ elektronów generuje prąd fotonowy proporcjonalny do mocy optycznej."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Fotodioda APD (Avalanche PhotoDiode):", "bold": true},
+            {"type": "text", "content": "Działa podobnie do diody PIN, ale dodatkowo wykorzystuje efekt lawinowego zwielokrotnienia prądu. Składa się z warstwy aktywnej (odpowiedzialnej za absorbcję fotonów) oraz obszaru lawinowego (gdzie następuje wzmocnienie prądu fotonowego). Fotodioda APD gwarantuje wyższą czułość niż fotodioda PIN, ale zarazem większy szum wynikający z efektu lawinowego. Jest stosowana m.in. w komunikacji dalekiego zasięgu."},
+            {"type": "image", "content": "img/dir3.png"},
+            {"type": "text", "content": "Światło pada na warstwę aktywną, generując pary elektron-dziura. Przykładanie wysokie napięcie powoduje przyspieszanie elektronów do energii wystarczającej do wystąpienia zderzeń, co generuje kolejne pary elektron-dziura (efekt lawinowy). W ten sposób powstaje wewnętrzne wzmocnienie prądu wyjściowego, zwykle w zakresie 10 – 1000 krotności względem prądu otrzymywanego w przypadku fotodiody PIN."},
+            {"type": "text", "content": "Istnieją również inne rodzaje diod, które można zastosować do układów detekcji bezpośredniej, tj. Fotodioda Schottky’ego, która gwarantuje niską pojemność złącza i szybką odpowiedź, jednocześnie służąc za prostownik sygnału. Stosuje się je przy detekcji fal subterahercowych i mikrofal; Fotodioda MSM, która wykorzystuje szybką detekcję sygnałów dla pasma rzędu 100GHz, a także fotodiody zintegrowane z falowodami, fotodiody germanowe, fotodiody InGaAs,  fotodiody SiC, fotodiody bolometryczne, a także będące w fazie rozwoju fotodiody QD."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Wzmacniacz Transimpedancyjny (TIA) – przetwarza prąd fotodetektora na napięcie. Jest to specyficzny wzmacniacz operacyjny w układzie odwracającym - z rezystorem w pętli sprzężenia zwrotnego, często obarczony dodatkowo pojemnością dla stabilizacji.", "bold":true},
+            {"type": "image", "content": "img/dir4.png"},
+            {"type": "text", "content": "Prąd generowany przez fotodiodę trafia na wejście odwracające wzmacniacza operacyjnego, który przepływa przez rezystor na pętli sprzężenia zwrotnego, odkładając na zaciskach rezystora napięcie. Wynikowe napięcie wyjściowe jest proporcjonalne do prądu wejściowego:"},
+            {"type": "math", "content": "U = -I \\cdot R"},
+            {"type": "text", "content": "Napięcie na wejściu odwracającym jest utrzymywane na poziomie bliskim 0, co minimalizuje szumy i zniekształcenia. Układ ten gwarantuje wysoką czułość, gdyż prąd konwertowany jest na łatwiejsze do przetworzenia napięcie. Odpowiedź wzmacniacza zależy od wartości R i parametrów własnych wzmacniacza operacyjnego. Dodanie kondensatora równolegle do rezystora redukuje szumy i oscylacje. Chociaż wzmacniacz TIA jest standardowym rozwiązaniem – można zastosować substytuty w postaci wzmacniaczy napięciowych z rezystorem obciążenia, wzmacniaczy napięciowych z wtórnikiem emiterowym, wzmacniaczy logarytmicznych (LogAmp), wzmacniaczy z integratorem prądowym, wzmacniaczy z układem RC, wzmacniaczy różnicowych i/lub wzmacniaczy z wysoką impedancją wejściową."}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Filtr dolnoprzepustowy (LPF) rezystorowo-kondensatorowy (RC) – służy filtracji szumów wynikających z oscylacji fali nośnej. ", "bold":true},
+            {"type": "text", "content": "Filtr RC jest najprostszym i najczęściej stosowanym układem filtrującym, bazującym tylko na dwóch dopasowanych elementach. Dolnoprzepustowy filtr RC prezentuje się następującym schematem:"},
+            {"type": "image", "content": "img/direct2.png"},
+            {"type": "text", "content": "Rezystor R oraz kondensator C są dopasowane do częstotliwości odcięcia filtra, powyżej której filtr zacznie tłumić. Odbywa się to na podstawie poniższego wzoru:"},
+            {"type": "math", "content": "f = \\frac{1}{2 \\pi R C}"},
+            {"type": "text", "content": "Jako substytutu można użyć dowolnego innego filtra, np. filtra LC. Stosowanie aktywnych filtrów będzie skuteczniejsze, ale droższe."}
+
+          ]
+        },
+        
+              {
+                  "elements": [
+                      {
+                          "type": "text",
+                          "content": "Symulacja pracy prostego układu z detekcją bezpośrednią:"
+                      },
+                      {
+                          "type": "simulation",
+                          "content": {
+                              "simulation_name": "direct_detection",
+                              "sliders": {
+                                  "Amplituda": {"min": 0.1, "max": 2.0, "default": 1.0},
+                                  "Częstotliwość [THz]": {"min": 10, "max": 200, "default": 100},
+                                  "Podstawa czasu [ps]": {"min": 0.1, "max": 2.0, "default": 1.0}
+                              }
+                          }
+                      }
+                  ]
+              
+          
+      }
+        
+      ],
+      "coherent_detection": [
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja Koherentna – detekcja polegająca na zastosowaniu odniesienia w postaci lokalnego oscylatora. Pozwala odczytać zarówno amplitudę, jak i fazę sygnału optycznego. ", "bold": true},
+            {"type": "text", "content": "Lokalny Oscylator (LO) stanowi wiązkę lasera o znanej fazie i częstotliwości. Proces detekcji polega na mieszaniu sygnału optycznego z wiązką LO i skierowaniu ich na fotodetektor (lub zestaw fotodetektorów), gdzie zachodzi interferencja. "},
+            {"type": "text", "content": "W przypadku pojedynczego fotodetektora – wynikowy sygnał ma składniki proporcjonalne do różnicy częstotliwości i fazy między sygnałem a LO. Fotodetektor przekształca wynikowy sygnał optyczny na elektryczny. Powstały sygnał jest wzmacniany i filtrowany w celu usunięcia szumów. Finalnie, by odzyskać oryginalny sygnał dokonujemy demodulacji czasowej lub częstotliwościowej. Przy detekcji szerokopasmowej można skutecznie odzyskać oryginalne sygnały, a ograniczeniem będzie jedynie responsywność fotodetektora."},
+            {"type": "text", "content": "W przypadku zestawu fotodetektorów – wykorzystuje się sprzęgacz, z którego jedno wyjście jest proporcjonalne do sumy sygnału optycznego i sygnału LO, a drugie do ich różnicy, co umożliwia łatwy sposób wyznaczenia wartości sygnału optycznego, poprzez wprowadzenie każdego z tych sygnałów na osobny fotodetektor i zastosowanie prostej sumacji."},
+            {"type": "math", "content": "E_1 \\propto E_{opt} + E_{LO}, \\quad E_2 \\propto E_{opt} - E_{LO}"},
+            {"type": "math", "content": "I(t) \\propto |E_{opt}|^2 \\pm 2|E_{opt}||E_{LO}|\\cos(\\theta) + |E_{LO}|^2"},
+            {"type": "text", "content": "θ – kąt między sygnałem optycznym a sygnałem LO"}
+
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja koherentna jest znacznie bardziej czuła niż bezpośrednia i może wykrywać sygnały o bardzo niskim poziomie mocy. Odzyskiwanie informacji fazowej umożliwia stosowanie zaawansowanych technik modulacji  (QPSK, QAM), co zwiększa przepustowość i zasięg. Dzięki mieszaniu z LO, detekcja koherentna jest odporna na szum, zwłaszcza w systemach zdominowanych przez szum fazowy. Detekcja koherentna pozwala na precyzyjne rozróżnienie blisko leżących sygnałów optycznych."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Konieczność stosowania LO oraz precyzyjnych metod stabilizacji fazy i częstotliwości znacząco zwiększa złożoność i koszt układu. Największe koszta generują lasery wysokiej klasy, fotodetektory wieloelementowe i zaawansowane układy DSP. Konieczność synchronizacji fazy i częstotliwości między sygnałami wymaga zaawansowanego sterowania i stabilizacji. Szumy fazowe LO i sygnału oraz polaryzacja wiązki mogą wpływać na jakość detekcji."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja koherentna ma szereg zastosowań w telekomunikacji optycznej – w systemach dalekiego zasięgu o wysokiej przepustowości rzędu 100Gbps i więcej. Służy również przy analizie substancji z wykorzystaniem sygnałów koherentnych, pomiarom metrologicznym w systemach LIDAR oraz koherentnym radarom optycznym dla zastosowań wojskowych i autonomicznych pojazdów."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Detekcja Homodynowa – częstotliwość LO jest taka sama jak częstotliwość sygnału. Prąd wyjściowy zawiera komponent stały oraz komponent związany z różnicą fazy ΔΦ."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja Heterodynowa – częstotliwość LO różni się od częstotliwości sygnału, co tworzy sygnał o różnicowej częstotliwości (IF – Intermediate Frequency). To właśnie ta detekcja w zasadzie jest podstawą detekcji subkoherentnej."},
+            {"type": "text", "content": " "},
+            {"type": "text", "content": "Detekcja subkoherentna – detekcja koherentna, która mimo zblizonych częstotliwościowo sygnałów – nie gwarantuje dokładnej kontroli fazy. Dzięki temu można dokonywać detekcji w systemach, gdzie precyzyjna kontrola częstotliwości oscylatora jest trudna do utrzymania. Z uwagi na niższą czułość i rozdzielczość fazową – detekcja subkoherentna zyskuje łatwiejszą implementację i stawia niższe wymagania sprzętowe."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "content": "Przykładowe układy detekcji koherentnej:", "bold":true},
+            {"type": "image", "content": "img/coh2.png"},
+            {"type": "text", "content": "Poza elementami omówionymi w przypadku detekcji bezpośredniej, detekcja koherentna (i subkoherentna) korzysta z trzech dodatkowych elementów: \n - Lokalny Oscylator – stabilny laser, którego częstotliwość i faza są odniesieniem (referencją) do sygnału, \n - Sprzęgacz Optyczny – układ łączący sygnał optyczny z lokalnym oscylatorem, umożliwiając interferencję, \n - DSP – układ demodulujący sygnał koherentny, analizujący fazę oraz korygujący błędy."}
+ 
+          ]
+        }, 
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Laser Fabry-Perota"},
+            {"type": "text", "content": "Laser Fabry-Perota – półprzewodnikowy laser typu krawędziowego o poziome strukturze wnęki, który emituje spójne światło w trybie podłużnym. Używany jest głównie do transmisji krótkiego zasięgu, rzędu dziesiątek kilometrów. Charakteryzuje się stosunkowo prostą strukturą i technologią produkcji. Może obsługiwać zarówno fale 1310nm jak i 1550nm. Może posłużyć dla detekcji subkoherentnej."},
+            {"type": "image", "content": "img/coh5.png"}
+                    ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Laser VCSEL (Vertical-Cavity Surface-Emitting Laser)"},
+            {"type": "text", "content": "Laser VCSEL – półprzewodnikowy laser emitujący światło powierzchniowo o pionowej strukturze wnęki. Zapewnia wysokiej jakości wiązkę laserową i wyższą wydajność sprzężenia. W porównaniu z laserami FP i DFB – jest łatwiejszy w produkcji. Jest stosowanie głównie w modułach optycznych krótkiego zasięgu. Z reguły jest ograniczony do długości 850nm. Może posłużyć dla detekcji subkoherentnej."},
+            {"type": "image", "content": "img/coh6.png"}
+                    ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Laser DFB (Distributed Feedback)"},
+            {"type": "text", "content": "Laser DFB – opiera się na laserze FP, jednakże z rozproszonym sprzężeniem zwrotnym. Siatka Bragga jest zintegrowana z warstwą aktywną wewnątrz lasera (w ośrodku wzmacniającym), a struktura wyboru trybu jest tworzona we wnęce rezonansowej w celu uzyskania trybu pracy jednomodowej. Należy do laserów o emisji krawędziowej i wykorzystuje poziomą strukturę wnęki. Zazwyczaj wykorzystuje dwie długości fal – 1310nm i 1550nm i jest używany głównie do transmisji na średnie i duże odległości. Może posłużyć dla detekcji koherentnej."},
+            {"type": "image", "content": "img/coh7.png"}
+                    ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "DSP (Digital Signal Processor)"},
+            {"type": "text", "content": "DSP – cyfrowy procesor sygnałowy zajmujący się głównie demodulacją sygnałów koherentnych. W spektrum jego zastosowań znajduje się m.in. kodowanie cyfrowych danych elektronicznych na amplitudę, fazę i polaryzację sygnału optycznego oraz dekodowanie tych danych, gdy sygnał jest odbierany. Kompensuje również niedoskonałości światłowodów, wykonuje konwersję AD/DA, koryguje błędy, szyfruje dane i monitoruje wydajność."},
+            {"type": "image", "content": "img/coh8.png"}
+                    ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true,"content": "Sprzęgacze Optyczne"},
+            {"type": "text", "content": "Sprzęgacz Optyczny (Optical Splitter) – układ łączący sygnał optyczny z lokalnym oscylatorem, umożliwiając interferencję. Jest zintegrowanym urządzeniem do dystrybucji mocy optycznej, które może dzielić i łączyć wiązki światła. Wyróżniamy splittery PLC, które zapewniają równą dystrybucję sygnałów optycznych poprzez zastosowanie falowodów i filtrów cienkowarstwowych do rozdzielania sygnałów optycznych, oraz FBT, które bazują na łączeniu zwężaniu wielu włókien, co tworzy efekt splittingu. Współczynnik podziału rozdzielaczy FBT jest konfigurowalny, natomiast PLC jest stały i niezmienny."},
+            {"type": "image", "content": "img/coh10.png"}
+                    ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Układy odbiorników koherentnych" },
+            {"type": "text", "content": "Konstrukcja odbiorników koherentnych wymaga dużo więcej planowania, niż w przypadku detekcji bezpośredniej. Jak omówiono wcześniej – można stosować układy z pojedynczym fotodetektorem (bazujące na mieszaniu sygnałów oraz detekcji bezpośredniej) lub układy z dwoma fotodetektorami (jeden dla sumy, drugi dla różnicy sygnałów, co po zsumowaniu umożliwia odtworzenie sygnału nośnego) zwane również zrównoważonymi."},
+            {"type": "image", "content": "img/coh9.png"},
+            {"type": "text", "content": "Po lewej widoczny układ z jednym fotodetektorem, natomiast poprawej z dwoma fotodetektorami."}
+
+                    ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Układy odbiorników koherentnych c.d." 
+            },
+            {"type": "text", "content": "Można tworzyć jeszcze bardziej złożone układy, jednakże będzie to wymagało dużo większego nakładu kosztów i pracy. Warto nadmienić, że po detekcji stosuje się różne techniki odzyskiwania nośnej. W przypadku detekcji pojedynczym fotodetektorem – filtr odcina ze wzmocnionego sygnału niepotrzebne elementy, w przypadku ww. detekcji z fotodetektorem zrównoważonym – po wzmocnieniu sygnał wpływa na układy atuomatycznej kontroli polaryzacji i częstotliwości, które dostrajają parametry sygnałowe na wejściu sprzęgacza. Następnie następuje odzyskanie nośnej i zmodulowanie jej częstotliwościowo do  wartości zgodnej z portem wyjściowym detektora zrównoważonego poprzez układ odzyskiwania nośnej oraz mieszacza, opatrzone filtrami."},
+            {"type": "image", "content": "img/coh11.png"},
+            {"type": "text", "content": "W alternatywie można zastosować powyższy układ na wyjściu wzmacniacza. Omija on dodatkową przemianę częstotliwości. Sygnał z detektora zostaje wzmocniony filtrowany, a następnie poddany kolejnej detekcji. W ten sposób można odzyskać informację zawartę w obwiedni sygnału, co w wielu przypadkach wystarcza."}
+                    ]
+        },
+        {
+          "elements": [
+              {
+                  "type": "text",
+                  "content": "Symulacja detekcja koherentnej - wpływ niesynchronizacji częstotliwości oraz błędu fazowego"
+              },
+              {
+                "type": "text",
+                "content": "Częstotliwosć LO = 100 THz, częstotliwość nośna (początkowa) = 100 THz"
+              },
+              {
+                  "type": "simulation",
+                  "content": {
+                    "simulation_name": "coherent_detection",
+                    "sliders": {
+                      "Częstotliwość nośna [THz]": { "min": 90, "max": 110, "default": 100 },
+                      "Błąd fazowy φ [rad]": { "min": -3.14, "max": 3.14, "default": 0 }
+                    }
+                  }
+              }
+          ]
+      
+  
+}
+      ],
+      "summary": [
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Detekcja bezpośrednia" },
+            {"type": "text", "content": "Detekcja bezpośrednia wykrywa jedynie intensywność światła, informacja o fazie i częstotliwości sygnału jest tracona – nie dostarcza zatem informacji o fazie, lecz jedynie o amplitudzie sygnału. W związku z tym obsługuje ona jedynie modulacje natężeniowe. Z uwagi na ograniczoną czułość, zależną od jakości i ograniczeń fotodetektora – detekcja ta ma ograniczone możliwości wykrywania, w zamian oferując najprostsze i najtańsze układy, wymagające jedynie fotodetektora i wzmacniacza.  Dodatkową zaletą jest fakt, iż stabilność źródła nie jest brana pod uwagę, wystarczy zatem prosty laser FP lub DFB, a także proste fotodetektory PIN lub APD, by przetworzyć natężenie światła na prąd. Prosty wzmacniacz, taki jak TIA jest wystarczający dla takich układów, a stosowanie filtrów pasywnych LPF typu RC eliminuje wysokie częstotliwości szumów w zadowalającym stopniu. "},
+            {"type": "text", "content": "Detekcja bezpośrednia z uwagi na kompletne odcięcie się od detekcji fazy – jest odporna na szumy fazowe, które dzięki prostocie układu – i tak są niewielkie. Z tego samego powodu – układy detekcji bezpośredniej są też odporne na zakłócenia. Systemy z detekcją bezpośrednią są ograniczone pod względem przepustowości, pasma, zakresu dynamiki i zasięgu z uwagi na technologię fotodetektorów i modulacje natężeniowe. Dzięki prostocie budowy – układy takie zyskują na energooszczędności, jednakże tracą na elastyczności co do zastosowań, któe ograniczają się raczej do prostych systemów na niewielkim dystansie."}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Detekcja koherentna" },
+            {"type": "text", "content": "Detekcja koherentna z kolei umożliwia pełną analizę fazy i amplitudy sygnału dzięki interferencji sygnału odbieranego z lokalnym oscylatorem. Zapewnia pełen dostęp do fazy i amplitudy, co umożliwia dekodowanie zaawansowanych modulacji. Układy koherentne mają najwyższą czułość dzięki analizie fazowej i zastosowaniu zaawansowanych układów DSP. Układy te są z kolei bardzo kosztowne i złożone, wymagają precyzyjnej synchronizacji, interferometrii i zaawansowanych układów i elementów wysokiej jakości. W takich układach stabilność jest kluczowa, co sprawia, że potrzebne jest zastosowanie laserów o niskim szumie fazowym. "},
+            {"type": "text", "content": "W związku z powyższym konieczne jest zastosowanie zrównoważonych fotodetektorów, które pozwalają na analizę różnicową faz sygnałów. Wzmacniacze TIA nadal mogą być stosowane w detekcji koherentnej, jednakże czasami dla poprawy jakości stosuje się również wzmacniacze LNA charakteryzujące się niskim poziomem szumów. Dzięki zastosowaniu filtrów DSP można w zaawansowany sposób przetwarzać sygnały, a dzięki układom korekcyjnym DSP – można zredukować wpływ szumów fazowych, na które sam układ jest wysoce podatny. Dzięki zaawansowanym modulacjom (możliwym dzięki bardzo szerokiemu pasmu operacyjnemu) – można osiągać najwyższe przepustowości. Przy szerokim zakresie dynamiki, można w dokładny sposób odebrać nawet słabe sygnały. Układy koherentne są wysoce elastyczne i mają szerokie spektrum zastosowań, nie są jednak energooszczędne z tytułu stosowania zaawansowanych układów i stabilizacji źródeł – co generuje dodatkowe koszty utrzymania. Zastosowania układów z detekcją koherentną ma szerokie zastosowanie w telekomunikacji długodystansowej i zaawansowanych systemach teletransmisji.  "}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "text", "bold": true, "content": "Detekcja subkoherentna" },
+            {"type": "text", "content": "Detekcja subkoherentna jest kompromisem między detekcją bezpośrednią a koherentną, oferując tańsze i mniej złożone układy, kosztem jakości oferowanej przez detekcję koherentną. Choć detekcja koherentna ma zdecydowanie najszersze spektrum zastosowań – w niektórych sytuacjach, bardziej opłaca się budować układy oparte o detekcję subkoherentną, a nawet bezpośrednią – w zależności od wymagań danego systemu lub aplikacji. "}
+          ]
+        },
+        {
+          "elements": [
+            {"type": "image", "content": "img/podsum.png"}
+          ]
+        }
+      ]
+    }
+  }
+  

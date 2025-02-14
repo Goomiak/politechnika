@@ -5,7 +5,7 @@ from modules.menu import MenuWidget
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Zasady Detekcji Bezpośredniej i Koherentnej")
+        self.setWindowTitle("Podstawy technik i systemów radiowo-fotonicznych")
         self.resize(800, 600)  # Zmieniamy setGeometry na resize
         self.center_window()  # Wywołujemy centrowanie okna
         self.setStyleSheet("background-color: white; color: black; border: none;")

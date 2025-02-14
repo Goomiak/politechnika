@@ -1,0 +1,1 @@
+nuitka --standalone --windows-disable-console --lto=auto --msvc=latest --windows-icon-from-ico=my_ico.ico --output-dir=app2 --enable-plugin=pyside6 app.py
